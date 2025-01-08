@@ -1,0 +1,7 @@
+Options -MultiViews
+RewriteEngine On
+
+# Chuyển hướng tất cả yêu cầu không phải file hoặc thư mục thực tới index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]

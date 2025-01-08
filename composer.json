@@ -1,0 +1,19 @@
+{
+    "name": "kiet/phpure",
+    "description": "A simple MVC framework.",
+    "authors": [
+        {
+            "name": "Mai Tran Tuan Kiet",
+            "email": "mttk2004@hotmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Core\\": "core/"
+        }
+    },
+    "require": {
+      "ext-json": "*"
+    }
+}
