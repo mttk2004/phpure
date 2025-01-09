@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use Core\Model;
 
-class UserModel
+class UserModel extends Model
 {
+	protected string $table = 'users'; // Tên bảng tương ứng
 }

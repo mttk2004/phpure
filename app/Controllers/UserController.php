@@ -2,43 +2,50 @@
 
 namespace App\Controllers;
 
+
 use Core\Controller;
+use App\Models\UserModel;
 use Core\Database;
+
 
 class UserController extends Controller
 {
+	protected UserModel $userModel;
+	
+	public function __construct()
+	{
+		$this->userModel = new UserModel();
+	}
+	
+	// Lấy danh sách người dùng
 	public function index()
 	{
-		// Lấy tất cả người dùng
-		$users = Database::table('users')->select(['id', 'name'])->get();
+		$users = $this->userModel->all();
 		$this->render('user/index', ['users' => $users]);
 	}
 	
+	// Thêm người dùng mới
 	public function store()
 	{
-		// Thêm người dùng mới
-		Database::table('users')->insert([
+		$this->userModel->create([
 				'name' => 'John Doe',
-				'email' => 'john@example.com'
+				'email' => 'john@example.com',
 		]);
 		
 		echo "User Added Successfully!";
 	}
 	
+	// Cập nhật người dùng
 	public function update()
 	{
-		// Cập nhật người dùng
-		Database::table('users')->where('id', '=', 1)->update([
-				'name' => 'Jane Doe'
-		]);
-		
+		$this->userModel->update(['name' => 'Jane Doe'], 1);
 		echo "User Updated Successfully!";
 	}
 	
+	// Xóa người dùng
 	public function delete()
 	{
-		// Xóa người dùng
-		Database::table('users')->where('id', '=', 1)->delete();
+		$this->userModel->delete(1);
 		echo "User Deleted Successfully!";
 	}
 }
