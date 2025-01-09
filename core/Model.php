@@ -14,10 +14,6 @@ abstract class Model
 	// Lấy tất cả bản ghi
 	public function all(): array
 	{
-		if (empty($this->table)) {
-			throw new \Exception("Table name is not defined in the model.");
-		}
-		
 		return Database::table($this->table)->get();
 	}
 	
