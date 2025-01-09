@@ -3,31 +3,42 @@
 namespace App\Controllers;
 
 use Core\Controller;
+use Core\Database;
 
 class UserController extends Controller
 {
-	public function profile($id)
+	public function index()
 	{
-		$this->render('user/profile', ['userId' => $id]);
-	}
-	
-	public function edit($id)
-	{
-		echo "Editing user with ID: $id";
+		// Lấy tất cả người dùng
+		$users = Database::table('users')->select(['id', 'name'])->get();
+		$this->render('user/index', ['users' => $users]);
 	}
 	
 	public function store()
 	{
-		echo "Storing new user!";
+		// Thêm người dùng mới
+		Database::table('users')->insert([
+				'name' => 'John Doe',
+				'email' => 'john@example.com'
+		]);
+		
+		echo "User Added Successfully!";
 	}
 	
-	public function update($id)
+	public function update()
 	{
-		echo "Updating user with ID: $id";
+		// Cập nhật người dùng
+		Database::table('users')->where('id', '=', 1)->update([
+				'name' => 'Jane Doe'
+		]);
+		
+		echo "User Updated Successfully!";
 	}
 	
-	public function destroy($id)
+	public function delete()
 	{
-		echo "Deleting user with ID: $id";
+		// Xóa người dùng
+		Database::table('users')->where('id', '=', 1)->delete();
+		echo "User Deleted Successfully!";
 	}
 }

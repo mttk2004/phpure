@@ -6,7 +6,7 @@ namespace Core;
 class Session
 {
 	// Bắt đầu session nếu chưa có
-	public static function start()
+	public static function start(): void
 	{
 		if (session_status() === PHP_SESSION_NONE) {
 			session_start();

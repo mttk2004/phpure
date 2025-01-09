@@ -16,6 +16,7 @@ class App
 		// Routes
 		$router->get('', ['HomeController', 'index']);
 		$router->get('about', ['HomeController', 'about'])->middleware('auth');
+		$router->get('users', ['UserController', 'index']);
 		$router->post('users/store', ['UserController', 'store'])->middleware('auth');
 		$router->get('login', ['HomeController', 'login'])->middleware('guest');
 		

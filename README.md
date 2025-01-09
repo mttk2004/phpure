@@ -13,7 +13,7 @@ Một framework MVC đơn giản được viết bằng PHP để giúp người
 ### **Hướng dẫn cài đặt:**
 1. **Clone repository**:
    ```bash
-   git clone https://github.com/username/my-php-mvc-framework.git
+   git clone https://github.com/mttk2004/phpure.git
    cd my-php-mvc-framework
    ```
 
@@ -149,10 +149,56 @@ Framework này được phát hành dưới giấy phép **MIT**. Bạn có th�
 
 ---
 
-## **8. Tác giả** 🧑‍💻
+## **8. Kết nối Database** 💾
+
+### **Cấu hình Database:**
+1. Tạo file `.env` trong thư mục gốc:
+```
+DB_HOST=localhost
+DB_NAME=my_database
+DB_USER=root
+DB_PASS=password
+```
+
+2. Tạo bảng ví dụ trong MySQL:
+```sql
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL
+);
+```
+
+### **Sử dụng Database trong Controller:**
+- Lấy tất cả dữ liệu:
+```php
+$users = Database::fetchAll("SELECT * FROM users");
+```
+
+- Thêm dữ liệu:
+```php
+Database::insert('users', [
+    'name' => 'John Doe',
+    'email' => 'john@example.com'
+]);
+```
+
+- Cập nhật dữ liệu:
+```php
+Database::update('users', ['name' => 'Jane'], 'id = ?', [1]);
+```
+
+- Xóa dữ liệu:
+```php
+Database::delete('users', 'id = ?', [1]);
+```
+
+---
+
+## **9. Tác giả** 🧑‍💻
 
 [Mai Trần Tuấn Kiệt](https://github.com/mttk2004)
 
 ---
 
-_Last updated: 2025_
+_Last updated: January 8, 2025_

@@ -12,5 +12,7 @@ require_once BASE_PATH . '/utils/helpers.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+loadEnv();
+
 // Khởi chạy ứng dụng
 App::run();
