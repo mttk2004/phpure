@@ -42,6 +42,9 @@ class Database
 		self::$table = $table;
 		self::$queryParts = []; // Reset query parts
 		
+		// Mặc định thêm SELECT *
+		self::$queryParts['select'] = "SELECT * FROM $table";
+		
 		return new self;
 	}
 	
