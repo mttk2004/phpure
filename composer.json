@@ -20,6 +20,6 @@
         "robmorgan/phinx": "^0.16.6",
         "fakerphp/faker": "^1.24",
         "nesbot/carbon": "^3.8",
-        "jenssegers/blade": "^2.0"
+        "twig/twig": "^3.18"
     }
 }
