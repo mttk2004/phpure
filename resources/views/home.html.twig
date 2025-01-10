@@ -1,8 +1,7 @@
-@extends('layouts.app')
+{% extends 'layouts/app.html.twig' %}
 
-@section('title', 'Home')
-
-@section('content')
+{% block content %}
   <h2>Welcome to our Framework!</h2>
-  <p>This is the homepage using Blade.</p>
-@endsection
+  <p>This is the homepage using Twig.</p>
+  <p>{{ name }}</p>
+{% endblock %}

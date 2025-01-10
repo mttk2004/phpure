@@ -6,3 +6,4 @@ vendor
 .env
 composer.lock
 package-lock.json
+storage/cache/*

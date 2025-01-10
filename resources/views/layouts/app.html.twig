@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>@yield('title', 'Framework')</title>
+  <title>{{ title ?? 'Framework' }}</title>
 </head>
 <body>
   <header>
@@ -14,7 +14,7 @@
     </nav>
   </header>
   <main>
-    @yield('content')
+    {% block content %}{% endblock %}
   </main>
 </body>
 </html>
