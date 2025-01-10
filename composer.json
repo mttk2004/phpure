@@ -15,6 +15,10 @@
     },
     "require": {
       "ext-json": "*",
-      "ext-pdo": "*"
+      "ext-pdo": "*",
+        "respect/validation": "^2.4",
+        "robmorgan/phinx": "^0.16.6",
+        "fakerphp/faker": "^1.24",
+        "nesbot/carbon": "^3.8"
     }
 }
