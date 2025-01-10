@@ -2,24 +2,12 @@
 
 namespace App\Controllers;
 
-
 use Core\Controller;
-
 
 class HomeController extends Controller
 {
-	public function index(): void
+	public function index()
 	{
-		// Truyền dữ liệu cho View
-		$this->render('home/index', [
-				'message' => 'Hello from Home Controller!',
-		]);
-	}
-	
-	public function about(): void
-	{
-		$this->render('home/index', [
-				'message' => 'This is the About Page rendered with a View!',
-		]);
+		$this->render('home', ['name' => 'Blade User']);
 	}
 }
