@@ -1,19 +1,22 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta
-			name="viewport"
-			content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Document</title>
+	<title>Users and Profiles</title>
 </head>
 <body>
-	<h1>Users</h1>
-	<?php
-	foreach ($users as $user) : ?>
-			<p><?= $user['name'] ?></p>
-	<?php
-	endforeach; ?>
+	<h1>Users and Their Profiles</h1>
+	<ul>
+	  <?php foreach ($users as $user): ?>
+				<li>
+					<h2><?= $user['name'] ?> (<?= $user['email'] ?>)</h2>
+			<?php if (!empty($user['profile'])): ?>
+							<p><strong>Bio:</strong> <?= $user['profile']['bio'] ?></p>
+			<?php else: ?>
+							<p><em>No profile available</em></p>
+			<?php endif; ?>
+				</li>
+	  <?php endforeach; ?>
+	</ul>
 </body>
 </html>
