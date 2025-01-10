@@ -5,11 +5,8 @@ namespace Core;
 
 class Controller
 {
-	// Hàm render View
-	public function render($view, $data = []): void
+	protected function render(string $view, array $data = []): void
 	{
-		extract($data);
-		$viewPath = '../app/Views/' . $view . '.php';
-		require_once $viewPath;
+		echo Blade::getInstance()->render($view, $data);
 	}
 }
