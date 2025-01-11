@@ -8,8 +8,9 @@ use Core\Database;
 
 abstract class Model
 {
-	protected string $table;          // Tên bảng
-	protected array $attributes = []; // Thuộc tính của model
+	protected string $table;            // Tên bảng
+	protected array $attributes = [];   // Thuộc tính của model
+	protected bool $softDelete = false; // Mặc định không hỗ trợ Soft Deletes
 	
 	// Khởi tạo với dữ liệu
 	public function __construct(array $attributes = [])
@@ -31,15 +32,27 @@ abstract class Model
 	// Lấy tất cả bản ghi
 	public function all(): array
 	{
-		return Database::table($this->table)->get();
+		$query = Database::table($this->table);
+		
+		// Nếu bảng hỗ trợ Soft Deletes, thêm điều kiện lọc `deleted_at`
+		if ($this->softDelete) {
+			$query->whereNull('deleted_at');
+		}
+		
+		return $query->get();
 	}
 	
 	// Tìm bản ghi theo ID
-	public function find($id)
+	public function find(int $id): ?object
 	{
-		$data = Database::table($this->table)->where('id', '=', $id)->first();
+		$query = Database::table($this->table)->where('id', '=', $id);
 		
-		return $data ? new static($data) : null;
+		// Lọc `deleted_at` nếu bảng hỗ trợ Soft Deletes
+		if ($this->softDelete) {
+			$query->whereNull('deleted_at');
+		}
+		
+		return $query->first();
 	}
 	
 	// Thêm bản ghi mới
@@ -55,9 +68,41 @@ abstract class Model
 	}
 	
 	// Xóa bản ghi
-	public function delete($id): bool
+	public function delete(int $id): bool
 	{
-		return Database::table($this->table)->where('id', '=', $id)->delete();
+		if ($this->softDelete) {
+			// Xóa mềm nếu bảng hỗ trợ Soft Deletes
+			return Database::table($this->table)
+						   ->where('id', '=', $id)
+						   ->update(['deleted_at' => date('Y-m-d H:i:s')]);
+		} else {
+			// Xóa cứng nếu không hỗ trợ Soft Deletes
+			return Database::table($this->table)
+						   ->where('id', '=', $id)
+						   ->delete();
+		}
+	}
+	
+	// Khôi phục bản ghi
+	public function restore(int $id): bool
+	{
+		if (!$this->softDelete) {
+			throw new \Exception("Restore is not supported for table '{$this->table}'");
+		}
+		
+		return Database::table($this->table)
+					   ->where('id', '=', $id)
+					   ->update(['deleted_at' => null]);
+	}
+	
+	// Lấy bản ghi đã xóa
+	public function onlyTrashed(): array
+	{
+		if (!$this->softDelete) {
+			throw new \Exception("Soft Deletes are not enabled for table '{$this->table}'");
+		}
+		
+		return Database::table($this->table)->whereNotNull('deleted_at')->get();
 	}
 	
 	// Quan hệ One-to-One
@@ -83,6 +128,7 @@ abstract class Model
 					   ->get();
 	}
 	
+	// Quan hệ Many-to-Many
 	public function belongsToMany(
 			string $relatedModel,
 			string $pivotTable,
@@ -93,7 +139,7 @@ abstract class Model
 	): array {
 		$related = new $relatedModel();
 		
-		// Thêm dấu backtick vào tên bảng và cột
+		// Thêm dấu backtick vào tên bảng và cột để tránh trùng với từ khóa SQL
 		$sql = "SELECT `{$related->table}`.*
             FROM `{$related->table}`
             INNER JOIN `{$pivotTable}`
