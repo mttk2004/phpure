@@ -72,6 +72,27 @@ abstract class Model
 		return $instance;
 	}
 	
+	// Lấy bản ghi đã xóa
+	public static function onlyTrashed(): array
+	{
+		$instance = new static();
+		
+		// Nếu không hỗ trợ Soft Deletes, báo lỗi
+		if (!$instance->softDelete) {
+			throw new \Exception("Soft Deletes are not enabled for table '{$instance->table}'");
+		}
+		
+		$records = Database::table($instance->table)->whereNotNull('deleted_at')->get();
+		
+		// Gắn dữ liệu vào danh sách các đối tượng Model
+		return array_map(function ($record) use ($instance) {
+			$model = new static();
+			$model->fill($record);
+			
+			return $model;
+		}, $records);
+	}
+	
 	// Thêm bản ghi mới
 	public function create(array $data): bool
 	{
@@ -110,16 +131,6 @@ abstract class Model
 		return Database::table($this->table)
 					   ->where('id', '=', $id)
 					   ->update(['deleted_at' => null]);
-	}
-	
-	// Lấy bản ghi đã xóa
-	public function onlyTrashed(): array
-	{
-		if (!$this->softDelete) {
-			throw new \Exception("Soft Deletes are not enabled for table '{$this->table}'");
-		}
-		
-		return Database::table($this->table)->whereNotNull('deleted_at')->get();
 	}
 	
 	// Quan hệ One-to-One
