@@ -46,9 +46,22 @@ function loadEnv(): void
 	if (file_exists($envPath)) {
 		$lines = file($envPath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 		foreach ($lines as $line) {
-			if (strpos(trim($line), '#') === 0) continue;
+			if (strpos(trim($line), '#') === 0) {
+				continue;
+			}
 			[$key, $value] = explode('=', $line, 2);
 			putenv(trim($key) . '=' . trim($value));
 		}
+	}
+}
+
+/**
+ * Ném Exception khi điều kiện thỏa mãn
+ * @throws Exception
+ */
+function throw_if(bool $condition, string $message): void
+{
+	if ($condition) {
+		throw new \Exception($message);
 	}
 }
