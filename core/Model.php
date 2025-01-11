@@ -40,12 +40,14 @@ abstract class Model
 	}
 	
 	// Tìm bản ghi theo ID
-	public function find(int $id): ?Model
+	public static function find(int $id): ?self
 	{
-		$query = Database::table($this->table)->where('id', '=', $id);
+		$instance = new static();
 		
-		// Lọc `deleted_at` nếu bảng hỗ trợ Soft Deletes
-		if ($this->softDelete) {
+		$query = Database::table($instance->table)->where('id', '=', $id);
+		
+		// Nếu bảng hỗ trợ Soft Deletes, thêm điều kiện lọc `deleted_at`
+		if ($instance->softDelete) {
 			$query->whereNull('deleted_at');
 		}
 		
@@ -55,10 +57,9 @@ abstract class Model
 			return null;
 		}
 		
-		// Gắn dữ liệu vào Model
-		$this->fill($record);
+		$instance->fill($record);
 		
-		return $this;
+		return $instance;
 	}
 	
 	// Thêm bản ghi mới
