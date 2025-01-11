@@ -3,9 +3,6 @@
 namespace Core;
 
 
-use Core\Database;
-
-
 abstract class Model
 {
 	protected string $table;            // Tên bảng
@@ -46,7 +43,7 @@ abstract class Model
 	public function find(int $id): ?object
 	{
 		$query = Database::table($this->table)->where('id', '=', $id);
-		
+
 		// Lọc `deleted_at` nếu bảng hỗ trợ Soft Deletes
 		if ($this->softDelete) {
 			$query->whereNull('deleted_at');
@@ -106,13 +103,24 @@ abstract class Model
 	}
 	
 	// Quan hệ One-to-One
-	public function hasOne(string $relatedModel, string $foreignKey, string $localKey = 'id')
-	{
+	public function hasOne(
+			string $relatedModel,
+			string $foreignKey,
+			string $localKey = 'id',
+	): ?Model {
 		$related = new $relatedModel();
+		$record = Database::table($related->table)
+						  ->where($foreignKey, '=', $this->{$localKey})
+						  ->first();
 		
-		return Database::table($related->table)
-					   ->where($foreignKey, '=', $this->{$localKey})
-					   ->first();
+		if (!$record) {
+			return null;
+		}
+		
+		// Gắn dữ liệu vào đối tượng Model
+		$related->fill($record);
+		
+		return $related;
 	}
 	
 	// Quan hệ One-to-Many
@@ -121,11 +129,18 @@ abstract class Model
 			string $foreignKey,
 			string $localKey = 'id',
 	): array {
-		$related = new $relatedModel(); // Khởi tạo model liên kết
+		$related = new $relatedModel();
+		$records = Database::table($related->table)
+						   ->where($foreignKey, '=', $this->{$localKey})
+						   ->get();
 		
-		return Database::table($related->table)
-					   ->where($foreignKey, '=', $this->{$localKey})
-					   ->get();
+		// Gắn dữ liệu vào danh sách các đối tượng Model
+		return array_map(function ($record) use ($relatedModel) {
+			$instance = new $relatedModel();
+			$instance->fill($record);
+			
+			return $instance;
+		}, $records);
 	}
 	
 	// Quan hệ Many-to-Many
@@ -139,13 +154,28 @@ abstract class Model
 	): array {
 		$related = new $relatedModel();
 		
-		// Thêm dấu backtick vào tên bảng và cột để tránh trùng với từ khóa SQL
 		$sql = "SELECT `{$related->table}`.*
             FROM `{$related->table}`
             INNER JOIN `{$pivotTable}`
             ON `{$related->table}`.`{$relatedLocalKey}` = `{$pivotTable}`.`{$relatedKey}`
             WHERE `{$pivotTable}`.`{$foreignKey}` = ?";
 		
-		return Database::raw($sql, [$this->{$localKey}]);
+		$records = Database::raw($sql, [$this->{$localKey}]);
+		
+		// Gắn dữ liệu vào danh sách các đối tượng Model
+		return array_map(function ($record) use ($relatedModel) {
+			$instance = new $relatedModel();
+			$instance->fill($record);
+			
+			return $instance;
+		}, $records);
+	}
+	
+	// Gắn dữ liệu từ cơ sở dữ liệu vào Model
+	public function fill(array $data): void
+	{
+		foreach ($data as $key => $value) {
+			$this->{$key} = $value;
+		}
 	}
 }
