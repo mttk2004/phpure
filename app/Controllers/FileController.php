@@ -37,7 +37,7 @@ class FileController extends Controller
 	
 	public function listFiles()
 	{
-		$files = Storage::files('uploads');
+		$files = Storage::files();
 		echo "<ul>";
 		foreach ($files as $file) {
 			echo "<li>$file</li>";

@@ -8,3 +8,4 @@ composer.lock
 package-lock.json
 storage/cache/*
 storage/logs/*
+storage/uploads/*
