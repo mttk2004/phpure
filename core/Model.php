@@ -27,16 +27,25 @@ abstract class Model
 	}
 	
 	// Lấy tất cả bản ghi
-	public function all(): array
+	public static function all(): array
 	{
-		$query = Database::table($this->table);
+		$instance = new static();
+		$query = Database::table($instance->table);
 		
-		// Nếu bảng hỗ trợ Soft Deletes, thêm điều kiện lọc `deleted_at`
-		if ($this->softDelete) {
+		// Lọc `deleted_at` nếu bảng hỗ trợ Soft Deletes
+		if ($instance->softDelete) {
 			$query->whereNull('deleted_at');
 		}
 		
-		return $query->get();
+		$records = $query->get();
+		
+		// Gắn dữ liệu vào danh sách các đối tượng Model
+		return array_map(function ($record) use ($instance) {
+			$model = new static();
+			$model->fill($record);
+			
+			return $model;
+		}, $records);
 	}
 	
 	// Tìm bản ghi theo ID
@@ -57,6 +66,7 @@ abstract class Model
 			return null;
 		}
 		
+		// Gắn dữ liệu vào đối tượng Model
 		$instance->fill($record);
 		
 		return $instance;
