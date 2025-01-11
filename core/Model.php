@@ -40,16 +40,25 @@ abstract class Model
 	}
 	
 	// Tìm bản ghi theo ID
-	public function find(int $id): ?object
+	public function find(int $id): ?Model
 	{
 		$query = Database::table($this->table)->where('id', '=', $id);
-
+		
 		// Lọc `deleted_at` nếu bảng hỗ trợ Soft Deletes
 		if ($this->softDelete) {
 			$query->whereNull('deleted_at');
 		}
 		
-		return $query->first();
+		$record = $query->first();
+		
+		if (!$record) {
+			return null;
+		}
+		
+		// Gắn dữ liệu vào Model
+		$this->fill($record);
+		
+		return $this;
 	}
 	
 	// Thêm bản ghi mới
