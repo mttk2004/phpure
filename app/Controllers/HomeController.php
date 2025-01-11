@@ -2,14 +2,17 @@
 
 namespace App\Controllers;
 
+
 use Core\Controller;
-use Core\Http\Request;
-use Core\Http\Response;
+use Core\Logger;
+
 
 class HomeController extends Controller
 {
 	public function index()
 	{
-		$this->render('home');
+		Logger::info('HomeController index method called', ['user' => 'Guest']);
+		
+		echo "Welcome to the home page!";
 	}
 }
