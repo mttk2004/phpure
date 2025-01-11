@@ -48,7 +48,7 @@ class Database
 		return new self;
 	}
 	
-	// Chọn cột
+	// Chọn cột, nếu không truyền tham số sẽ chọn tất cả
 	public static function select(array $columns = ['*']): self
 	{
 		self::$queryParts['select'] = "SELECT " . implode(', ', $columns) . " FROM " . self::$table;
@@ -65,7 +65,23 @@ class Database
 		return new self;
 	}
 	
-	// Sắp xếp dữ liệu
+	// Thêm điều kiện WHERE NULL
+	public static function whereNull(string $column): self
+	{
+		self::$queryParts['where'][] = "$column IS NULL";
+		
+		return new self;
+	}
+	
+	// Thêm điều kiện WHERE NOT NULL
+	public static function whereNotNull(string $column): self
+	{
+		self::$queryParts['where'][] = "$column IS NOT NULL";
+		
+		return new self;
+	}
+	
+	// Sắp xếp dữ liệu, mặc định là ASC
 	public static function orderBy(string $column, string $direction = 'ASC'): self
 	{
 		self::$queryParts['orderBy'] = "ORDER BY $column $direction";
@@ -113,15 +129,6 @@ class Database
 		$stmt->execute(self::$queryParts['params'] ?? []);
 		
 		return $stmt->fetch()['count'] ?? 0;
-	}
-	
-	// Chạy câu SQL trực tiếp
-	public static function raw(string $sql, array $params = []): array
-	{
-		$stmt = self::connect()->prepare($sql);
-		$stmt->execute($params);
-		
-		return $stmt->fetchAll();
 	}
 	
 	// Thêm dữ liệu
@@ -179,5 +186,14 @@ class Database
 		}
 		
 		return $sql;
+	}
+	
+	// Chạy câu SQL trực tiếp
+	public static function raw(string $sql, array $params = []): array
+	{
+		$stmt = self::connect()->prepare($sql);
+		$stmt->execute($params);
+		
+		return $stmt->fetchAll();
 	}
 }
