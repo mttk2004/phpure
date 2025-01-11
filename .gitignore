@@ -7,3 +7,4 @@ vendor
 composer.lock
 package-lock.json
 storage/cache/*
+storage/logs/*
