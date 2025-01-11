@@ -10,9 +10,6 @@ class HomeController extends Controller
 {
 	public function index()
 	{
-		$name = Request::query('name', 'Guest');
-		Response::json([
-				'message' => "Hello, $name!",
-		]);
+		$this->render('home');
 	}
 }
