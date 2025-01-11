@@ -2,6 +2,7 @@
 
 namespace Core;
 
+
 use Core\Http\Router;
 
 
@@ -19,6 +20,9 @@ class App
 		$router->get('users', ['UserController', 'index']);
 		$router->post('users/store', ['UserController', 'store']);
 		$router->get('login', ['HomeController', 'login'])->middleware('guest');
+		$router->post('files/upload', ['FileController', 'upload']);
+		$router->get('files/delete/{filename}', ['FileController', 'delete']);
+		$router->get('files', ['FileController', 'listFiles']);
 		
 		$router->dispatch();
 	}
