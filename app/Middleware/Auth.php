@@ -3,21 +3,18 @@
 namespace App\Middleware;
 
 
-use Core\Session;
+use Core\Logger;
 
 
 class Auth
 {
-	public function handle(): bool
+	public function handle(): void
 	{
-		// Kiểm tra người dùng đã đăng nhập chưa
-		if (!Session::has('user')) {
-			http_response_code(403);
-			echo "403 - Unauthorized Access.";
-			
-			return false;
+		if (!isset($_SESSION['user'])) {
+			Logger::warning('Unauthorized access attempt detected.',
+					['ip' => $_SERVER['REMOTE_ADDR']]);
+			header('Location: /login');
+			exit;
 		}
-		
-		return true;
 	}
 }
