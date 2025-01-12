@@ -1,7 +1,7 @@
 <?php
 
-use App\Listeners\SendWelcomeEmail;
 use Core\Event;
+use App\Listeners\SendWelcomeEmail;
 
 
 // Đăng ký listener cho sự kiện "user.registered"
