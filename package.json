@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "alpinejs": "^3.14.8",
+    "notyf": "^3.10.0",
     "postcss-loader": "^8.1.1"
   }
 }
