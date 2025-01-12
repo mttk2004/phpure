@@ -4,7 +4,9 @@
   "description": "phpure là một framework MVC đơn giản được viết bằng PHP để giúp người mới học và khám phá cách hoạt động bên trong của một ứng dụng web theo mô hình MVC.",
   "main": "index.js",
   "scripts": {
-    "build": "npx tailwindcss -i ./resources/css/input.css -o ./public/css/style.css --watch"
+    "build:css": "npx tailwindcss -i ./resources/css/input.css -o ./public/css/style.css --watch",
+    "build:js": "webpack --watch",
+    "build": "npm run build:css && npm run build:js"
   },
   "repository": {
     "type": "git",
