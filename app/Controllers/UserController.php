@@ -3,18 +3,23 @@
 namespace App\Controllers;
 
 
-use App\Models\UserModel;
 use Core\Controller;
+use Core\Event;
 
 
 class UserController extends Controller
 {
-	public function index()
+	public function register()
 	{
-		$user = UserModel::find(1);
-				dd(UserModel::all());
-		$profile = $user->profile();
+		// Giả lập đăng ký người dùng
+		$user = [
+				'name' => 'John Doe',
+				'email' => 'john@example.com',
+		];
 		
-		dd($profile);
+		echo "User {$user['name']} registered successfully.\n";
+		
+		// Kích hoạt sự kiện "user.registered"
+		Event::dispatch('user.registered', $user);
 	}
 }
