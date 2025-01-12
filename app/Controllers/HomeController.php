@@ -11,8 +11,6 @@ class HomeController extends Controller
 {
 	public function index()
 	{
-		Logger::info('HomeController index method called', ['user' => 'Guest']);
-		
-		echo "Welcome to the home page!";
+		$this->render('home');
 	}
 }

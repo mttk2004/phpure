@@ -1,6 +1,6 @@
 {
     "name": "kiet/phpure",
-    "description": "A simple MVC framework.",
+    "description": "phpure là một framework MVC đơn giản được viết bằng PHP để giúp người mới học và khám phá cách hoạt động bên trong của một ứng dụng web theo mô hình MVC.",
     "authors": [
         {
             "name": "Mai Tran Tuan Kiet",

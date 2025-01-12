@@ -1,0 +1,24 @@
+{
+  "name": "phpure",
+  "version": "1.0.0",
+  "description": "phpure là một framework MVC đơn giản được viết bằng PHP để giúp người mới học và khám phá cách hoạt động bên trong của một ứng dụng web theo mô hình MVC.",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tailwindcss -i ./resources/css/input.css -o ./public/css/style.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mttk2004/phpure.git"
+  },
+  "author": "Mai",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mttk2004/phpure/issues"
+  },
+  "homepage": "https://github.com/mttk2004/phpure#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17"
+  }
+}
