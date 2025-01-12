@@ -21,6 +21,7 @@
         "fakerphp/faker": "^1.24",
         "nesbot/carbon": "^3.8",
         "twig/twig": "^3.18",
-        "monolog/monolog": "^3.8"
+        "monolog/monolog": "^3.8",
+        "filp/whoops": "^2.16"
     }
 }
