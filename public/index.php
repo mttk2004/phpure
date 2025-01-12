@@ -15,4 +15,4 @@ ini_set('display_errors', 1);
 loadEnv();
 
 // Khởi chạy ứng dụng
-App::run();
+App::bootstrap();

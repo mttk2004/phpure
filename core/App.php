@@ -8,7 +8,7 @@ use Core\Http\Router;
 
 class App
 {
-	public static function run()
+	public static function bootstrap()
 	{
 		Session::start();
 		
