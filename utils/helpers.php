@@ -3,12 +3,12 @@
 use JetBrains\PhpStorm\NoReturn;
 
 
-// Hàm require file với đường dẫn tương đối
-function baseRequire($path): void
+// Đường dẫn gốc của ứng dụng
+function requireRoot($path): void
 {
-	var_dump($path);
-	require_once __DIR__ . '/../' . $path;
+	require_once BASE_PATH . '/' . $path;
 }
+
 
 // Hàm chuyển hướng URL
 #[NoReturn] function redirect($url): void
