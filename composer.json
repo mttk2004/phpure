@@ -23,5 +23,8 @@
         "twig/twig": "^3.18",
         "monolog/monolog": "^3.8",
         "filp/whoops": "^2.16"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.11"
     }
 }
