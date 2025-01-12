@@ -8,15 +8,19 @@ class Event
 	private static array $listeners = [];
 	
 	/**
-	 * Đăng ký một listener cho sự kiện
+	 * Đăng ký một listener cho sự kiện.
 	 */
-	public static function listen(string $event, callable|array $listener): void
+	public static function listen(string $event, string $listenerClass): void
 	{
-		self::$listeners[$event][] = $listener;
+		if (!class_exists($listenerClass)) {
+			throw new \Exception("Listener class '$listenerClass' not found.");
+		}
+		
+		self::$listeners[$event][] = $listenerClass;
 	}
 	
 	/**
-	 * Kích hoạt sự kiện
+	 * Kích hoạt sự kiện.
 	 */
 	public static function dispatch(string $event, ...$payload): void
 	{
@@ -24,13 +28,22 @@ class Event
 			return; // Không có listener nào cho sự kiện
 		}
 		
-		foreach (self::$listeners[$event] as $listener) {
-			if (is_callable($listener)) {
-				call_user_func($listener, ...$payload);
-			} else if (is_array($listener) && count($listener) === 2) {
-				[$class, $method] = $listener;
-				(new $class())->$method(...$payload);
+		foreach (self::$listeners[$event] as $listenerClass) {
+			$listener = new $listenerClass();
+			
+			if (!method_exists($listener, 'handle')) {
+				throw new \Exception("Listener class '$listenerClass' must have a handle() method.");
 			}
+			
+			$listener->handle(...$payload);
 		}
+	}
+	
+	/**
+	 * Liệt kê tất cả các sự kiện và listener đã đăng ký (debugging).
+	 */
+	public static function list(): array
+	{
+		return self::$listeners;
 	}
 }
