@@ -4,4 +4,30 @@
   <h2 class="text-red-500">Welcome to our Framework!</h2>
   <p>This is the homepage using Twig.</p>
   <p>{{ name }}</p>
+
+  <div x-data="{ open: false }">
+    <!-- Nút mở modal -->
+    <button @click="open = true" class="px-4 py-2 bg-green-500 text-white">
+      Open Modal
+    </button>
+
+    <!-- Modal -->
+    <div
+            x-show="open"
+            class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
+    >
+      <div class="bg-white p-6 rounded shadow">
+        <h2 class="text-lg font-bold">This is a Modal</h2>
+        <p class="mt-2 text-gray-600">You can add any content here.</p>
+
+        <button
+                @click="open = false"
+                class="mt-4 px-4 py-2 bg-red-500 text-white rounded"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
 {% endblock %}
