@@ -7,35 +7,17 @@ phpure là một framework MVC đơn giản được viết bằng PHP để gi�
 
 ## **Gặp Gỡ phpure** 🌟
 
-Ngoài kia có rất nhiều framework PHP mạnh mẽ như Laravel, Symfony, CodeIgniter, Zend, Yii, và
-nhiều framework khác nữa. Những công cụ này cung cấp vô số tính năng hữu ích, giúp việc phát triển
-ứng dụng web trở nên nhanh chóng và thuận tiện hơn. Tuy nhiên, đối với người mới học PHP, việc tiếp
-cận các framework lớn đôi khi có thể gây khó khăn và làm giảm hứng thú. Tôi từng rơi vào tình huống
-này khi mới làm quen với [Laravel](https://laravel.com). Với một người mới như tôi, Laravel thật
-phức tạp và đầy rẫy những "phép thuật" khó hiểu.
+Ngoài kia, có rất nhiều framework PHP mạnh mẽ như Laravel, Symfony, CodeIgniter, Zend, Yii và nhiều framework khác nữa. Những công cụ này mang đến vô vàn tính năng hữu ích, giúp việc phát triển ứng dụng web trở nên nhanh chóng và dễ dàng hơn bao giờ hết. Tuy nhiên, đối với những người mới bắt đầu học PHP, việc tiếp cận các framework lớn thường là một thử thách không nhỏ. Các khái niệm phức tạp và hệ thống tính năng đồ sộ đôi khi có thể khiến họ cảm thấy choáng ngợp, thậm chí làm giảm hứng thú học tập. Bản thân tôi cũng từng trải qua cảm giác này khi lần đầu làm quen với [Laravel](https://laravel.com). Với một người mới như tôi thời điểm đó, Laravel dường như là một thế giới đầy "phép thuật" khó hiểu và đòi hỏi nhiều nỗ lực để chinh phục.
 
-Đầu năm 2025, tôi bước vào học kỳ mới với nhiều môn học thú vị, trong đó có môn Lập trình Web và Ứng
-dụng nâng cao. Một trong những yêu cầu của môn học là xây dựng ứng dụng web PHP thuần túy (Pure PHP)
-theo mô hình MVC mà không sử dụng bất kỳ framework lớn nào như Laravel. Mục đích là để hiểu rõ cách
-các thành phần hoạt động từ gốc rễ. Nhận ra cơ hội này, tôi đã quyết định tạo ra `phpure` — một
-framework PHP đơn giản nhưng đủ mạnh mẽ để giúp những người mới bắt đầu dễ dàng nắm bắt cách xây
-dựng một ứng dụng web theo mô hình MVC. Tôi là [Mai Trần Tuấn Kiệt](https://github.com/mttk2004),
-một sinh viên IT chuyên ngành Phát triển Web và là người sáng lập `phpure`. Đây là dự án mã nguồn mở
-đầu tiên của tôi, và tôi rất vui được chia sẻ nó với bạn.
+Vào đầu năm 2025, khi bước vào học kỳ mới, tôi có cơ hội tham gia một môn học rất thú vị mang tên "Lập trình Web và Ứng dụng nâng cao". Một trong những yêu cầu quan trọng của môn học là xây dựng một ứng dụng web PHP thuần túy (Pure PHP) theo mô hình MVC mà không được sử dụng bất kỳ framework lớn nào như Laravel. Đây là một bài tập có ý nghĩa nhằm giúp chúng tôi hiểu rõ cách các thành phần của ứng dụng web hoạt động từ gốc rễ. Nhận thấy đây là cơ hội tuyệt vời để học hỏi và thử nghiệm, tôi đã quyết định bắt tay vào phát triển `phpure` — một framework PHP đơn giản, gọn nhẹ nhưng đủ mạnh mẽ để hỗ trợ người mới bắt đầu dễ dàng nắm bắt cách xây dựng ứng dụng web theo mô hình MVC.
 
-Tôi muốn gọi `phpure` là "framework dành cho người mới bắt đầu" vì nó được thiết kế đơn giản,
-gọn nhẹ, dễ hiểu và dễ sử dụng. Nếu bạn đang tìm hiểu PHP hoặc muốn hiểu rõ cách hoạt động của một
-ứng dụng web theo mô hình MVC, hãy thử trải nghiệm `phpure` để cảm nhận sự khác biệt. Điều thú vị
-là, nếu bạn có ý định học Laravel sau này, việc nắm vững cách vận hành của `phpure` sẽ giúp bạn rất
-nhiều, `phpure` được xây dựng với cấu trúc tương tự Laravel nhưng đơn giản và tinh gọn hơn. Là một
-fan cuồng nhiệt của Laravel, tôi đã cố gắng mang những yếu tố "tinh tế" của framework này
-vào `phpure`.
+Tôi là [Mai Trần Tuấn Kiệt](https://github.com/mttk2004), một sinh viên chuyên ngành Phát triển Web, và `phpure` chính là dự án mã nguồn mở đầu tay của tôi. Tôi rất vui mừng được chia sẻ dự án này với cộng đồng.
 
-`phpure` không chỉ phù hợp để xây dựng các ứng dụng web đơn giản mà còn có thể mở rộng và tùy chỉnh
-theo ý muốn bằng cách thêm các tính năng mới. Tôi tin rằng, nếu bạn đang chuẩn bị bắt đầu học mô
-hình MVC với PHP, `phpure` sẽ là người bạn đồng hành đáng tin cậy.
+Điều đặc biệt ở `phpure` là nó được thiết kế hướng đến đối tượng người mới học. Framework này mang tính đơn giản, trực quan, dễ hiểu và dễ sử dụng. Nếu bạn đang tìm hiểu về PHP hoặc muốn hiểu cách hoạt động của một ứng dụng web theo mô hình MVC, `phpure` chắc chắn sẽ là một công cụ hữu ích. Hơn nữa, nếu sau này bạn có ý định học các framework lớn như Laravel, việc hiểu rõ cách vận hành của `phpure` sẽ giúp bạn có nền tảng vững chắc để tiếp cận những khái niệm nâng cao hơn. Thật vậy, `phpure` được lấy cảm hứng từ cấu trúc của Laravel nhưng được tối giản hóa để phù hợp hơn với những người mới bắt đầu. Là một người yêu thích Laravel, tôi đã cố gắng mang những yếu tố tinh tế nhất của framework này vào `phpure` để mang đến trải nghiệm học tập và lập trình tốt nhất.
 
-Hãy cùng khám phá `phpure` và tạo ra những ứng dụng web tuyệt vời!
+Không chỉ giới hạn ở các ứng dụng web đơn giản, `phpure` còn có khả năng mở rộng và tùy chỉnh linh hoạt để phù hợp với nhu cầu phát triển của bạn. Tôi tin rằng, với một công cụ như `phpure`, hành trình học hỏi và xây dựng ứng dụng web của bạn sẽ trở nên dễ dàng và thú vị hơn rất nhiều.
+
+Hãy thử khám phá `phpure` ngay hôm nay và cùng nhau tạo nên những ứng dụng web tuyệt vời! 🌟
 
 ---
 
