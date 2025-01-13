@@ -43,7 +43,7 @@ Hãy cùng khám phá `phpure` và tạo ra những ứng dụng web tuyệt v�
 
 ### **1. Cài Đặt** 📥
 
-#### **Yêu Cầu Hệ Thống**
+#### **Yêu cầu hệ thống**
 
 Để cài đặt và sử dụng `phpure`, bạn cần đảm bảo môi trường của mình đáp ứng các yêu cầu sau:
 
@@ -51,7 +51,7 @@ Hãy cùng khám phá `phpure` và tạo ra những ứng dụng web tuyệt v�
 - **Composer**: Phiên bản từ 2.8.4 trở lên.
 - **npm**: Phiên bản từ 11.0.0 trở lên.
 
-#### **Các Bước Cài Đặt**
+#### **Các bước cài đặt**
 
 Đầu tiên, mở terminal hoặc command prompt, sau đó chạy các lệnh dưới đây:
 
@@ -64,9 +64,9 @@ Hãy cùng khám phá `phpure` và tạo ra những ứng dụng web tuyệt v�
 - **`cd phpure`**: Di chuyển vào thư mục vừa tải về.
 
 Giờ đây, bạn đã sẵn sàng để thực hiện các bước tiếp theo như cài đặt các phụ thuộc và thiết lập dự
-án. 🚀
+án.
 
-### **2. Cấu Hình** ⚙️
+### **2. Cấu hình** ⚙️
 
 Để bắt đầu sử dụng `phpure`, bạn cần thực hiện một số bước thiết đặt cơ bản sau khi tải mã nguồn về.
 
@@ -134,9 +134,71 @@ thực hiện thủ công. Chúng ta sẽ tìm hiểu thêm về Phinx trong ph�
 
 ### **3. Cấu Trúc Thư Mục** 📂
 
-`phpure` được thiết kế với một cấu trúc thư mục rõ ràng và dễ hiểu, giúp bạn dễ dàng quản lý và mở rộng ứng dụng. Các thư mục và file được tổ chức theo từng chức năng cụ thể, từ việc xử lý logic, quản lý cơ sở dữ liệu, định tuyến đến quản lý tài nguyên và phiên. Nhờ cách tổ chức này, người dùng có thể tập trung vào các nhiệm vụ cụ thể mà không bị phân tán bởi những phần không liên quan.
+Tiếp theo, hãy tìm hiểu cấu trúc thư mục của `phpure` để hiểu rõ hơn về cách tổ chức và quản lý dự án.
 
-Cấu trúc được xây dựng dựa trên mô hình MVC (Model-View-Controller), đảm bảo sự tách biệt giữa các thành phần logic, giao diện và dữ liệu. Các thư mục như `app/` chứa phần lớn các tệp liên quan đến logic ứng dụng, trong khi `core/` cung cấp các thành phần cốt lõi của framework. Tất cả tài nguyên tĩnh như CSS, JS và ảnh đều được đặt trong thư mục `public/` để dễ dàng quản lý và triển khai. Bên cạnh đó, các tệp cấu hình, file tiện ích và thư viện bên thứ ba cũng được phân chia hợp lý, giúp việc duy trì và nâng cấp dự án trở nên đơn giản hơn.
+Cấu trúc thư mục của **phpure** được thiết kế nhằm đảm bảo tính nhất quán, dễ hiểu, và khả năng mở rộng tối ưu. Mô hình MVC (Model-View-Controller) được áp dụng làm nền tảng, giúp tách biệt các thành phần xử lý logic, giao diện, và dữ liệu một cách rõ ràng. Điều này không chỉ giúp quản lý dự án hiệu quả mà còn tạo tiền đề để mở rộng khi ứng dụng phát triển.
+
+#### **Thư mục `app/`**
+Thư mục này chứa phần lớn logic ứng dụng. Các thành phần trong thư mục này bao gồm:
+- `Controllers/`: Chứa các lớp controller xử lý logic của ứng dụng, nhận yêu cầu từ người dùng, thực thi logic và trả về phản hồi.
+- `Listeners/`: Tập hợp các lớp lắng nghe và xử lý sự kiện do ứng dụng hoặc hệ thống kích hoạt.
+- `Middlewares/`: Chứa các lớp middleware để xử lý yêu cầu HTTP trước hoặc sau khi đến controller (như xác thực, kiểm tra quyền truy cập).
+- `Models/`: Chứa các lớp model chịu trách nhiệm tương tác với cơ sở dữ liệu, quản lý dữ liệu ứng dụng.
+- `events.php`: File đăng ký và quản lý các sự kiện của ứng dụng, giúp bạn dễ dàng kết nối sự kiện với các listener tương ứng.
+- `routes.php`: File định nghĩa tất cả các tuyến đường (routes) của ứng dụng, ánh xạ URL tới controller và phương thức tương ứng.
+
+#### **Thư mục `core/`**
+Đây là phần "xương sống" của framework, chứa các lớp cốt lõi:
+- `Http/`:
+    - `Middleware.php`: Quản lý và đăng ký các middleware.
+    - `Request.php`: Xử lý thông tin từ yêu cầu HTTP, bao gồm dữ liệu GET, POST và thông tin tiêu đề (headers).
+    - `Response.php`: Tạo phản hồi HTTP và gửi chúng đến trình duyệt người dùng.
+    - `ResponseCode.php`: Định nghĩa các mã trạng thái HTTP phổ biến như 200, 404, 500.
+    - `Router.php`: Hệ thống định tuyến, ánh xạ các yêu cầu URL đến controller và phương thức tương ứng.
+- `App.php`: Lớp cốt lõi khởi động và quản lý toàn bộ ứng dụng, kết nối các thành phần với nhau.
+- `Controller.php`: Lớp cơ sở cho tất cả các controller, cung cấp các chức năng cơ bản như render view.
+- `Database.php`: Quản lý kết nối cơ sở dữ liệu, thực hiện các truy vấn SQL và xử lý dữ liệu.
+- `Event.php`: Hỗ trợ hệ thống sự kiện, cho phép kích hoạt và lắng nghe các sự kiện.
+- `ExceptionHandler.php`: Quản lý và xử lý các lỗi (exception) xảy ra trong ứng dụng.
+- `Logger.php`: Ghi log thông tin, lỗi, và sự kiện quan trọng để theo dõi hoạt động của ứng dụng.
+- `Model.php`: Lớp cơ sở cho các model, hỗ trợ tương tác cơ sở dữ liệu thông qua ORM hoặc truy vấn SQL.
+- `Session.php`: Quản lý phiên làm việc (session), lưu trữ thông tin tạm thời giữa các yêu cầu của người dùng.
+- `Storage.php`: Quản lý lưu trữ file như tải lên, cache hoặc lưu trữ tạm thời.
+- `Twig.php`: Tích hợp và quản lý template engine Twig, giúp tạo giao diện linh hoạt hơn.
+- `Validation.php`: Quản lý và thực thi kiểm tra dữ liệu đầu vào (validation).
+
+#### **Thư mục `database/`**
+- `migrations/`: Chứa các file quản lý thay đổi cấu trúc cơ sở dữ liệu (migration), cho phép áp dụng hoặc hoàn tác các thay đổi.
+- `seeds/`: Chứa các file seeding, dùng để tạo dữ liệu mẫu hoặc dữ liệu mặc định cho ứng dụng.
+
+#### **Thư mục `public/`**
+Thư mục này chứa các tệp công khai có thể truy cập từ trình duyệt:
+- `assets/`: Chứa tài nguyên tĩnh như CSS, JS, và hình ảnh.
+- `index.php`: Điểm vào chính của ứng dụng, nhận và chuyển hướng tất cả các yêu cầu tới hệ thống định tuyến.
+
+#### **Thư mục `resources/`**
+Tập trung vào giao diện và tài nguyên giao diện của ứng dụng:
+- `css/input.css`: Tệp CSS tùy chỉnh, dùng để định nghĩa giao diện.
+- `js/app.js`: Tệp JavaScript tùy chỉnh, quản lý logic giao diện động.
+- `views/`: Chứa các file giao diện (template/view), giúp tách biệt hoàn toàn logic và giao diện.
+
+#### **Thư mục `storage/`**
+- `cache/`: Chứa dữ liệu tạm thời hoặc cache được tạo bởi ứng dụng.
+- `logs/app.log`: Ghi log hoạt động của ứng dụng.
+- `uploads/`: Chứa các file người dùng tải lên.
+
+#### **Thư mục `utils/`**
+- `helpers.php`: Chứa các hàm tiện ích có thể tái sử dụng trên toàn bộ ứng dụng.
+
+#### **Các tệp cấu hình quan trọng**
+- `.env.example`: File mẫu chứa các cấu hình môi trường như thông tin cơ sở dữ liệu hoặc key bảo mật.
+- `.gitignore`: Quy định các file và thư mục không được theo dõi bởi Git.
+- `.htaccess`: File cấu hình Apache, chuyển hướng mọi yêu cầu đến `index.php`.
+- `composer.json`: Danh sách các thư viện PHP phụ thuộc, được quản lý bằng Composer.
+- `tailwind.config.js`: File cấu hình Tailwind CSS, định nghĩa các tuỳ chỉnh về giao diện.
+- `webpack.config.js`: Cấu hình Webpack để quản lý và đóng gói các tài nguyên như CSS, JS.
+
+Với cấu trúc này, phpure không chỉ dễ sử dụng mà còn dễ mở rộng và bảo trì. Mọi thành phần được tổ chức chặt chẽ và rõ ràng, tạo điều kiện cho các lập trình viên tập trung vào phát triển mà không bị phân tán.
 
 Dưới đây là mô tả chi tiết về từng thư mục và file:
 
