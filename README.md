@@ -1,33 +1,47 @@
 # phpure 🚀
 
-Một framework MVC đơn giản được viết bằng PHP để giúp người mới học và khám phá cách hoạt động bên trong của một ứng dụng web theo mô hình MVC. Framework này được xây dựng từng bước để dễ dàng mở rộng và bảo trì.  
+phpure là một framework MVC đơn giản được viết bằng PHP để giúp người mới học và khám phá cách hoạt 
+động bên trong của một ứng dụng web theo mô hình MVC.
 
 ---
 
-## **1. Cài đặt** 📥  
+## **Gặp Gỡ phpure** 🌟
 
-### **Yêu cầu hệ thống:**
-- **PHP >= 7.4**  
-- **Composer** (nếu thêm thư viện sau này).  
+Ngoài kia có rất nhiều framework PHP mạnh mẽ như Laravel, Symfony, CodeIgniter, Zend, Yii, và 
+nhiều framework khác nữa. Những công cụ này cung cấp vô số tính năng hữu ích, giúp việc phát triển ứng dụng web trở nên nhanh chóng và thuận tiện hơn. Tuy nhiên, đối với người mới học PHP, việc tiếp cận các framework lớn đôi khi có thể gây khó khăn và làm giảm hứng thú. Tôi từng rơi vào tình huống này khi mới làm quen với [Laravel](https://laravel.com). Với một người mới như tôi, Laravel thật phức tạp và đầy rẫy những "phép thuật" khó hiểu.
 
-### **Hướng dẫn cài đặt:**
-1. **Clone repository**:
+Đầu năm 2025, tôi bước vào học kỳ mới với nhiều môn học thú vị, trong đó có môn Lập trình Web và Ứng dụng nâng cao. Một trong những yêu cầu của môn học là xây dựng ứng dụng web PHP thuần túy (Pure PHP) theo mô hình MVC mà không sử dụng bất kỳ framework lớn nào như Laravel. Mục đích là để hiểu rõ cách các thành phần hoạt động từ gốc rễ. Nhận ra cơ hội này, tôi đã quyết định tạo ra `phpure` — một framework PHP đơn giản nhưng đủ mạnh mẽ để giúp những người mới bắt đầu dễ dàng nắm bắt cách xây dựng một ứng dụng web theo mô hình MVC. Tôi là [Mai Trần Tuấn Kiệt](https://github.com/mttk2004), một sinh viên IT chuyên ngành Phát triển Web và là người sáng lập `phpure`. Đây là dự án mã nguồn mở đầu tiên của tôi, và tôi rất vui được chia sẻ nó với bạn.
+
+Tôi muốn gọi `phpure` là "framework dành cho người mới bắt đầu" vì nó được thiết kế đơn giản, 
+gọn nhẹ, dễ hiểu và dễ sử dụng. Nếu bạn đang tìm hiểu PHP hoặc muốn hiểu rõ cách hoạt động của một ứng dụng web theo mô hình MVC, hãy thử trải nghiệm `phpure` để cảm nhận sự khác biệt. Điều thú vị là, nếu bạn có ý định học Laravel sau này, việc nắm vững cách vận hành của `phpure` sẽ giúp bạn rất nhiều, `phpure` được xây dựng với cấu trúc tương tự Laravel nhưng đơn giản và tinh gọn hơn. Là một fan cuồng nhiệt của Laravel, tôi đã cố gắng mang những yếu tố "tinh tế" của framework này vào `phpure`.
+
+`phpure` không chỉ phù hợp để xây dựng các ứng dụng web đơn giản mà còn có thể mở rộng và tùy chỉnh theo ý muốn bằng cách thêm các tính năng mới. Tôi tin rằng, nếu bạn đang chuẩn bị bắt đầu học mô hình MVC với PHP, `phpure` sẽ là người bạn đồng hành đáng tin cậy.
+
+Hãy cùng khám phá `phpure` và tạo ra những ứng dụng web tuyệt vời!
+
+---
+
+## **Bắt Đầu** 🚀
+
+### **1. Hướng Dẫn Cài Đặt `phpure`** 📥
+
+#### **Yêu Cầu Hệ Thống**
+Để cài đặt và sử dụng `phpure`, bạn cần đảm bảo môi trường của mình đáp ứng các yêu cầu sau:
+- **PHP**: Phiên bản từ 8.0 trở lên.
+- **Composer**: Phiên bản từ 2.8.4 trở lên.
+- **npm**: Phiên bản từ 11.0.0 trở lên.
+
+#### **Các Bước Cài Đặt**
+
+   Đầu tiên, mở terminal hoặc command prompt, sau đó chạy các lệnh dưới đây:
    ```bash
    git clone https://github.com/mttk2004/phpure.git
    cd my-php-mvc-framework
-   ```
+   ```  
+   - **`git clone`**: Tải mã nguồn `phpure` từ GitHub về máy của bạn.
+   - **`cd my-php-mvc-framework`**: Di chuyển vào thư mục vừa tải về.
 
-2. **Chạy server PHP tích hợp:**
-   ```bash
-   php -S localhost:8000 -t public/
-   ```
-
-3. **Truy cập trình duyệt:**
-   ```
-   http://localhost:8000/
-   ```
-
----
+Giờ đây, bạn đã sẵn sàng để thực hiện các bước tiếp theo như cài đặt các phụ thuộc và thiết lập dự án. 🚀
 
 ## **2. Cấu trúc thư mục** 📂
 
@@ -56,149 +70,51 @@ my-framework/
 ├── README.md             # Hướng dẫn sử dụng framework
 ```
 
----
 
-## **3. Cách sử dụng** 🛠️
+### Hướng dẫn đóng góp cho `phpure`
 
-### **Thêm Route mới**
-- Mở file **`core/App.php`**.
-- Thêm route mới sử dụng Router:
+Nếu bạn muốn đóng góp cho dự án `phpure`, bạn có thể làm theo các bước sau:
 
-```php
-use Core\Router;
-
-$router->get('about', ['HomeController', 'about']);
-$router->post('users/store', ['UserController', 'store'])->middleware('auth');
+#### 1. Fork và Clone Repository
+Đầu tiên, bạn cần fork repository này và clone nó về máy tính của mình:
+```sh
+git clone https://github.com/mttk2004/phpure.git
 ```
 
-### **Tạo Controller mới**
-1. Tạo file mới trong thư mục **app/Controllers/**.
-2. Ví dụ: **`UserController.php`**
-
-```php
-<?php
-
-namespace App\Controllers;
-
-use Core\Controller;
-
-class UserController extends Controller
-{
-    public function index()
-    {
-        $this->render('user/index', ['message' => 'Hello World!']);
-    }
-}
+#### 2. Tạo Branch Mới
+Trước khi bắt đầu làm việc, hãy tạo một branch mới từ branch `main` hoặc `develop`:
+```sh
+git checkout -b ten-branch-cua-ban
 ```
 
-3. Tạo View trong **app/Views/user/index.php**:
+#### 3. Thực hiện Thay Đổi
+Thực hiện các thay đổi cần thiết trên branch mới của bạn. Đảm bảo rằng bạn tuân thủ các nguyên tắc coding và phong cách của dự án.
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>User Page</title>
-</head>
-<body>
-    <h1><?= $message ?></h1>
-</body>
-</html>
+#### 4. Kiểm tra Thay Đổi
+Chạy các bài kiểm tra để đảm bảo rằng những thay đổi của bạn không phá vỡ bất kỳ tính năng nào hiện có:
+```sh
+phpunit
 ```
+
+#### 5. Commit và Push Thay Đổi
+Khi bạn đã sẵn sàng, hãy commit và push thay đổi của bạn lên repository fork của bạn:
+```sh
+git add .
+git commit -m "Mô tả ngắn gọn về thay đổi"
+git push origin ten-branch-cua-ban
+```
+
+#### 6. Tạo Pull Request
+Cuối cùng, tạo một pull request từ repository của bạn về repository gốc. Hãy mô tả chi tiết những thay đổi bạn đã thực hiện và lý do tại sao.
+
+#### 7. Liên hệ và Thảo Luận
+Nếu bạn cần bất kỳ sự giúp đỡ nào, bạn có thể liên hệ với maintainer chính của dự án qua GitHub Issues hoặc Discussions.
+
+#### Liên hệ Maintainer:
+- **GitHub:** [mttk2004](https://github.com/mttk2004)
+
+Chúng tôi rất mong nhận được sự đóng góp của bạn! Cảm ơn bạn đã giúp `phpure` trở nên tốt hơn.
 
 ---
 
-## **4. Luồng hoạt động** 🔄
-
-1. Người dùng truy cập vào URL, ví dụ:
-   ```
-   http://localhost:8000/users/store
-   ```
-2. **Router** sẽ khớp URL với một **Controller** và **Action** đã định nghĩa.
-3. **Middleware** sẽ kiểm tra quyền truy cập (nếu có).
-4. Nếu pass middleware, Controller được gọi để xử lý dữ liệu và render view.
-
----
-
-## **5. Gợi ý mở rộng** 🌟
-
-- **Thêm Middleware mới:**
-    - Tạo class trong `app/Middleware/`.
-    - Đăng ký middleware trong `core/Middleware.php`.
-
-- **Thêm Model mới:**
-    - Tạo class trong `app/Models/` để tương tác với cơ sở dữ liệu.
-
-- **Validation dữ liệu đầu vào:**
-    - Tạo Helper hoặc Middleware để kiểm tra dữ liệu người dùng gửi lên.
-
-- **Bảo vệ CSRF:**
-    - Sử dụng Session để lưu token và kiểm tra trước khi xử lý form.
-
----
-
-## **6. Đóng góp** 🤝
-
-Nếu bạn muốn đóng góp hoặc cải thiện framework này, hãy tạo một pull request hoặc mở issue trên GitHub.
-
----
-
-## **7. Giấy phép** 📜
-
-Framework này được phát hành dưới giấy phép **MIT**. Bạn có thể tự do sử dụng, chỉnh sửa và phân phối.
-
----
-
-## **8. Kết nối Database** 💾
-
-### **Cấu hình Database:**
-1. Tạo file `.env` trong thư mục gốc:
-```
-DB_HOST=localhost
-DB_NAME=my_database
-DB_USER=root
-DB_PASS=password
-```
-
-2. Tạo bảng ví dụ trong MySQL:
-```sql
-CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL
-);
-```
-
-### **Sử dụng Database trong Controller:**
-- Lấy tất cả dữ liệu:
-```php
-$users = Database::fetchAll("SELECT * FROM users");
-```
-
-- Thêm dữ liệu:
-```php
-Database::insert('users', [
-    'name' => 'John Doe',
-    'email' => 'john@example.com'
-]);
-```
-
-- Cập nhật dữ liệu:
-```php
-Database::update('users', ['name' => 'Jane'], 'id = ?', [1]);
-```
-
-- Xóa dữ liệu:
-```php
-Database::delete('users', 'id = ?', [1]);
-```
-
----
-
-## **9. Tác giả** 🧑‍💻
-
-[Mai Trần Tuấn Kiệt](https://github.com/mttk2004)
-
----
-
-_Last updated: January 8, 2025_
+_Last updated: January 12, 2025_
