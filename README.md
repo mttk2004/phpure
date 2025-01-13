@@ -5,7 +5,7 @@ phpure là một framework MVC đơn giản được viết bằng PHP để gi�
 
 ---
 
-## **Gặp Gỡ phpure** 🌟
+## **Gặp Gỡ phpure** ✌️
 
 Ngoài kia, có rất nhiều framework PHP mạnh mẽ như Laravel, Symfony, CodeIgniter, Zend, Yii và nhiều framework khác nữa. Những công cụ này mang đến vô vàn tính năng hữu ích, giúp việc phát triển ứng dụng web trở nên nhanh chóng và dễ dàng hơn bao giờ hết. Tuy nhiên, đối với những người mới bắt đầu học PHP, việc tiếp cận các framework lớn thường là một thử thách không nhỏ. Các khái niệm phức tạp và hệ thống tính năng đồ sộ đôi khi có thể khiến họ cảm thấy choáng ngợp, thậm chí làm giảm hứng thú học tập. Bản thân tôi cũng từng trải qua cảm giác này khi lần đầu làm quen với [Laravel](https://laravel.com). Với một người mới như tôi thời điểm đó, Laravel dường như là một thế giới đầy "phép thuật" khó hiểu và đòi hỏi nhiều nỗ lực để chinh phục.
 
@@ -21,7 +21,7 @@ Hãy thử khám phá `phpure` ngay hôm nay và cùng nhau tạo nên những �
 
 ---
 
-## **Bắt Đầu** 🚀
+## **Bắt Đầu** ⛹️
 
 ### **1. Hướng Dẫn Cài Đặt** 📥
 
@@ -124,6 +124,7 @@ Tiếp theo, hãy tìm hiểu cấu trúc thư mục của `phpure` để hiểu
 Cấu trúc thư mục của **phpure** được thiết kế nhằm đảm bảo tính nhất quán, dễ hiểu, và khả năng mở rộng tối ưu. Mô hình MVC (Model-View-Controller) được áp dụng làm nền tảng, giúp tách biệt các thành phần xử lý logic, giao diện, và dữ liệu một cách rõ ràng. Điều này không chỉ giúp quản lý dự án hiệu quả mà còn tạo tiền đề để mở rộng khi ứng dụng phát triển.
 
 #### **Thư mục `app/`**
+
 Thư mục này chứa phần lớn logic ứng dụng. Các thành phần trong thư mục này bao gồm:
 - `Controllers/`: Chứa các lớp controller xử lý logic của ứng dụng, nhận yêu cầu từ người dùng, thực thi logic và trả về phản hồi.
 - `Listeners/`: Tập hợp các lớp lắng nghe và xử lý sự kiện do ứng dụng hoặc hệ thống kích hoạt.
@@ -133,12 +134,13 @@ Thư mục này chứa phần lớn logic ứng dụng. Các thành phần trong
 - `routes.php`: File định nghĩa tất cả các tuyến đường (routes) của ứng dụng, ánh xạ URL tới controller và phương thức tương ứng.
 
 #### **Thư mục `core/`**
+
 Đây là phần "xương sống" của framework, chứa các lớp cốt lõi:
 - `Http/`:
     - `Middleware.php`: Quản lý và đăng ký các middleware.
     - `Request.php`: Xử lý thông tin từ yêu cầu HTTP, bao gồm dữ liệu GET, POST và thông tin tiêu đề (headers).
     - `Response.php`: Tạo phản hồi HTTP và gửi chúng đến trình duyệt người dùng.
-    - `ResponseCode.php`: Định nghĩa các mã trạng thái HTTP phổ biến như 200, 404, 500.
+    - `ResponseCode.php`: Định nghĩa các mã trạng thái HTTP phổ biến như 200, 404, 500, ...
     - `Router.php`: Hệ thống định tuyến, ánh xạ các yêu cầu URL đến controller và phương thức tương ứng.
 - `App.php`: Lớp cốt lõi khởi động và quản lý toàn bộ ứng dụng, kết nối các thành phần với nhau.
 - `Controller.php`: Lớp cơ sở cho tất cả các controller, cung cấp các chức năng cơ bản như render view.
@@ -246,7 +248,7 @@ phpure/
 
 ---
 
-## **Tăng Tốc** 🚀
+## **Tăng Tốc** 🤾
 
 Để thực sự hiểu rõ và tận dụng tối đa `phpure`, bạn cần hiểu rõ một số khái niệm cơ bản và cách 
 hoạt động của framework. Đầu tiên là **vòng đời của request**.
@@ -260,22 +262,33 @@ hoạt động của framework. Đầu tiên là **vòng đời của request**.
 
 
 #### **Tiếp nhận request:**  
+
    Mọi request từ trình duyệt được gửi đến file `index.php` trong thư mục `public`. Đây là điểm 
    vào chính của ứng dụng. Tại đây, framework được khởi chạy thông qua phương thức 
    `App::bootstrap()`, nơi các thành phần quan trọng như router, middleware, và session, ... được 
    cấu hình.
+
 #### **Router phân tích request:**  
+
    Sau khi khởi động, router chịu trách nhiệm ánh xạ URL từ request đến các route được định nghĩa trước trong file `routes.php`. Router kiểm tra xem URL yêu cầu có khớp với bất kỳ route nào đã đăng ký không. Nếu không tìm thấy, nó sẽ trả về lỗi 404.
+
 #### **Xử lý middleware:**  
+
    Trước khi router gọi controller, middleware được kích hoạt nếu như route có gắn middlware. 
    Middleware là các lớp xử lý trung gian, dùng để kiểm tra hoặc thay đổi request trước khi chuyển tiếp. Ví dụ, middleware có thể kiểm tra xem người dùng đã đăng nhập chưa (auth) hoặc đảm bảo rằng chỉ khách chưa đăng nhập mới có thể truy cập một số trang nhất định (guest). Nếu middleware phát hiện lỗi, request sẽ bị dừng lại và trả về phản hồi ngay tại đó.
+
 #### **Gọi controller:**  
+
    Sau khi vượt qua middleware, router gọi controller được chỉ định cùng với action (phương thức cụ thể). Controller nhận các thông tin từ request, xử lý logic nghiệp vụ, và chuẩn bị dữ liệu để truyền cho View. Ví dụ, một controller có thể lấy dữ liệu người dùng từ cơ sở dữ liệu hoặc kiểm tra điều kiện nghiệp vụ trước khi tiếp tục.
+
 #### **Kết nối với View thông qua Twig:**  
+
    Sau khi xử lý, controller thường kết thúc bằng việc gọi một template để hiển thị giao diện. 
    `phpure` sử dụng Twig, một công cụ template mạnh mẽ, để kết hợp dữ liệu từ controller và các 
    template HTML đã định nghĩa. Twig cung cấp nhiều tính năng hữu ích như vòng lặp, kiểm tra điều kiện, và kế thừa layout, giúp việc xây dựng giao diện dễ dàng và linh hoạt.
+
 #### **Trả về response:**  
+
    Sau khi Twig tạo ra giao diện hoàn chỉnh (HTML), framework gửi nội dung đó trở lại trình duyệt dưới dạng response. Người dùng sẽ thấy trang web được hiển thị, hoàn chỉnh với dữ liệu đã được xử lý từ controller.
 
 #### **Tóm lại**
