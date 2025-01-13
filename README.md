@@ -23,63 +23,67 @@ Hãy thử khám phá `phpure` ngay hôm nay và cùng nhau tạo nên những �
 
 ## **Bắt Đầu** 🚀
 
-### **1. Cài Đặt** 📥
+### **1. Hướng Dẫn Cài Đặt** 📥
 
-#### **Yêu cầu hệ thống**
+#### **Yêu Cầu Hệ Thống**
 
-Để cài đặt và sử dụng `phpure`, bạn cần đảm bảo môi trường của mình đáp ứng các yêu cầu sau:
+Trước khi bắt đầu cài đặt và sử dụng `phpure`, hãy đảm bảo rằng môi trường làm việc của bạn đáp ứng các yêu cầu sau:
 
-- **PHP**: Phiên bản từ 8.0 trở lên.
-- **Composer**: Phiên bản từ 2.8.4 trở lên.
-- **npm**: Phiên bản từ 11.0.0 trở lên.
+- **PHP**: Tối thiểu phiên bản 8.0.
+- **Composer**: Tối thiểu phiên bản 2.8.4.
+- **npm**: Tối thiểu phiên bản 11.0.0.
 
-#### **Các bước cài đặt**
-
-Đầu tiên, mở terminal hoặc command prompt, sau đó chạy các lệnh dưới đây:
-
-   ```bash
-   git clone https://github.com/mttk2004/phpure.git
-   cd phpure
-   ```  
-
-- **`git clone`**: Tải mã nguồn `phpure` từ GitHub về máy của bạn.
-- **`cd phpure`**: Di chuyển vào thư mục vừa tải về.
-
-Giờ đây, bạn đã sẵn sàng để thực hiện các bước tiếp theo như cài đặt các phụ thuộc và thiết lập dự
-án.
-
-### **2. Cấu hình** ⚙️
-
-Để bắt đầu sử dụng `phpure`, bạn cần thực hiện một số bước thiết đặt cơ bản sau khi tải mã nguồn về.
+Việc đảm bảo các công cụ trên đã được cài đặt đúng phiên bản không chỉ giúp bạn tránh gặp phải lỗi trong quá trình cài đặt mà còn đảm bảo ứng dụng hoạt động ổn định.
 
 ---
 
-#### **Cài đặt các gói Composer và npm**
+#### **Các Bước Cài Đặt**
 
-Đầu tiên, bạn cần cài đặt các gói phụ thuộc cần thiết. Sử dụng lệnh sau trong terminal để Composer
-cài đặt các gói PHP và npm cài đặt các gói front-end:
+Bắt đầu bằng cách mở terminal hoặc command prompt và thực hiện các lệnh sau:
+
+```bash
+git clone https://github.com/mttk2004/phpure.git
+cd phpure
+```
+
+- **`git clone`**: Tải toàn bộ mã nguồn `phpure` từ GitHub về máy tính của bạn.
+- **`cd phpure`**: Điều hướng đến thư mục chứa mã nguồn vừa tải về.
+
+Sau khi hoàn thành bước này, bạn đã sẵn sàng tiếp tục với các bước thiết lập dự án và cài đặt phụ thuộc.
+
+---
+
+### **2. Cấu Hình Dự Án** ⚙️
+
+Để `phpure` hoạt động chính xác, bạn cần thực hiện một số bước cấu hình cơ bản sau khi tải mã nguồn.
+
+---
+
+#### **Cài Đặt Phụ Thuộc Với Composer và npm**
+
+Sử dụng các lệnh sau để cài đặt toàn bộ các gói phụ thuộc cần thiết:
 
 ```bash
 composer install
 npm install
 ```
 
-Composer sẽ tải về các thư viện cần thiết để dự án hoạt động, trong khi npm sẽ chuẩn bị các tài
-nguyên front-end.
+- **`composer install`**: Tải về tất cả các thư viện PHP cần thiết để dự án hoạt động.
+- **`npm install`**: Cài đặt các gói front-end hỗ trợ giao diện hoặc các công cụ build.
+
+Hai lệnh này sẽ đảm bảo rằng bạn có đầy đủ công cụ để phát triển và vận hành ứng dụng.
 
 ---
 
-#### **Cấu hình file `.env`**
+#### **Cấu Hình File `.env`**
 
-Dự án sử dụng file `.env` để quản lý các thông số cấu hình như kết nối cơ sở dữ liệu, tên ứng dụng,
-v.v.  
-Hãy tạo file `.env` từ file mẫu có sẵn:
+Dự án sử dụng file `.env` để lưu trữ các thông tin cấu hình quan trọng như thông tin cơ sở dữ liệu, môi trường ứng dụng, và các thông số khác. Để tạo file `.env`, thực hiện lệnh sau:
 
 ```bash
 cp .env.example .env
 ```
 
-Sau đó, mở file `.env` và cập nhật các thông tin cần thiết, ví dụ:
+Tiếp theo, mở file `.env` vừa tạo và cập nhật các thông số phù hợp với môi trường của bạn. Dưới đây là một ví dụ về cấu hình cơ sở dữ liệu:
 
 ```env
 # APP
@@ -93,26 +97,25 @@ DB_NAME=my_database
 DB_USER=root
 DB_PASS=
 DB_CHARSET=utf8mb4
-
 ```
 
-File `.env` chứa các biến môi trường cần thiết cho ứng dụng. Đảm bảo rằng bạn đã cập nhật đầy đủ
-thông tin trong file này. Vì đây là nơi lưu trữ thông tin nhạy cảm như mật khẩu cơ sở dữ liệu,
-bạn nên giữ file `.env` riêng tư và không chia sẻ nó trên GitHub hoặc bất kỳ nơi nào khác. Tôi
-đã đưa file `.env` vào file `.gitignore` để tránh việc bạn vô tình tải lên thông tin nhạy cảm lên
-GitHub.
+Một vài lưu ý quan trọng:
+- File `.env` chứa các thông tin nhạy cảm, như mật khẩu cơ sở dữ liệu, nên bạn cần bảo mật và tránh chia sẻ công khai.
+- `phpure` đã tự động thêm `.env` vào `.gitignore`, giúp bạn tránh tải file này lên GitHub.
 
 ---
 
-#### **Cấu hình cho Phinx**
+#### **Cấu Hình Phinx**
 
-`phpure` sử dụng **Phinx** để quản lý cơ sở dữ liệu. Cấu hình của Phinx nằm trong file `phinx.
-php`. Tuy nhiên bạn không cần phải chỉnh sửa file này, mọi cấu hình cần thiết đã được đặt trong
-file `.env`. Nói về Phinx, đây là một công cụ mạnh mẽ giúp bạn quản lý cơ sở dữ liệu một cách dễ
-dàng và hiệu quả. Bạn có thể tạo bảng, thêm cột, chỉnh sửa cấu trúc cơ sở dữ liệu mà không cần
-thực hiện thủ công. Chúng ta sẽ tìm hiểu thêm về Phinx trong phần sau.
+`phpure` sử dụng **Phinx**, một công cụ quản lý cơ sở dữ liệu mạnh mẽ, để thực hiện các tác vụ như tạo bảng, thêm cột, hoặc sửa đổi cấu trúc cơ sở dữ liệu.
 
----
+Cấu hình của Phinx được lưu trong file `phinx.php`. Tuy nhiên, bạn không cần chỉnh sửa trực tiếp file này vì tất cả thông tin đã được tự động cấu hình thông qua file `.env`.
+
+Phinx là một phần quan trọng trong việc quản lý cơ sở dữ liệu của `phpure`. Nó giúp tự động hóa quy trình, giảm thiểu các thao tác thủ công và đảm bảo tính nhất quán. Trong phần tiếp theo, chúng ta sẽ đi sâu hơn vào cách sử dụng Phinx để quản lý cơ sở dữ liệu hiệu quả.
+
+--- 
+
+Hoàn thành các bước trên, bạn đã sẵn sàng để bắt đầu hành trình phát triển với `phpure`! 🚀
 
 ### **3. Cấu Trúc Thư Mục** 📂
 
