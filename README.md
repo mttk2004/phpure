@@ -248,6 +248,33 @@ phpure/
 
 ## **Tăng Tốc** 🚀
 
+Để thực sự hiểu rõ và tận dụng tối đa `phpure`, bạn cần hiểu rõ một số khái niệm cơ bản và cách 
+hoạt động của framework. Đầu tiên là **vòng đời của request**.
+
+### **1. Luồng hoạt động chi tiết của framework và mô hình MVC - Vòng Đời Của Request**
+
+Framework của chúng ta hoạt động dựa trên mô hình MVC (Model-View-Controller), một kiến trúc phổ biến trong phát triển web giúp tách biệt rõ ràng các phần của ứng dụng. **Model** chịu trách nhiệm quản lý dữ liệu và logic kinh doanh, **View** quản lý giao diện người dùng, còn **Controller** là cầu nối giữa Model và View, xử lý các yêu cầu từ người dùng và trả về kết quả phù hợp.
+
+
+#### **Tiếp nhận request:**  
+   Mọi request từ trình duyệt được gửi đến file `index.php` trong thư mục `public`. Đây là điểm vào chính của ứng dụng. Tại đây, framework được khởi chạy thông qua phương thức `App::bootstrap()`, nơi các thành phần quan trọng như router, middleware, và session được cấu hình.
+#### **Router phân tích request:**  
+   Sau khi khởi động, router chịu trách nhiệm ánh xạ URL từ request đến các route được định nghĩa trước trong file `routes.php`. Router kiểm tra xem URL yêu cầu có khớp với bất kỳ route nào đã đăng ký không. Nếu không tìm thấy, nó sẽ trả về lỗi 404.
+#### **Xử lý middleware:**  
+   Trước khi router gọi controller, middleware được kích hoạt. Middleware là các lớp xử lý trung gian, dùng để kiểm tra hoặc thay đổi request trước khi chuyển tiếp. Ví dụ, middleware có thể kiểm tra xem người dùng đã đăng nhập chưa (auth) hoặc đảm bảo rằng chỉ khách chưa đăng nhập mới có thể truy cập một số trang nhất định (guest). Nếu middleware phát hiện lỗi, request sẽ bị dừng lại và trả về phản hồi ngay tại đó.
+#### **Gọi controller:**  
+   Sau khi vượt qua middleware, router gọi controller được chỉ định cùng với action (phương thức cụ thể). Controller nhận các thông tin từ request, xử lý logic nghiệp vụ, và chuẩn bị dữ liệu để truyền cho View. Ví dụ, một controller có thể lấy dữ liệu người dùng từ cơ sở dữ liệu hoặc kiểm tra điều kiện kinh doanh trước khi tiếp tục.
+#### **Kết nối với View thông qua Twig:**  
+   Sau khi xử lý, controller thường kết thúc bằng việc gọi một template để hiển thị giao diện. Framework sử dụng Twig, một công cụ template mạnh mẽ, để kết hợp dữ liệu từ controller và các template HTML đã định nghĩa. Twig cung cấp nhiều tính năng hữu ích như vòng lặp, kiểm tra điều kiện, và kế thừa layout, giúp việc xây dựng giao diện dễ dàng và linh hoạt.
+#### **Trả về response:**  
+   Sau khi Twig tạo ra giao diện hoàn chỉnh (HTML), framework gửi nội dung đó trở lại trình duyệt dưới dạng response. Người dùng sẽ thấy trang web được hiển thị, hoàn chỉnh với dữ liệu đã được xử lý từ controller.
+
+#### **Tóm lại**
+
+Vòng đời của một request trong framework bao gồm các bước từ tiếp nhận URL, phân tích và ánh xạ route, kiểm tra middleware, xử lý logic trong controller, và cuối cùng là render giao diện thông qua Twig. Kiến trúc MVC đảm bảo mỗi phần của ứng dụng có nhiệm vụ rõ ràng, giúp mã nguồn dễ hiểu, dễ bảo trì và mở rộng. Với luồng hoạt động mạch lạc này, ngay cả người mới bắt đầu cũng có thể nhanh chóng hiểu được cách ứng dụng hoạt động và bắt tay vào phát triển các tính năng mới.
+
+Ngoài ra, tôi khuyên bạn nên đọc qua mã nguồn của `phpure` để hiểu rõ hơn về cách hoạt động của framework. Đây là cách tốt nhất để học hỏi và nắm vững kiến thức.
+
 ---
 
-_Last updated: January 12, 2025_
+_Last updated: January 13, 2025_
