@@ -242,69 +242,11 @@ phpure/
 ├── README.md                  # Hướng dẫn sử dụng framework `phpure`.
 ├── tailwind.config.js         # File cấu hình Tailwind CSS.
 ├── webpack.config.js          # File cấu hình Webpack cho việc đóng gói tài nguyên.
-```  
-
-Với cách tổ chức trên, `phpure` giúp bạn dễ dàng xây dựng và bảo trì ứng dụng từ nhỏ đến lớn.
-
-### Hướng dẫn đóng góp cho `phpure`
-
-Nếu bạn muốn đóng góp cho dự án `phpure`, bạn có thể làm theo các bước sau:
-
-#### 1. Fork và Clone Repository
-
-Đầu tiên, bạn cần fork repository này và clone nó về máy tính của mình:
-
-```sh
-git clone https://github.com/mttk2004/phpure.git
 ```
 
-#### 2. Tạo Branch Mới
+---
 
-Trước khi bắt đầu làm việc, hãy tạo một branch mới từ branch `main` hoặc `develop`:
-
-```sh
-git checkout -b ten-branch-cua-ban
-```
-
-#### 3. Thực hiện Thay Đổi
-
-Thực hiện các thay đổi cần thiết trên branch mới của bạn. Đảm bảo rằng bạn tuân thủ các nguyên tắc
-coding và phong cách của dự án.
-
-#### 4. Kiểm tra Thay Đổi
-
-Chạy các bài kiểm tra để đảm bảo rằng những thay đổi của bạn không phá vỡ bất kỳ tính năng nào hiện
-có:
-
-```sh
-phpunit
-```
-
-#### 5. Commit và Push Thay Đổi
-
-Khi bạn đã sẵn sàng, hãy commit và push thay đổi của bạn lên repository fork của bạn:
-
-```sh
-git add .
-git commit -m "Mô tả ngắn gọn về thay đổi"
-git push origin ten-branch-cua-ban
-```
-
-#### 6. Tạo Pull Request
-
-Cuối cùng, tạo một pull request từ repository của bạn về repository gốc. Hãy mô tả chi tiết những
-thay đổi bạn đã thực hiện và lý do tại sao.
-
-#### 7. Liên hệ và Thảo Luận
-
-Nếu bạn cần bất kỳ sự giúp đỡ nào, bạn có thể liên hệ với maintainer chính của dự án qua GitHub
-Issues hoặc Discussions.
-
-#### Liên hệ Maintainer:
-
-- **GitHub:** [mttk2004](https://github.com/mttk2004)
-
-Chúng tôi rất mong nhận được sự đóng góp của bạn! Cảm ơn bạn đã giúp `phpure` trở nên tốt hơn.
+## **Tăng Tốc** 🚀
 
 ---
 
