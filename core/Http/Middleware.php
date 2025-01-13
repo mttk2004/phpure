@@ -2,8 +2,8 @@
 
 namespace Core\Http;
 
-use App\Middleware\Auth;
-use App\Middleware\Guest;
+use App\Middlewares\Auth;
+use App\Middlewares\Guest;
 
 class Middleware
 {
