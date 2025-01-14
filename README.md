@@ -204,6 +204,7 @@ Tập trung vào giao diện và tài nguyên giao diện của ứng dụng:
 - `.env.example`: File mẫu chứa các cấu hình môi trường như thông tin cơ sở dữ liệu hoặc key bảo mật.
 - `.gitignore`: Quy định các file và thư mục không được theo dõi bởi Git.
 - `.htaccess`: File cấu hình Apache, chuyển hướng mọi yêu cầu đến `index.php`.
+- `CODE_OF_CONDUCT.md`: Quy tắc ứng xử trong dự án.
 - `composer.json`: Danh sách các thư viện PHP phụ thuộc, được quản lý bằng Composer.
 - `tailwind.config.js`: File cấu hình Tailwind CSS, định nghĩa các tuỳ chỉnh về giao diện.
 - `webpack.config.js`: Cấu hình Webpack để quản lý và đóng gói các tài nguyên như CSS, JS.
@@ -258,6 +259,7 @@ phpure/
 ├── .env.example               # File mẫu cấu hình môi trường, chứa thông tin kết nối và thiết lập cơ bản.
 ├── .gitignore                 # File định nghĩa các tệp/thư mục bị Git bỏ qua.
 ├── .htaccess                  # File cấu hình Apache, chuyển hướng tất cả yêu cầu tới index.php.
+├── CODE_OF_CONDUCT.md         # Quy tắc ứng xử trong dự án.
 ├── composer.json              # File cấu hình Composer, liệt kê các thư viện phụ thuộc.
 ├── LICENSE                    # File chứa thông tin bản quyền của dự án.
 ├── package.json               # File cấu hình npm, liệt kê các gói JavaScript phụ thuộc.
