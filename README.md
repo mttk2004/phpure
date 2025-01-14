@@ -44,7 +44,7 @@ Hãy thử khám phá `phpure` ngay hôm nay và cùng nhau tạo nên những �
 
 ## **Bắt Đầu** ⛹️
 
-### **1. Hướng Dẫn Cài Đặt** 📥
+### **1. Cài Đặt** 📥
 
 #### **Yêu cầu hệ thống**
 
@@ -74,7 +74,7 @@ Sau khi hoàn thành bước này, bạn đã sẵn sàng tiếp tục với cá
 
 ---
 
-### **2. Cấu Hình Dự Án** ⚙️
+### **2. Cấu Hình** ⚙️
 
 Để `phpure` hoạt động chính xác, bạn cần thực hiện một số bước cấu hình cơ bản sau khi tải mã nguồn.
 
@@ -142,7 +142,9 @@ Hoàn thành các bước trên, bạn đã sẵn sàng để bắt đầu hành
 
 Tiếp theo, hãy tìm hiểu cấu trúc thư mục của `phpure` để hiểu rõ hơn về cách tổ chức và quản lý dự án.
 
-Cấu trúc thư mục của **phpure** được thiết kế nhằm đảm bảo tính nhất quán, dễ hiểu, và khả năng mở rộng tối ưu. Mô hình MVC (Model-View-Controller) được áp dụng làm nền tảng, giúp tách biệt các thành phần xử lý logic, giao diện, và dữ liệu một cách rõ ràng. Điều này không chỉ giúp quản lý dự án hiệu quả mà còn tạo tiền đề để mở rộng khi ứng dụng phát triển.
+Cấu trúc thư mục của **phpure** được thiết kế nhằm **đảm bảo tính nhất quán, dễ hiểu, và khả năng 
+mở rộng tối ưu**. Mô hình MVC (Model-View-Controller) được áp dụng làm nền tảng, giúp tách biệt 
+các thành phần xử lý logic, giao diện, và dữ liệu một cách rõ ràng. Điều này không chỉ giúp quản lý dự án hiệu quả mà còn tạo tiền đề để mở rộng khi ứng dụng phát triển.
 
 #### **Thư mục `app/`**
 
@@ -266,6 +268,8 @@ phpure/
 ├── tailwind.config.js         # File cấu hình Tailwind CSS.
 ├── webpack.config.js          # File cấu hình Webpack cho việc đóng gói tài nguyên.
 ```
+
+Tại thờ điểm này, có thể cấu trúc thư mục của `phpure` vẫn còn khá mới mẻ và phức tạp. Nhưng đừng lo, chúng ta sẽ đi sâu vào từng phần trong các phần tiếp theo để hiểu rõ hơn về cách hoạt động và sử dụng của từng thành phần.
 
 ---
 
