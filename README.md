@@ -270,7 +270,7 @@ phpure/
 │   ├── seeds/                 # Chứa các file tạo dữ liệu mẫu (seeding).
 ├── public/
 │   ├── assets/                # Chứa các tài nguyên tĩnh như CSS, JS, và hình ảnh.
-│   ├── index.php              # File khởi tạo ứng dụng, là điểm vào chính của framework.
+│   ├── index.php              # File khởi tạo ứng dụng, nhận và chuyển hướng tất cả các yêu cầu tới hệ thống định tuyến.
 ├── resources/
 │   ├── css/input.css          # Chứa file CSS tùy chỉnh của dự án.
 │   ├── js/app.js              # Chứa file JavaScript tùy chỉnh của dự án.
@@ -571,7 +571,7 @@ class AuthController extends Controller
 
     public function postRegister()
     {
-        $validation = new Validation;
+        $validation = new Validation();
 
         $validation->validate([
             'name' => v::notEmpty()->length(2, 50),
@@ -775,27 +775,709 @@ class SendWelcomeEmail
 }
 ```
 
-## **Đóng Góp** 💪
+## **Khám phá các tính năng hữu ích** 🔍
 
-Tôi rất hoan nghênh mọi đóng góp cho `phpure`. Nếu bạn có ý tưởng, tính năng mới, hoặc phát hiện lỗi, vui lòng tạo issue hoặc pull request trên GitHub.
+Ngoài các tính năng cốt lõi đã trình bày, `phpure` còn cung cấp nhiều công cụ hữu ích khác để giúp bạn phát triển ứng dụng nhanh chóng và dễ dàng. Trong phần này, chúng ta sẽ tìm hiểu về một số tính năng thú vị này.
 
-### **Quy Trình Đóng Góp**
+### **1. Thông báo Flash Message** 💬
 
-1. Fork dự án
-2. Tạo branch mới (`git checkout -b feature/amazing-feature`)
-3. Commit các thay đổi của bạn (`git commit -m 'Add some amazing feature'`)
-4. Push lên branch (`git push origin feature/amazing-feature`)
-5. Mở Pull Request
+Flash message là thông báo tạm thời hiển thị một lần sau khi điều hướng trang, rất hữu ích để thông báo kết quả của một hành động. `phpure` cung cấp phương thức `flash()` trong lớp `Session` để quản lý các thông báo này:
 
-## **Giấy Phép** 📄
+```php
+// Đặt thông báo flash trong controller
+Session::flash('success', 'Đăng ký tài khoản thành công!');
+redirect('/login');
 
-`phpure` được phát hành dưới giấy phép MIT. Xem file [LICENSE](LICENSE) để biết thêm chi tiết.
+// Trong view, hiển thị thông báo (với Twig)
+{% if flash('success') %}
+    <div class="alert alert-success">
+        {{ flash('success') }}
+    </div>
+{% endif %}
+```
 
-## **Liên Hệ** 📧
+Thông báo flash rất hữu ích trong các tình huống như:
 
-Mai Trần Tuấn Kiệt - [mttk2004@hotmail.com](mailto:mttk2004@hotmail.com)
+- Hiển thị thông báo thành công sau khi thêm, cập nhật hoặc xóa dữ liệu
+- Hiển thị thông báo lỗi sau khi chuyển hướng
+- Hiển thị hướng dẫn hoặc thông tin tạm thời cho người dùng
 
-Project Link: [https://github.com/mttk2004/phpure](https://github.com/mttk2004/phpure)
+### **2. Quản lý Form và Bảo mật CSRF** 🔒
+
+`phpure` cung cấp lớp `Form` để hỗ trợ việc tạo và bảo mật các biểu mẫu HTML. Đặc biệt, lớp này cung cấp các phương thức để tạo token CSRF (Cross-Site Request Forgery) để bảo vệ ứng dụng của bạn khỏi các cuộc tấn công giả mạo yêu cầu.
+
+```php
+// Trong controller, tạo view với form
+public function create()
+{
+    $this->render('users/create');
+}
+
+// Trong view (users/create.html.twig)
+<form method="post" action="{{ url('/users/store') }}">
+    <input type="hidden" name="csrf_token" value="{{ form_token() }}">
+
+    <div class="form-group">
+        <label for="name">Tên:</label>
+        {{ form_input('text', 'name', '', {'class': 'form-control', 'required': 'required'}) }}
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email:</label>
+        {{ form_input('email', 'email', '', {'class': 'form-control', 'required': 'required'}) }}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Đăng ký</button>
+</form>
+
+// Trong controller xử lý form
+public function store()
+{
+    // Kiểm tra token CSRF
+    $token = Request::input('csrf_token');
+    if (!Form::validateToken($token)) {
+        Session::flash('error', 'Token không hợp lệ!');
+        redirect('/users/create');
+        return;
+    }
+
+    // Xử lý dữ liệu form
+    // ...
+}
+```
+
+### **3. Phân trang (Pagination)** 📋
+
+Phân trang là tính năng quan trọng khi hiển thị một lượng lớn dữ liệu. `phpure` cung cấp lớp `Pagination` để giúp bạn dễ dàng triển khai phân trang trong ứng dụng của mình:
+
+```php
+// Trong controller
+public function index()
+{
+    $currentPage = (int) Request::query('page', 1);
+    $perPage = 10;
+
+    // Lấy tổng số bản ghi
+    $total = Database::table('users')->count();
+
+    // Khởi tạo đối tượng Pagination
+    $pagination = new Pagination($total, $perPage, $currentPage);
+
+    // Lấy dữ liệu với phân trang
+    $users = Database::table('users')
+                   ->orderBy('id', 'DESC')
+                   ->limit($perPage)
+                   ->offset($pagination->offset())
+                   ->get();
+
+    $this->render('users/index', [
+        'users' => $users,
+        'pagination' => $pagination->links()
+    ]);
+}
+
+// Trong view (users/index.html.twig)
+{# Hiển thị danh sách người dùng #}
+<ul>
+    {% for user in users %}
+        <li>{{ user.name }} - {{ user.email }}</li>
+    {% else %}
+        <li>Không có người dùng nào.</li>
+    {% endfor %}
+</ul>
+
+{# Hiển thị phân trang #}
+<nav>
+    <ul class="pagination">
+        {% for link in pagination %}
+            <li class="page-item {{ link.active ? 'active' : '' }}">
+                <a class="page-link" href="{{ link.url }}">{{ link.page }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</nav>
+```
+
+### **4. Bộ nhớ đệm (Cache)** ⚡
+
+Cache giúp tăng hiệu suất ứng dụng bằng cách lưu trữ dữ liệu tạm thời, tránh phải thực hiện các thao tác tốn kém như truy vấn cơ sở dữ liệu nhiều lần. `phpure` cung cấp một lớp `Cache` đơn giản nhưng hiệu quả:
+
+```php
+// Lưu dữ liệu vào cache
+Cache::put('users', $users, 60); // Lưu trong 60 phút
+
+// Lấy dữ liệu từ cache
+$users = Cache::get('users');
+
+// Ví dụ thực tế: Lấy danh sách người dùng từ cache hoặc database
+public function index()
+{
+    // Thử lấy dữ liệu từ cache
+    $users = Cache::get('users');
+
+    // Nếu không có trong cache, lấy từ database và lưu vào cache
+    if (!$users) {
+        $users = User::all();
+        Cache::put('users', $users, 30); // Lưu trong 30 phút
+    }
+
+    $this->render('users/index', [
+        'users' => $users
+    ]);
+}
+
+// Xóa cache
+Cache::delete('users');
+
+// Xóa tất cả cache
+Cache::flush();
+```
+
+### **5. Xử lý lỗi nâng cao** 🛠️
+
+`phpure` cung cấp lớp `ExceptionHandler` để xử lý lỗi một cách hiệu quả. Lớp này tự động bắt các lỗi và exception, ghi log và hiển thị thông báo lỗi phù hợp với môi trường:
+
+```php
+// Đăng ký exception handler trong file bootstrap
+ExceptionHandler::register();
+
+// Khi có lỗi xảy ra:
+// - Trong môi trường development: Hiển thị chi tiết lỗi
+// - Trong môi trường production: Hiển thị trang lỗi thân thiện với người dùng
+```
+
+Để tạo trang lỗi tùy chỉnh, bạn có thể tạo các file view tương ứng trong thư mục `resources/views/errors/`:
+
+- `404.html.twig` - Trang không tìm thấy
+- `500.html.twig` - Lỗi server
+
+### **6. Lọc dữ liệu đầu vào an toàn** 🔍
+
+`phpure` mở rộng lớp `Request` với phương thức `sanitize()` để lọc dữ liệu đầu vào, bảo vệ ứng dụng khỏi các mã độc hại:
+
+```php
+// Lấy dữ liệu đầu vào đã được lọc
+$name = Request::sanitize('name');
+$email = Request::sanitize('email');
+
+// Kiểm tra xem yêu cầu có phải Ajax không
+if (Request::isAjax()) {
+    // Xử lý yêu cầu Ajax
+}
+
+// Lấy địa chỉ IP của người dùng
+$userIp = Request::ip();
+```
+
+### **7. Hướng dẫn xử lý tệp tải lên** 📁
+
+`phpure` cung cấp lớp `Storage` để quản lý việc tải lên và lưu trữ tệp. Dưới đây là một ví dụ hoàn chỉnh về cách xử lý tệp tải lên:
+
+```php
+// Trong view (form tải lên)
+<form method="post" action="{{ url('/upload') }}" enctype="multipart/form-data">
+    <input type="hidden" name="csrf_token" value="{{ form_token() }}">
+
+    <div class="form-group">
+        <label for="avatar">Ảnh đại diện:</label>
+        <input type="file" name="avatar" id="avatar">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Tải lên</button>
+</form>
+
+// Trong controller
+public function upload()
+{
+    // Kiểm tra token CSRF
+    $token = Request::input('csrf_token');
+    if (!Form::validateToken($token)) {
+        Session::flash('error', 'Token không hợp lệ!');
+        redirect('/profile');
+        return;
+    }
+
+    // Kiểm tra file tải lên
+    if (!isset($_FILES['avatar']) || $_FILES['avatar']['error'] !== UPLOAD_ERR_OK) {
+        Session::flash('error', 'Lỗi khi tải lên tệp!');
+        redirect('/profile');
+        return;
+    }
+
+    // Tạo tên file ngẫu nhiên
+    $extension = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+    $filename = uniqid() . '.' . $extension;
+
+    // Lưu file
+    $storagePath = 'avatars/' . $filename;
+    $filepath = Storage::put($storagePath, $_FILES['avatar']);
+
+    // Cập nhật profile của người dùng
+    $userId = Session::get('user_id');
+    User::update(['avatar' => $storagePath], $userId);
+
+    Session::flash('success', 'Tải lên ảnh đại diện thành công!');
+    redirect('/profile');
+}
+```
+
+## **Xây dựng ứng dụng đầu tiên với phpure** 🏗️
+
+Trong phần này, chúng ta sẽ xây dựng một ứng dụng Todo List đơn giản để hiểu rõ hơn về cách sử dụng `phpure` trong thực tế.
+
+### **Bước 1: Thiết lập cơ sở dữ liệu**
+
+Đầu tiên, tạo một migration để tạo bảng `todos`:
+
+```bash
+vendor/bin/phinx create CreateTodosTable
+```
+
+Sau đó, định nghĩa bảng trong file migration:
+
+```php
+<?php
+
+use Phinx\Migration\AbstractMigration;
+
+class CreateTodosTable extends AbstractMigration
+{
+    public function change()
+    {
+        $table = $this->table('todos');
+        $table->addColumn('title', 'string', ['limit' => 255])
+              ->addColumn('completed', 'boolean', ['default' => false])
+              ->addColumn('user_id', 'integer', ['null' => true])
+              ->addColumn('created_at', 'datetime')
+              ->addColumn('updated_at', 'datetime', ['null' => true])
+              ->addIndex(['user_id'])
+              ->create();
+    }
+}
+```
+
+Thực thi migration:
+
+```bash
+vendor/bin/phinx migrate
+```
+
+### **Bước 2: Tạo Model**
+
+Tạo file `app/Models/Todo.php`:
+
+```php
+<?php
+
+namespace App\Models;
+
+use Core\Model;
+
+class Todo extends Model
+{
+    protected string $table = 'todos';
+}
+```
+
+### **Bước 3: Tạo Controller**
+
+Tạo file `app/Controllers/TodoController.php`:
+
+```php
+<?php
+
+namespace App\Controllers;
+
+use Core\Controller;
+use Core\Http\Request;
+use Core\Session;
+use Core\Validation;
+use App\Models\Todo;
+use Respect\Validation\Validator as v;
+
+class TodoController extends Controller
+{
+    public function index()
+    {
+        $todos = Todo::all();
+
+        $this->render('todos/index', [
+            'todos' => $todos
+        ]);
+    }
+
+    public function create()
+    {
+        $this->render('todos/create');
+    }
+
+    public function store()
+    {
+        $validation = new Validation();
+        $validation->validate([
+            'title' => v::notEmpty()->length(3, 255)
+        ]);
+
+        if ($validation->failed()) {
+            Session::flash('errors', $validation->errors());
+            redirect('/todos/create');
+            return;
+        }
+
+        $todo = new Todo();
+        $todo->create([
+            'title' => Request::sanitize('title'),
+            'completed' => false,
+            'user_id' => Session::get('user_id') ?? null,
+            'created_at' => date('Y-m-d H:i:s')
+        ]);
+
+        Session::flash('success', 'Thêm công việc thành công!');
+        redirect('/todos');
+    }
+
+    public function toggle($id)
+    {
+        $todo = Todo::find($id);
+
+        if (!$todo) {
+            abort(404);
+        }
+
+        $todo->update([
+            'completed' => !$todo->completed,
+            'updated_at' => date('Y-m-d H:i:s')
+        ], $id);
+
+        redirect('/todos');
+    }
+
+    public function delete($id)
+    {
+        $todo = Todo::find($id);
+
+        if (!$todo) {
+            abort(404);
+        }
+
+        $todo->delete($id);
+
+        Session::flash('success', 'Xóa công việc thành công!');
+        redirect('/todos');
+    }
+}
+```
+
+### **Bước 4: Định nghĩa Routes**
+
+Trong file `app/routes.php`:
+
+```php
+<?php
+
+use Core\Http\Router;
+
+$router = new Router();
+
+// Trang chủ
+$router->get('', ['HomeController', 'index']);
+
+// Routes cho Todo
+$router->get('todos', ['TodoController', 'index']);
+$router->get('todos/create', ['TodoController', 'create']);
+$router->post('todos', ['TodoController', 'store']);
+$router->get('todos/{id}/toggle', ['TodoController', 'toggle']);
+$router->get('todos/{id}/delete', ['TodoController', 'delete']);
+
+$router->dispatch();
+```
+
+### **Bước 5: Tạo Views**
+
+Tạo file `resources/views/todos/index.html.twig`:
+
+```twig
+{% extends 'layouts/app.html.twig' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="mb-4">Danh sách công việc</h1>
+
+        {% if flash('success') %}
+            <div class="alert alert-success">
+                {{ flash('success') }}
+            </div>
+        {% endif %}
+
+        <a href="{{ url('/todos/create') }}" class="btn btn-primary mb-3">Thêm công việc mới</a>
+
+        <div class="list-group">
+            {% for todo in todos %}
+                <div class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
+                        {% if todo.completed %}
+                            <s>{{ todo.title }}</s>
+                        {% else %}
+                            {{ todo.title }}
+                        {% endif %}
+                    </div>
+                    <div>
+                        <a href="{{ url('/todos/' ~ todo.id ~ '/toggle') }}" class="btn btn-sm btn-info">
+                            {% if todo.completed %}
+                                Đánh dấu chưa hoàn thành
+                            {% else %}
+                                Đánh dấu hoàn thành
+                            {% endif %}
+                        </a>
+                        <a href="{{ url('/todos/' ~ todo.id ~ '/delete') }}" class="btn btn-sm btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</a>
+                    </div>
+                </div>
+            {% else %}
+                <div class="alert alert-info">Không có công việc nào.</div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+```
+
+Tạo file `resources/views/todos/create.html.twig`:
+
+```twig
+{% extends 'layouts/app.html.twig' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="mb-4">Thêm công việc mới</h1>
+
+        {% if flash('errors') %}
+            <div class="alert alert-danger">
+                <ul>
+                    {% for field, errors in flash('errors') %}
+                        {% for error in errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <form action="{{ url('/todos') }}" method="post">
+            <input type="hidden" name="csrf_token" value="{{ form_token() }}">
+
+            <div class="form-group">
+                <label for="title">Tên công việc:</label>
+                <input type="text" name="title" id="title" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3">Thêm</button>
+            <a href="{{ url('/todos') }}" class="btn btn-secondary mt-3">Hủy</a>
+        </form>
+    </div>
+{% endblock %}
+```
+
+Tạo file `resources/views/layouts/app.html.twig`:
+
+```twig
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ứng dụng Todo List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url('/') }}">Todo App</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/') }}">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/todos') }}">Công việc</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+```
+
+Với ví dụ thực tế này, bạn đã thấy cách `phpure` hoạt động trong một ứng dụng đầy đủ chức năng. Bạn có thể mở rộng ứng dụng này bằng cách thêm chức năng đăng nhập, quản lý người dùng, hoặc bất kỳ tính năng nào khác!
+
+## **Các kỹ thuật nâng cao** 🚀
+
+### **1. Liên kết database với quan hệ nhiều-nhiều**
+
+Để làm việc với quan hệ nhiều-nhiều (many-to-many), bạn có thể sử dụng phương thức `belongsToMany()` trong model:
+
+```php
+// Model User
+public function roles()
+{
+    return $this->belongsToMany(
+        Role::class,    // Model liên quan
+        'user_roles',   // Bảng trung gian
+        'user_id',      // Khóa ngoại của bảng hiện tại
+        'role_id',      // Khóa ngoại của bảng liên quan
+        'id',           // Khóa chính của bảng hiện tại
+        'id'            // Khóa chính của bảng liên quan
+    );
+}
+
+// Sử dụng
+$user = User::find(1);
+$roles = $user->roles();
+```
+
+### **2. Middleware kiểm tra vai trò người dùng**
+
+Tạo middleware để kiểm tra vai trò của người dùng:
+
+```php
+<?php
+
+namespace App\Middlewares;
+
+use Core\Http\Middleware;
+use Core\Session;
+use App\Models\User;
+
+class RoleMiddleware extends Middleware
+{
+    private array $allowedRoles;
+
+    public function __construct(array $allowedRoles)
+    {
+        $this->allowedRoles = $allowedRoles;
+    }
+
+    public function handle(): bool
+    {
+        $userId = Session::get('user_id');
+
+        if (!$userId) {
+            redirect('/login');
+            return false;
+        }
+
+        $user = User::find($userId);
+        $userRoles = $user->roles();
+
+        foreach ($userRoles as $role) {
+            if (in_array($role->name, $this->allowedRoles)) {
+                return true;
+            }
+        }
+
+        abort(403); // Không có quyền truy cập
+        return false;
+    }
+}
+
+// Đăng ký middleware
+Middleware::register('role', \App\Middlewares\RoleMiddleware::class);
+
+// Sử dụng trong route
+$router->get('/admin', ['AdminController', 'index'])->middleware('role:admin,super_admin');
+```
+
+### **3. Tạo Command Line Interface (CLI)**
+
+Bạn có thể tạo các lệnh CLI cho `phpure` để tự động hóa các tác vụ:
+
+```php
+<?php
+// commands/generate.php
+
+require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../utils/helpers.php';
+
+// Xử lý tham số dòng lệnh
+$command = $argv[1] ?? null;
+$name = $argv[2] ?? null;
+
+if (!$command || !$name) {
+    echo "Sử dụng: php commands/generate.php [controller|model|middleware] [name]\n";
+    exit(1);
+}
+
+switch ($command) {
+    case 'controller':
+        generateController($name);
+        break;
+    case 'model':
+        generateModel($name);
+        break;
+    case 'middleware':
+        generateMiddleware($name);
+        break;
+    default:
+        echo "Lệnh không hợp lệ. Các lệnh hợp lệ: controller, model, middleware\n";
+        exit(1);
+}
+
+function generateController($name)
+{
+    $template = <<<PHP
+<?php
+
+namespace App\Controllers;
+
+use Core\Controller;
+
+class {$name}Controller extends Controller
+{
+    public function index()
+    {
+        \$this->render('{$name}s/index');
+    }
+
+    public function show(\$id)
+    {
+        \$this->render('{$name}s/show', ['id' => \$id]);
+    }
+
+    public function create()
+    {
+        \$this->render('{$name}s/create');
+    }
+
+    public function store()
+    {
+        // Xử lý logic
+    }
+}
+PHP;
+
+    $filename = __DIR__ . "/../app/Controllers/{$name}Controller.php";
+    file_put_contents($filename, $template);
+    echo "Controller {$name}Controller đã được tạo thành công!\n";
+}
+
+// Tương tự cho generateModel và generateMiddleware
+```
+
+Với những ví dụ và hướng dẫn cụ thể này, bạn đã có một bức tranh toàn diện về framework `phpure` và cách sử dụng nó để xây dựng các ứng dụng web hiện đại. Hãy bắt đầu thử nghiệm và khám phá thêm các khả năng của framework!
+
+## **Tổng kết** 📝
+
+`phpure` là một framework MVC đơn giản nhưng mạnh mẽ, được thiết kế đặc biệt cho những người mới học PHP. Với cấu trúc rõ ràng, tài liệu chi tiết và các ví dụ cụ thể, `phpure` là lựa chọn tuyệt vời để bạn hiểu cách hoạt động bên trong của một framework web trước khi chuyển sang các framework lớn hơn như Laravel.
+
+Những kiến thức bạn học được từ `phpure` sẽ là nền tảng vững chắc cho hành trình phát triển web của bạn, giúp bạn trở thành một lập trình viên PHP tốt hơn.
+
+Hãy tự tin khám phá, thử nghiệm và đóng góp cho `phpure` để cùng nhau xây dựng một cộng đồng học tập mạnh mẽ!
 
 ---
 
