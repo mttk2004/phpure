@@ -41,4 +41,18 @@ class Session
     {
         session_destroy();
     }
+
+    // Flash message
+    public static function flash(string $key, $message = null)
+    {
+        // Nếu chỉ lấy giá trị
+        if ($message === null) {
+            $value = self::get($key);
+            self::remove($key);
+            return $value;
+        }
+
+        // Nếu thiết lập giá trị
+        self::set($key, $message);
+    }
 }
