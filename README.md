@@ -7,48 +7,48 @@ phpure là một framework MVC đơn giản được viết bằng PHP để gi�
 
 ## **Gặp Gỡ `phpure`** ✌️
 
-Trong quá trình phát triển ứng dụng web, bạn sẽ nhanh chóng nhận ra rằng việc tổ chức mã nguồn 
-một cách có cấu trúc là điều không thể thiếu. Ban đầu, bạn có thể bắt đầu với những file PHP đơn 
-giản, nhưng khi ứng dụng của bạn lớn dần, mã nguồn sẽ trở nên khó kiểm soát, khó bảo trì và dễ 
-xảy ra lỗi. Đây chính là lý do tại sao bạn cần một framework. Framework không chỉ cung cấp cho 
-bạn một bộ công cụ sẵn có để xử lý những công việc thường gặp, mà còn giúp bạn tuân theo các 
-nguyên tắc thiết kế phần mềm tốt như mô hình MVC (Model-View-Controller). Nếu không sử dụng một 
-framework ngay từ đầu, rất có thể bạn sẽ tự mình xây dựng một hệ thống tương tự để giải quyết các 
-vấn đề tổ chức và tái sử dụng mã nguồn – về bản chất, bạn đang tự tạo ra framework của riêng 
+Trong quá trình phát triển ứng dụng web, bạn sẽ nhanh chóng nhận ra rằng việc tổ chức mã nguồn
+một cách có cấu trúc là điều không thể thiếu. Ban đầu, bạn có thể bắt đầu với những file PHP đơn
+giản, nhưng khi ứng dụng của bạn lớn dần, mã nguồn sẽ trở nên khó kiểm soát, khó bảo trì và dễ
+xảy ra lỗi. Đây chính là lý do tại sao bạn cần một framework. Framework không chỉ cung cấp cho
+bạn một bộ công cụ sẵn có để xử lý những công việc thường gặp, mà còn giúp bạn tuân theo các
+nguyên tắc thiết kế phần mềm tốt như mô hình MVC (Model-View-Controller). Nếu không sử dụng một
+framework ngay từ đầu, rất có thể bạn sẽ tự mình xây dựng một hệ thống tương tự để giải quyết các
+vấn đề tổ chức và tái sử dụng mã nguồn – về bản chất, bạn đang tự tạo ra framework của riêng
 mình.
 
-Ngoài kia, có rất nhiều framework PHP mạnh mẽ như Laravel, Symfony, CodeIgniter, Zend, Yii và nhiều 
-framework khác nữa. Những công cụ này mang đến vô vàn tính năng hữu ích, giúp việc phát triển ứng 
-dụng web trở nên nhanh chóng và dễ dàng hơn bao giờ hết. Tuy nhiên, đối với những người mới bắt đầu 
-học PHP, việc tiếp cận các framework lớn thường là một thử thách không nhỏ. Các khái niệm phức tạp 
-và hệ thống tính năng đồ sộ đôi khi có thể khiến họ cảm thấy choáng ngợp, thậm chí làm giảm hứng thú 
-học tập. Bản thân tôi cũng từng trải qua cảm giác này khi lần đầu làm quen với 
-[Laravel](https://laravel.com). Với một người mới như tôi thời điểm đó, Laravel dường như là một thế 
+Ngoài kia, có rất nhiều framework PHP mạnh mẽ như Laravel, Symfony, CodeIgniter, Zend, Yii và nhiều
+framework khác nữa. Những công cụ này mang đến vô vàn tính năng hữu ích, giúp việc phát triển ứng
+dụng web trở nên nhanh chóng và dễ dàng hơn bao giờ hết. Tuy nhiên, đối với những người mới bắt đầu
+học PHP, việc tiếp cận các framework lớn thường là một thử thách không nhỏ. Các khái niệm phức tạp
+và hệ thống tính năng đồ sộ đôi khi có thể khiến họ cảm thấy choáng ngợp, thậm chí làm giảm hứng thú
+học tập. Bản thân tôi cũng từng trải qua cảm giác này khi lần đầu làm quen với
+[Laravel](https://laravel.com). Với một người mới như tôi thời điểm đó, Laravel dường như là một thế
 giới đầy "phép thuật" khó hiểu và đòi hỏi nhiều nỗ lực để chinh phục.
 
-Vào đầu năm 2025, khi bước vào học kỳ mới, tôi có cơ hội tham gia một môn học rất thú vị mang 
-tên "Lập trình Web và Ứng dụng nâng cao". Một trong những yêu cầu quan trọng của môn học là xây 
-dựng một ứng dụng web PHP thuần túy (Pure PHP) theo mô hình MVC mà không được sử dụng bất kỳ 
-framework lớn nào như Laravel. Đây là một bài tập có ý nghĩa nhằm giúp chúng tôi hiểu rõ cách 
-các thành phần của ứng dụng web hoạt động từ gốc rễ. Nhận thấy đây là cơ hội tuyệt vời để học hỏi và 
-thử nghiệm, tôi đã quyết định bắt tay vào phát triển `phpure` — **một framework PHP đơn giản, gọn 
-nhẹ nhưng đủ mạnh mẽ** để hỗ trợ người mới bắt đầu dễ dàng nắm bắt cách xây dựng ứng dụng web theo 
+Vào đầu năm 2025, khi bước vào học kỳ mới, tôi có cơ hội tham gia một môn học rất thú vị mang
+tên "Lập trình Web và Ứng dụng nâng cao". Một trong những yêu cầu quan trọng của môn học là xây
+dựng một ứng dụng web PHP thuần túy (Pure PHP) theo mô hình MVC mà không được sử dụng bất kỳ
+framework lớn nào như Laravel. Đây là một bài tập có ý nghĩa nhằm giúp chúng tôi hiểu rõ cách
+các thành phần của ứng dụng web hoạt động từ gốc rễ. Nhận thấy đây là cơ hội tuyệt vời để học hỏi và
+thử nghiệm, tôi đã quyết định bắt tay vào phát triển `phpure` — **một framework PHP đơn giản, gọn
+nhẹ nhưng đủ mạnh mẽ** để hỗ trợ người mới bắt đầu dễ dàng nắm bắt cách xây dựng ứng dụng web theo
 mô hình MVC.
 
-Tôi là [Mai Trần Tuấn Kiệt](https://github.com/mttk2004), một sinh viên chuyên ngành Phát triển Web, 
-và `phpure` chính là dự án mã nguồn mở đầu tay của tôi. Tôi rất vui mừng được chia sẻ dự án này với 
+Tôi là [Mai Trần Tuấn Kiệt](https://github.com/mttk2004), một sinh viên chuyên ngành Phát triển Web,
+và `phpure` chính là dự án mã nguồn mở đầu tay của tôi. Tôi rất vui mừng được chia sẻ dự án này với
 cộng đồng.
 
-Điều đặc biệt ở `phpure` là nó **được thiết kế hướng đến đối tượng người mới học**. Framework này 
-mang tính đơn giản, trực quan, dễ hiểu và dễ sử dụng. Nếu bạn đang tìm hiểu về PHP hoặc muốn 
-hiểu cách hoạt động của một ứng dụng web theo mô hình MVC, `phpure` chắc chắn sẽ là một công cụ 
-hữu ích. Hơn nữa, nếu sau này bạn có ý định học các framework lớn như Laravel, việc hiểu rõ cách 
+Điều đặc biệt ở `phpure` là nó **được thiết kế hướng đến đối tượng người mới học**. Framework này
+mang tính đơn giản, trực quan, dễ hiểu và dễ sử dụng. Nếu bạn đang tìm hiểu về PHP hoặc muốn
+hiểu cách hoạt động của một ứng dụng web theo mô hình MVC, `phpure` chắc chắn sẽ là một công cụ
+hữu ích. Hơn nữa, nếu sau này bạn có ý định học các framework lớn như Laravel, việc hiểu rõ cách
 vận hành của `phpure` sẽ giúp bạn có nền tảng vững chắc để tiếp cận những khái niệm nâng cao hơn.
-Thật vậy, `phpure` được **lấy cảm hứng từ cấu trúc của Laravel** nhưng được tối giản hóa để phù hợp 
-hơn với những người mới bắt đầu. Là một người yêu thích Laravel, tôi đã cố gắng mang những yếu tố 
+Thật vậy, `phpure` được **lấy cảm hứng từ cấu trúc của Laravel** nhưng được tối giản hóa để phù hợp
+hơn với những người mới bắt đầu. Là một người yêu thích Laravel, tôi đã cố gắng mang những yếu tố
 tinh tế nhất của framework này vào `phpure` để mang đến trải nghiệm học tập và lập trình tốt nhất.
 
-Không chỉ giới hạn ở các ứng dụng web đơn giản, `phpure` còn có **khả năng mở rộng và tùy chỉnh 
+Không chỉ giới hạn ở các ứng dụng web đơn giản, `phpure` còn có **khả năng mở rộng và tùy chỉnh
 linh hoạt** để phù hợp với nhu cầu phát triển của bạn. Tôi tin rằng, với một công cụ như `phpure`,
 hành trình học hỏi và xây dựng ứng dụng web của bạn sẽ trở nên dễ dàng và thú vị hơn rất nhiều.
 
@@ -135,6 +135,7 @@ DB_CHARSET=utf8mb4
 ```
 
 Một vài lưu ý quan trọng:
+
 - File `.env` chứa các thông tin nhạy cảm, như mật khẩu cơ sở dữ liệu, nên bạn cần bảo mật và tránh chia sẻ công khai.
 - `phpure` đã tự động thêm `.env` vào `.gitignore`, giúp bạn tránh tải file này lên GitHub.
 
@@ -148,7 +149,7 @@ Cấu hình của Phinx được lưu trong file `phinx.php`. Tuy nhiên, bạn 
 
 Phinx là một phần quan trọng trong việc quản lý cơ sở dữ liệu của `phpure`. Nó giúp tự động hóa quy trình, giảm thiểu các thao tác thủ công và đảm bảo tính nhất quán. Trong phần tiếp theo, chúng ta sẽ đi sâu hơn vào cách sử dụng Phinx để quản lý cơ sở dữ liệu hiệu quả.
 
---- 
+---
 
 Hoàn thành các bước trên, bạn đã sẵn sàng để bắt đầu hành trình phát triển với `phpure`! 🚀
 
@@ -156,13 +157,14 @@ Hoàn thành các bước trên, bạn đã sẵn sàng để bắt đầu hành
 
 Tiếp theo, hãy tìm hiểu cấu trúc thư mục của `phpure` để hiểu rõ hơn về cách tổ chức và quản lý dự án.
 
-Cấu trúc thư mục của **phpure** được thiết kế nhằm **đảm bảo tính nhất quán, dễ hiểu, và khả năng 
-mở rộng tối ưu**. Mô hình MVC (Model-View-Controller) được áp dụng làm nền tảng, giúp tách biệt 
+Cấu trúc thư mục của **phpure** được thiết kế nhằm **đảm bảo tính nhất quán, dễ hiểu, và khả năng
+mở rộng tối ưu**. Mô hình MVC (Model-View-Controller) được áp dụng làm nền tảng, giúp tách biệt
 các thành phần xử lý logic, giao diện, và dữ liệu một cách rõ ràng. Điều này không chỉ giúp quản lý dự án hiệu quả mà còn tạo tiền đề để mở rộng khi ứng dụng phát triển.
 
 #### **Thư mục `app/`**
 
 Thư mục này chứa phần lớn logic ứng dụng. Các thành phần trong thư mục này bao gồm:
+
 - `Controllers/`: Chứa các lớp controller xử lý logic của ứng dụng, nhận yêu cầu từ người dùng, thực thi logic và trả về phản hồi.
 - `Listeners/`: Tập hợp các lớp lắng nghe và xử lý sự kiện do ứng dụng hoặc hệ thống kích hoạt.
 - `Middlewares/`: Chứa các lớp middleware để xử lý yêu cầu HTTP trước hoặc sau khi đến controller (như xác thực, kiểm tra quyền truy cập).
@@ -173,12 +175,13 @@ Thư mục này chứa phần lớn logic ứng dụng. Các thành phần trong
 #### **Thư mục `core/`**
 
 Đây là phần "xương sống" của framework, chứa các lớp cốt lõi:
+
 - `Http/`:
-    - `Middleware.php`: Quản lý và đăng ký các middleware.
-    - `Request.php`: Xử lý thông tin từ yêu cầu HTTP, bao gồm dữ liệu GET, POST và thông tin tiêu đề (headers).
-    - `Response.php`: Tạo phản hồi HTTP và gửi chúng đến trình duyệt người dùng.
-    - `ResponseCode.php`: Định nghĩa các mã trạng thái HTTP phổ biến như 200, 404, 500, ...
-    - `Router.php`: Hệ thống định tuyến, ánh xạ các yêu cầu URL đến controller và phương thức tương ứng.
+  - `Middleware.php`: Quản lý và đăng ký các middleware.
+  - `Request.php`: Xử lý thông tin từ yêu cầu HTTP, bao gồm dữ liệu GET, POST và thông tin tiêu đề (headers).
+  - `Response.php`: Tạo phản hồi HTTP và gửi chúng đến trình duyệt người dùng.
+  - `ResponseCode.php`: Định nghĩa các mã trạng thái HTTP phổ biến như 200, 404, 500, ...
+  - `Router.php`: Hệ thống định tuyến, ánh xạ các yêu cầu URL đến controller và phương thức tương ứng.
 - `App.php`: Lớp cốt lõi khởi động và quản lý toàn bộ ứng dụng, kết nối các thành phần với nhau.
 - `Controller.php`: Lớp cơ sở cho tất cả các controller, cung cấp các chức năng cơ bản như render view.
 - `Database.php`: Quản lý kết nối cơ sở dữ liệu, thực hiện các truy vấn SQL và xử lý dữ liệu.
@@ -192,29 +195,37 @@ Thư mục này chứa phần lớn logic ứng dụng. Các thành phần trong
 - `Validation.php`: Quản lý và thực thi kiểm tra dữ liệu đầu vào (validation).
 
 #### **Thư mục `database/`**
+
 - `migrations/`: Chứa các file quản lý thay đổi cấu trúc cơ sở dữ liệu (migration), cho phép áp dụng hoặc hoàn tác các thay đổi.
 - `seeds/`: Chứa các file seeding, dùng để tạo dữ liệu mẫu hoặc dữ liệu mặc định cho ứng dụng.
 
 #### **Thư mục `public/`**
+
 Thư mục này chứa các tệp công khai có thể truy cập từ trình duyệt:
+
 - `assets/`: Chứa tài nguyên tĩnh như CSS, JS, và hình ảnh.
 - `index.php`: Điểm vào chính của ứng dụng, nhận và chuyển hướng tất cả các yêu cầu tới hệ thống định tuyến.
 
 #### **Thư mục `resources/`**
+
 Tập trung vào giao diện và tài nguyên giao diện của ứng dụng:
+
 - `css/input.css`: Tệp CSS tùy chỉnh, dùng để định nghĩa giao diện.
 - `js/app.js`: Tệp JavaScript tùy chỉnh, quản lý logic giao diện động.
 - `views/`: Chứa các file giao diện (template/view), giúp tách biệt hoàn toàn logic và giao diện.
 
 #### **Thư mục `storage/`**
+
 - `cache/`: Chứa dữ liệu tạm thời hoặc cache được tạo bởi ứng dụng.
 - `logs/app.log`: Ghi log hoạt động của ứng dụng.
 - `uploads/`: Chứa các file người dùng tải lên.
 
 #### **Thư mục `utils/`**
+
 - `helpers.php`: Chứa các hàm tiện ích có thể tái sử dụng trên toàn bộ ứng dụng.
 
 #### **Các tệp cấu hình quan trọng**
+
 - `.env.example`: File mẫu chứa các cấu hình môi trường như thông tin cơ sở dữ liệu hoặc key bảo mật.
 - `.gitignore`: Quy định các file và thư mục không được theo dõi bởi Git.
 - `.htaccess`: File cấu hình Apache, chuyển hướng mọi yêu cầu đến `index.php`.
@@ -253,7 +264,7 @@ phpure/
 │   ├── Session.php            # Quản lý phiên làm việc (session) của người dùng.
 │   ├── Storage.php            # Quản lý lưu trữ file, như tải lên hoặc lưu cache.
 │   ├── Twig.php               # Tích hợp và quản lý template engine Twig.
-│   ├── Validation.php         # Quản lý và thực hiện kiểm tra dữ liệu (validation).
+│   ├── Validation.php         # Quản lý và thực thi kiểm tra dữ liệu (validation).
 ├── database/
 │   ├── migrations/            # Chứa các file quản lý thay đổi cấu trúc cơ sở dữ liệu (migration).
 │   ├── seeds/                 # Chứa các file tạo dữ liệu mẫu (seeding).
@@ -291,67 +302,66 @@ Tại thờ điểm này, có thể cấu trúc thư mục của `phpure` vẫn 
 
 ## **Tăng Tốc** 🤾
 
-Để thực sự hiểu rõ và tận dụng tối đa `phpure`, bạn cần hiểu rõ một số khái niệm cơ bản và cách 
+Để thực sự hiểu rõ và tận dụng tối đa `phpure`, bạn cần hiểu rõ một số khái niệm cơ bản và cách
 hoạt động của framework. Đầu tiên là **vòng đời của request**.
 
 ### **1. Luồng hoạt động và Mô hình MVC - Vòng đời của request** 🔄
 
- `phpure` hoạt động dựa trên mô hình MVC (Model-View-Controller), một kiến trúc phổ biến trong phát 
- triển web giúp tách biệt rõ ràng các phần của ứng dụng. **Model** chịu trách nhiệm quản lý dữ 
- liệu và logic nghiệp vụ, **View** quản lý giao diện người dùng, còn **Controller** là cầu nối 
- giữa Model và View, xử lý các yêu cầu từ người dùng và trả về phản hồiphù hợp.
+`phpure` hoạt động dựa trên mô hình MVC (Model-View-Controller), một kiến trúc phổ biến trong phát
+triển web giúp tách biệt rõ ràng các phần của ứng dụng. **Model** chịu trách nhiệm quản lý dữ
+liệu và logic nghiệp vụ, **View** quản lý giao diện người dùng, còn **Controller** là cầu nối
+giữa Model và View, xử lý các yêu cầu từ người dùng và trả về phản hồiphù hợp.
 
+#### **Tiếp nhận request:**
 
-#### **Tiếp nhận request:**  
+Mọi request từ trình duyệt được gửi đến file `index.php` trong thư mục `public`. Đây là điểm
+vào chính của ứng dụng. Tại đây, framework được khởi chạy thông qua phương thức
+`App::bootstrap()`, nơi các thành phần quan trọng như router, middleware, và session, ... được
+cấu hình.
 
-   Mọi request từ trình duyệt được gửi đến file `index.php` trong thư mục `public`. Đây là điểm 
-   vào chính của ứng dụng. Tại đây, framework được khởi chạy thông qua phương thức 
-   `App::bootstrap()`, nơi các thành phần quan trọng như router, middleware, và session, ... được 
-   cấu hình.
+#### **Router phân tích request:**
 
-#### **Router phân tích request:**  
+Sau khi khởi động, router chịu trách nhiệm ánh xạ URL từ request đến các route được định nghĩa
+trước trong file `routes.php`. Router kiểm tra xem URL yêu cầu có khớp với bất kỳ route nào đã
+đăng ký không. Nếu không tìm thấy, nó sẽ trả về lỗi 404.
 
-   Sau khi khởi động, router chịu trách nhiệm ánh xạ URL từ request đến các route được định nghĩa 
-   trước trong file `routes.php`. Router kiểm tra xem URL yêu cầu có khớp với bất kỳ route nào đã 
-   đăng ký không. Nếu không tìm thấy, nó sẽ trả về lỗi 404.
+#### **Xử lý middleware:**
 
-#### **Xử lý middleware:**  
+Trước khi router gọi controller, middleware được kích hoạt nếu như route có gắn middlware.
+Middleware là các lớp xử lý trung gian, dùng để kiểm tra hoặc thay đổi request trước khi chuyển
+tiếp. Ví dụ, middleware có thể kiểm tra xem người dùng đã đăng nhập chưa (auth) hoặc đảm bảo rằng
+chỉ khách chưa đăng nhập mới có thể truy cập một số trang nhất định (guest). Nếu middleware phát
+hiện lỗi, request sẽ bị dừng lại và trả về phản hồi ngay tại đó.
 
-   Trước khi router gọi controller, middleware được kích hoạt nếu như route có gắn middlware. 
-   Middleware là các lớp xử lý trung gian, dùng để kiểm tra hoặc thay đổi request trước khi chuyển 
-   tiếp. Ví dụ, middleware có thể kiểm tra xem người dùng đã đăng nhập chưa (auth) hoặc đảm bảo rằng 
-   chỉ khách chưa đăng nhập mới có thể truy cập một số trang nhất định (guest). Nếu middleware phát 
-   hiện lỗi, request sẽ bị dừng lại và trả về phản hồi ngay tại đó.
+#### **Gọi controller:**
 
-#### **Gọi controller:**  
+Sau khi vượt qua middleware, router gọi controller được chỉ định cùng với action (phương thức cụ
+thể). Controller nhận các thông tin từ request, xử lý logic nghiệp vụ, và chuẩn bị dữ liệu để
+truyền cho View. Ví dụ, một controller có thể lấy dữ liệu người dùng từ cơ sở dữ liệu hoặc kiểm
+tra điều kiện nghiệp vụ trước khi tiếp tục.
 
-   Sau khi vượt qua middleware, router gọi controller được chỉ định cùng với action (phương thức cụ 
-   thể). Controller nhận các thông tin từ request, xử lý logic nghiệp vụ, và chuẩn bị dữ liệu để 
-   truyền cho View. Ví dụ, một controller có thể lấy dữ liệu người dùng từ cơ sở dữ liệu hoặc kiểm 
-   tra điều kiện nghiệp vụ trước khi tiếp tục.
+#### **Kết nối với View thông qua Twig:**
 
-#### **Kết nối với View thông qua Twig:**  
+Sau khi xử lý, controller thường kết thúc bằng việc gọi một template để hiển thị giao diện.
+`phpure` sử dụng Twig, một công cụ template mạnh mẽ, để kết hợp dữ liệu từ controller và các
+template HTML đã định nghĩa. Twig cung cấp nhiều tính năng hữu ích như vòng lặp, kiểm tra điều
+kiện, và kế thừa layout, giúp việc xây dựng giao diện dễ dàng và linh hoạt.
 
-   Sau khi xử lý, controller thường kết thúc bằng việc gọi một template để hiển thị giao diện. 
-   `phpure` sử dụng Twig, một công cụ template mạnh mẽ, để kết hợp dữ liệu từ controller và các 
-   template HTML đã định nghĩa. Twig cung cấp nhiều tính năng hữu ích như vòng lặp, kiểm tra điều 
-   kiện, và kế thừa layout, giúp việc xây dựng giao diện dễ dàng và linh hoạt.
+#### **Trả về response:**
 
-#### **Trả về response:**  
-
-   Sau khi Twig tạo ra giao diện hoàn chỉnh (HTML), framework gửi nội dung đó trở lại trình duyệt 
-   dưới dạng response. Người dùng sẽ thấy trang web được hiển thị, hoàn chỉnh với dữ liệu đã được 
-   xử lý từ controller.
+Sau khi Twig tạo ra giao diện hoàn chỉnh (HTML), framework gửi nội dung đó trở lại trình duyệt
+dưới dạng response. Người dùng sẽ thấy trang web được hiển thị, hoàn chỉnh với dữ liệu đã được
+xử lý từ controller.
 
 #### **Tóm lại**
 
-Vòng đời của một request trong `phpure` bao gồm các bước từ tiếp nhận URL, phân tích và ánh xạ 
-route, kiểm tra middleware, xử lý logic trong controller, và cuối cùng là render giao diện thông 
-qua Twig. Kiến trúc MVC đảm bảo mỗi phần của ứng dụng có nhiệm vụ rõ ràng, giúp mã nguồn dễ hiểu, 
-dễ bảo trì và mở rộng. Với luồng hoạt động mạch lạc này, ngay cả người mới bắt đầu cũng có thể 
+Vòng đời của một request trong `phpure` bao gồm các bước từ tiếp nhận URL, phân tích và ánh xạ
+route, kiểm tra middleware, xử lý logic trong controller, và cuối cùng là render giao diện thông
+qua Twig. Kiến trúc MVC đảm bảo mỗi phần của ứng dụng có nhiệm vụ rõ ràng, giúp mã nguồn dễ hiểu,
+dễ bảo trì và mở rộng. Với luồng hoạt động mạch lạc này, ngay cả người mới bắt đầu cũng có thể
 nhanh chóng hiểu được cách ứng dụng hoạt động và bắt tay vào phát triển các tính năng mới.
 
-Tôi khuyên bạn nên đọc qua mã nguồn của `phpure` để hiểu rõ hơn về cách hoạt động của framework. 
+Tôi khuyên bạn nên đọc qua mã nguồn của `phpure` để hiểu rõ hơn về cách hoạt động của framework.
 Đây là cách tốt nhất để học hỏi và nắm vững kiến thức.
 
 ### **2. Các chức năng cốt lõi** 🎯
@@ -359,7 +369,7 @@ Tôi khuyên bạn nên đọc qua mã nguồn của `phpure` để hiểu rõ h
 #### **Routing**
 
 Routing là một phần quan trọng trong việc xác định cách ứng dụng xử lý các yêu cầu từ người dùng.
-`phpure` sử dụng router để ánh xạ URL đến các controller và action tương ứng. Tất cả các route của 
+`phpure` sử dụng router để ánh xạ URL đến các controller và action tương ứng. Tất cả các route của
 ứng dụng được định nghĩa trong file `app/routes.php`. Để định nghĩa một route, bạn
 cần chỉ định URL, phương thức HTTP, controller và action tương ứng. Dưới đây là một ví dụ:
 
@@ -377,12 +387,12 @@ $router->get('', ['HomeController', 'index']); // Thêm dòng này
 $router->dispatch();
 ```
 
-Khi dòng `$router->get('', ['HomeController', 'index']);` được thêm vào, nó sẽ ánh xạ URL rỗng 
-(`/`) đến phương thức `index` của controller `HomeController`. Điều này có nghĩa 
-là khi người dùng truy cập trang chủ của ứng dụng, controller `HomeController` sẽ được gọi và 
+Khi dòng `$router->get('', ['HomeController', 'index']);` được thêm vào, nó sẽ ánh xạ URL rỗng
+(`/`) đến phương thức `index` của controller `HomeController`. Điều này có nghĩa
+là khi người dùng truy cập trang chủ của ứng dụng, controller `HomeController` sẽ được gọi và
 phương thức `index` sẽ được thực thi.
 
-Một số phương thức routing phổ biến khác được tích hợp trong `phpure` bao gồm `post`, `put`, 
+Một số phương thức routing phổ biến khác được tích hợp trong `phpure` bao gồm `post`, `put`,
 `patch`, `delete`, ... để xử lý các HTTP request khác nhau. `phpure` cũng hỗ trợ định nghĩa route
 với tham số động, giúp xử lý các URL động một cách dễ dàng. Ví dụ `'/posts/{id}'` sẽ ánh xạ
 URL `/posts/1`, `/posts/2`, ... đến cùng một controller và action nhưng với tham số `id` khác nhau,
@@ -403,11 +413,390 @@ tác vụ trước khi xử lý logic chính. Ví dụ:
 $router->get('/admin', ['AdminController', 'index'], ['auth']);
 ```
 
-Trong đoạn mã trên, middleware `auth` sẽ được kích hoạt trước khi yêu cầu đến controller 
+Trong đoạn mã trên, middleware `auth` sẽ được kích hoạt trước khi yêu cầu đến controller
 `AdminController`. Middleware này có thể kiểm tra xem người dùng đã đăng nhập chưa, nếu chưa sẽ
 chuyển hướng người dùng đến trang đăng nhập. Nếu đã đăng nhập, yêu cầu sẽ được chuyển tiếp đến
 controller để xử lý.
 
+#### **Database và ORM** 💾
+
+`phpure` cung cấp lớp `Database` để tương tác với cơ sở dữ liệu một cách đơn giản và hiệu quả. Lớp này được lấy cảm hứng từ Query Builder của Laravel nhưng được đơn giản hóa để dễ hiểu hơn. Dưới đây là một số ví dụ về cách sử dụng:
+
+```php
+// Lấy tất cả bản ghi từ bảng users
+$users = Database::table('users')->get();
+
+// Lấy người dùng có id = 1
+$user = Database::table('users')->where('id', '=', 1)->first();
+
+// Thêm người dùng mới
+Database::table('users')->insert([
+    'name' => 'Người dùng mới',
+    'email' => 'user@example.com',
+    'password' => password_hash('password', PASSWORD_DEFAULT)
+]);
+
+// Cập nhật thông tin người dùng
+Database::table('users')
+        ->where('id', '=', 1)
+        ->update(['name' => 'Tên mới']);
+
+// Xóa người dùng
+Database::table('users')
+        ->where('id', '=', 1)
+        ->delete();
+```
+
+Ngoài ra, `phpure` còn cung cấp lớp `Model` trừu tượng để bạn có thể tạo các model tương ứng với bảng trong cơ sở dữ liệu. Ví dụ:
+
+```php
+<?php
+
+namespace App\Models;
+
+use Core\Model;
+
+class User extends Model
+{
+    protected string $table = 'users';
+    protected bool $softDelete = true; // Hỗ trợ xóa mềm
+}
+```
+
+Sau khi định nghĩa model, bạn có thể sử dụng nó để tương tác với cơ sở dữ liệu:
+
+```php
+// Lấy tất cả người dùng
+$users = User::all();
+
+// Tìm người dùng theo ID
+$user = User::find(1);
+
+// Thêm người dùng mới
+$user = new User();
+$user->create([
+    'name' => 'Người dùng mới',
+    'email' => 'user@example.com',
+    'password' => password_hash('password', PASSWORD_DEFAULT)
+]);
+
+// Cập nhật thông tin
+$user->update(['name' => 'Tên mới'], 1);
+
+// Xóa người dùng
+$user->delete(1);
+```
+
+Đặc biệt, lớp `Model` còn hỗ trợ các mối quan hệ giữa các bảng như One-to-One, One-to-Many và Many-to-Many:
+
+```php
+// Định nghĩa quan hệ trong model User
+public function posts()
+{
+    return $this->hasMany(Post::class, 'user_id');
+}
+
+// Sử dụng quan hệ
+$user = User::find(1);
+$posts = $user->posts();
+```
+
+#### **Controllers** 🎮
+
+Các controller trong `phpure` kế thừa từ lớp `Controller` cơ sở và chịu trách nhiệm xử lý logic nghiệp vụ của ứng dụng. Ví dụ về một controller đơn giản:
+
+```php
+<?php
+
+namespace App\Controllers;
+
+use Core\Controller;
+use App\Models\User;
+
+class UserController extends Controller
+{
+    public function index()
+    {
+        $users = User::all();
+
+        $this->render('users/index', [
+            'users' => $users
+        ]);
+    }
+
+    public function show($id)
+    {
+        $user = User::find($id);
+
+        if (!$user) {
+            abort(404);
+        }
+
+        $this->render('users/show', [
+            'user' => $user
+        ]);
+    }
+
+    public function create()
+    {
+        $this->render('users/create');
+    }
+
+    public function store()
+    {
+        // Xử lý thêm người dùng mới
+    }
+}
+```
+
+#### **Validation** ✅
+
+`phpure` tích hợp thư viện [Respect/Validation](https://respect-validation.readthedocs.io/) để hỗ trợ việc kiểm tra dữ liệu đầu vào một cách đơn giản và mạnh mẽ. Dưới đây là một ví dụ về cách sử dụng:
+
+```php
+<?php
+
+namespace App\Controllers;
+
+use Core\Controller;
+use Core\Validation;
+use Respect\Validation\Validator as v;
+
+class AuthController extends Controller
+{
+    public function register()
+    {
+        $this->render('auth/register');
+    }
+
+    public function postRegister()
+    {
+        $validation = new Validation;
+
+        $validation->validate([
+            'name' => v::notEmpty()->length(2, 50),
+            'email' => v::notEmpty()->email(),
+            'password' => v::notEmpty()->length(8, null)
+        ]);
+
+        if ($validation->failed()) {
+            $this->render('auth/register', [
+                'errors' => $validation->getErrors()
+            ]);
+            return;
+        }
+
+        // Xử lý đăng ký
+    }
+}
+```
+
+#### **Template Engine (Twig)** 🖌️
+
+`phpure` sử dụng [Twig](https://twig.symfony.com/) làm template engine mặc định. Twig cung cấp một cú pháp đơn giản và mạnh mẽ để tạo các view. Ví dụ về một file template Twig:
+
+```twig
+{# resources/views/users/index.html.twig #}
+{% extends 'layouts/app.html.twig' %}
+
+{% block content %}
+    <h1>Danh sách người dùng</h1>
+
+    <ul>
+        {% for user in users %}
+            <li>{{ user.name }} - {{ user.email }}</li>
+        {% else %}
+            <li>Không có người dùng nào.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+```
+
+Trong controller, bạn có thể render view và truyền dữ liệu như sau:
+
+```php
+$this->render('users/index', [
+    'users' => $users
+]);
+```
+
+#### **Migrations và Seeds** 🌱
+
+`phpure` sử dụng [Phinx](https://phinx.org/) để quản lý migrations và seeds. Đây là một cách hiệu quả để quản lý cấu trúc cơ sở dữ liệu và dữ liệu mẫu.
+
+##### **Tạo migration mới**
+
+```bash
+vendor/bin/phinx create CreateUsersTable
+```
+
+Sau đó, bạn có thể định nghĩa cấu trúc bảng trong file migration:
+
+```php
+<?php
+
+use Phinx\Migration\AbstractMigration;
+
+class CreateUsersTable extends AbstractMigration
+{
+    public function change()
+    {
+        $table = $this->table('users');
+        $table->addColumn('name', 'string', ['limit' => 50])
+              ->addColumn('email', 'string', ['limit' => 100])
+              ->addColumn('password', 'string')
+              ->addColumn('created_at', 'datetime')
+              ->addColumn('updated_at', 'datetime', ['null' => true])
+              ->addColumn('deleted_at', 'datetime', ['null' => true])
+              ->addIndex(['email'], ['unique' => true])
+              ->create();
+    }
+}
+```
+
+##### **Chạy migrations**
+
+```bash
+vendor/bin/phinx migrate
+```
+
+##### **Tạo seeder**
+
+```bash
+vendor/bin/phinx seed:create UserSeeder
+```
+
+Định nghĩa dữ liệu mẫu trong seeder:
+
+```php
+<?php
+
+use Phinx\Seed\AbstractSeed;
+
+class UserSeeder extends AbstractSeed
+{
+    public function run()
+    {
+        $faker = \Faker\Factory::create();
+        $data = [];
+
+        for ($i = 0; $i < 10; $i++) {
+            $data[] = [
+                'name' => $faker->name,
+                'email' => $faker->email,
+                'password' => password_hash('password', PASSWORD_DEFAULT),
+                'created_at' => date('Y-m-d H:i:s')
+            ];
+        }
+
+        $this->table('users')
+             ->insert($data)
+             ->saveData();
+    }
+}
+```
+
+##### **Chạy seeds**
+
+```bash
+vendor/bin/phinx seed:run
+```
+
+#### **Middleware** 🔄
+
+Middleware là một lớp xử lý trung gian giữa request và response, có thể được sử dụng để kiểm tra quyền truy cập, xác thực người dùng, và nhiều tác vụ khác. Ví dụ về một middleware đơn giản:
+
+```php
+<?php
+
+namespace App\Middlewares;
+
+use Core\Http\Middleware;
+use Core\Session;
+
+class AuthMiddleware extends Middleware
+{
+    public function handle(): bool
+    {
+        if (!Session::has('user_id')) {
+            redirect('/login');
+            return false;
+        }
+
+        return true;
+    }
+}
+```
+
+Để sử dụng middleware, bạn cần đăng ký nó trong file `core/Http/Middleware.php` và sau đó gắn nó vào route:
+
+```php
+// Đăng ký middleware
+Middleware::register('auth', \App\Middlewares\AuthMiddleware::class);
+
+// Sử dụng middleware trong route
+$router->get('/admin', ['AdminController', 'index'])->middleware('auth');
+```
+
+#### **Events và Listeners** 📢
+
+`phpure` hỗ trợ hệ thống sự kiện (events) và người lắng nghe sự kiện (listeners). Điều này cho phép bạn tách biệt các thành phần của ứng dụng và tăng tính bảo trì.
+
+```php
+// Đăng ký event và listener trong file app/events.php
+<?php
+
+use Core\Event;
+
+// Đăng ký các events và listeners
+Event::listen('user.registered', \App\Listeners\SendWelcomeEmail::class);
+```
+
+Kích hoạt event từ controller:
+
+```php
+Event::fire('user.registered', ['user' => $user]);
+```
+
+Định nghĩa listener:
+
+```php
+<?php
+
+namespace App\Listeners;
+
+class SendWelcomeEmail
+{
+    public function handle($data)
+    {
+        $user = $data['user'];
+        // Gửi email chào mừng
+    }
+}
+```
+
+## **Đóng Góp** 💪
+
+Tôi rất hoan nghênh mọi đóng góp cho `phpure`. Nếu bạn có ý tưởng, tính năng mới, hoặc phát hiện lỗi, vui lòng tạo issue hoặc pull request trên GitHub.
+
+### **Quy Trình Đóng Góp**
+
+1. Fork dự án
+2. Tạo branch mới (`git checkout -b feature/amazing-feature`)
+3. Commit các thay đổi của bạn (`git commit -m 'Add some amazing feature'`)
+4. Push lên branch (`git push origin feature/amazing-feature`)
+5. Mở Pull Request
+
+## **Giấy Phép** 📄
+
+`phpure` được phát hành dưới giấy phép MIT. Xem file [LICENSE](LICENSE) để biết thêm chi tiết.
+
+## **Liên Hệ** 📧
+
+Mai Trần Tuấn Kiệt - [mttk2004@hotmail.com](mailto:mttk2004@hotmail.com)
+
+Project Link: [https://github.com/mttk2004/phpure](https://github.com/mttk2004/phpure)
+
 ---
 
-_Last updated: January 14, 2025_
+_Last updated: April 03, 2025_

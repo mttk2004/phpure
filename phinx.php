@@ -3,7 +3,7 @@
 /**
  * Cấu hình kết nối database cho Phinx
  *
- * CHÚ Ý: ĐỪNG SỬA FILE NÀY.
+ * CHÚ Ý: KHÔNG SỬA FILE NÀY.
  * NẾU CẦN THAY ĐỔI CẤU HÌNH, HÃY SỬA FILE .ENV
  */
 
