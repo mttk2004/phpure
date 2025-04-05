@@ -728,7 +728,7 @@ class AuthMiddleware extends Middleware
 }
 ```
 
-Để sử dụng middleware, bạn cần đăng ký nó trong file `core/Http/Middleware.php` và sau đó gắn nó vào route:
+Để sử dụng middleware, bạn cần đăng ký nó trong file `core/Http/Middleware.php` và sau đó sử dụng nó trong route:
 
 ```php
 // Đăng ký middleware
@@ -1481,4 +1481,4 @@ Hãy tự tin khám phá, thử nghiệm và đóng góp cho `phpure` để cùn
 
 ---
 
-_Last updated: April 03, 2025_
+_Last updated: April 05, 2025_

@@ -10,4 +10,6 @@ package-lock.json
 storage/cache/*
 storage/logs/*
 storage/uploads/*
+public/assets/*
+public/storage/*
 .php-cs-fixer.cache
