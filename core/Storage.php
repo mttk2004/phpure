@@ -12,7 +12,7 @@ class Storage
         $directory = self::$uploadDir . dirname($path);
 
         // Tạo thư mục nếu chưa tồn tại
-        if (!is_dir($directory)) {
+        if (! is_dir($directory)) {
             mkdir($directory, 0777, true);
         }
 
@@ -28,7 +28,7 @@ class Storage
     {
         $filePath = self::$uploadDir . $path;
 
-        if (!file_exists($filePath)) {
+        if (! file_exists($filePath)) {
             throw new \Exception("File not found: $path");
         }
 
@@ -52,7 +52,7 @@ class Storage
     {
         $dir = self::$uploadDir . $directory;
 
-        if (!is_dir($dir)) {
+        if (! is_dir($dir)) {
             return [];
         }
 

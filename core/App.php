@@ -2,7 +2,6 @@
 
 namespace Core;
 
-use Core\Http\Router;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
 

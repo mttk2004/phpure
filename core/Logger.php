@@ -2,8 +2,8 @@
 
 namespace Core;
 
-use Monolog\Logger as MonologLogger;
 use Monolog\Handler\StreamHandler;
+use Monolog\Logger as MonologLogger;
 
 class Logger
 {

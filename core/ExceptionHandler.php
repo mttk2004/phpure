@@ -2,8 +2,6 @@
 
 namespace Core;
 
-use Exception;
-
 class ExceptionHandler
 {
     public static function register(): void
@@ -18,7 +16,7 @@ class ExceptionHandler
         Logger::error($exception->getMessage(), [
             'file' => $exception->getFile(),
             'line' => $exception->getLine(),
-            'trace' => $exception->getTraceAsString()
+            'trace' => $exception->getTraceAsString(),
         ]);
 
         // Hiển thị trang lỗi

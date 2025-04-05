@@ -3,8 +3,8 @@
 namespace Core;
 
 use Twig\Environment;
-use Twig\TwigFunction;
 use Twig\Loader\FilesystemLoader;
+use Twig\TwigFunction;
 
 class Twig
 {

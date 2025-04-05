@@ -49,6 +49,7 @@ class Session
         if ($message === null) {
             $value = self::get($key);
             self::remove($key);
+
             return $value;
         }
 

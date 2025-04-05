@@ -1,5 +1,6 @@
 .idea
 .vscode
+.cursor
 node_modules
 dist
 vendor
@@ -9,3 +10,4 @@ package-lock.json
 storage/cache/*
 storage/logs/*
 storage/uploads/*
+.php-cs-fixer.cache

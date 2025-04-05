@@ -119,7 +119,7 @@ class Database
     public static function count(): int
     {
         $sql = "SELECT COUNT(*) as count FROM " . self::$table;
-        if (!empty(self::$queryParts['where'])) {
+        if (! empty(self::$queryParts['where'])) {
             $sql .= " WHERE " . implode(' AND ', self::$queryParts['where']);
         }
 
@@ -144,10 +144,10 @@ class Database
     // Cập nhật dữ liệu
     public static function update(array $data): bool
     {
-        $set = implode(', ', array_map(fn($key) => "$key = ?", array_keys($data)));
+        $set = implode(', ', array_map(fn ($key) => "$key = ?", array_keys($data)));
         $sql = "UPDATE " . self::$table . " SET $set";
 
-        if (!empty(self::$queryParts['where'])) {
+        if (! empty(self::$queryParts['where'])) {
             $sql .= " WHERE " . implode(' AND ', self::$queryParts['where']);
         }
 
@@ -160,7 +160,7 @@ class Database
     public static function delete(): bool
     {
         $sql = "DELETE FROM " . self::$table;
-        if (!empty(self::$queryParts['where'])) {
+        if (! empty(self::$queryParts['where'])) {
             $sql .= " WHERE " . implode(' AND ', self::$queryParts['where']);
         }
 
@@ -173,13 +173,13 @@ class Database
     private static function buildQuery(): string
     {
         $sql = self::$queryParts['select'] ?? '';
-        if (!empty(self::$queryParts['where'])) {
+        if (! empty(self::$queryParts['where'])) {
             $sql .= " WHERE " . implode(' AND ', self::$queryParts['where']);
         }
-        if (!empty(self::$queryParts['orderBy'])) {
+        if (! empty(self::$queryParts['orderBy'])) {
             $sql .= " " . self::$queryParts['orderBy'];
         }
-        if (!empty(self::$queryParts['limit'])) {
+        if (! empty(self::$queryParts['limit'])) {
             $sql .= " " . self::$queryParts['limit'];
         }
 

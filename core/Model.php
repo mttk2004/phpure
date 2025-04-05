@@ -61,7 +61,7 @@ abstract class Model
 
         $record = $query->first();
 
-        if (!$record) {
+        if (! $record) {
             return null;
         }
 
@@ -77,7 +77,7 @@ abstract class Model
         $instance = new static();
 
         // Nếu không hỗ trợ Soft Deletes, báo lỗi
-        if (!$instance->softDelete) {
+        if (! $instance->softDelete) {
             throw new \Exception("Soft Deletes are not enabled for table '{$instance->table}'");
         }
 
@@ -123,7 +123,7 @@ abstract class Model
     // Khôi phục bản ghi
     public function restore(int $id): bool
     {
-        if (!$this->softDelete) {
+        if (! $this->softDelete) {
             throw new \Exception("Restore is not supported for table '{$this->table}'");
         }
 
@@ -143,7 +143,7 @@ abstract class Model
                           ->where($foreignKey, '=', $this->{$localKey})
                           ->first();
 
-        if (!$record) {
+        if (! $record) {
             return null;
         }
 

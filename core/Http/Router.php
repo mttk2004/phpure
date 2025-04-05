@@ -35,8 +35,9 @@ class Router
         $this->routes[] = [
                 'method' => strtoupper($method),
                 'path' => $path,
-                'handler' => $handler
+                'handler' => $handler,
         ];
+
         return $this; // Cho phép chaining
     }
 
@@ -44,6 +45,7 @@ class Router
     public function middleware(string $middleware): self
     {
         $this->middlewares[$this->currentRoute] = $middleware;
+
         return $this;
     }
 
@@ -58,13 +60,14 @@ class Router
                 // Xử lý middleware
                 if (isset($this->middlewares[$route['path']])) {
                     $middleware = $this->middlewares[$route['path']];
-                    if (!Middleware::resolve($middleware)) {
+                    if (! Middleware::resolve($middleware)) {
                         return;
                     }
                 }
 
                 // Xử lý controller và action
                 $this->callHandler($route['handler'], $this->extractParams($route['path'], $requestUri));
+
                 return;
             }
         }
@@ -76,6 +79,7 @@ class Router
     private function match(string $routePath, string $requestUri): bool
     {
         $routeRegex = preg_replace('/\{([a-zA-Z0-9_]+)\}/', '([a-zA-Z0-9_]+)', $routePath);
+
         return preg_match('#^' . $routeRegex . '$#', $requestUri);
     }
 
@@ -83,6 +87,7 @@ class Router
     {
         $routeRegex = preg_replace('/\{([a-zA-Z0-9_]+)\}/', '(?P<\1>[a-zA-Z0-9_]+)', $routePath);
         preg_match('#^' . $routeRegex . '$#', $requestUri, $matches);
+
         return array_filter($matches, 'is_string', ARRAY_FILTER_USE_KEY);
     }
 

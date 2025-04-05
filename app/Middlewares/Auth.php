@@ -8,7 +8,7 @@ class Auth
 {
     public function handle(): void
     {
-        if (!isset($_SESSION['user'])) {
+        if (! isset($_SESSION['user'])) {
             Logger::warning(
                 'Unauthorized access attempt detected.',
                 ['ip' => $_SERVER['REMOTE_ADDR']]

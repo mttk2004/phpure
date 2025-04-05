@@ -1,4 +1,5 @@
 <?php
+
 namespace Core;
 
 class Pagination
@@ -35,7 +36,7 @@ class Pagination
         $links[] = [
             'page' => 1,
             'url' => $this->buildUrl(1),
-            'active' => $this->currentPage === 1
+            'active' => $this->currentPage === 1,
         ];
 
         // Các trang ở giữa
@@ -46,7 +47,7 @@ class Pagination
             $links[] = [
                 'page' => $i,
                 'url' => $this->buildUrl($i),
-                'active' => $this->currentPage === $i
+                'active' => $this->currentPage === $i,
             ];
         }
 
@@ -55,7 +56,7 @@ class Pagination
             $links[] = [
                 'page' => $totalPages,
                 'url' => $this->buildUrl($totalPages),
-                'active' => $this->currentPage === $totalPages
+                'active' => $this->currentPage === $totalPages,
             ];
         }
 

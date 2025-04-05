@@ -11,7 +11,7 @@ class Event
      */
     public static function listen(string $event, string $listenerClass): void
     {
-        if (!class_exists($listenerClass)) {
+        if (! class_exists($listenerClass)) {
             throw new \Exception("Listener class '$listenerClass' not found.");
         }
 
@@ -23,14 +23,14 @@ class Event
      */
     public static function dispatch(string $event, ...$payload): void
     {
-        if (!isset(self::$listeners[$event])) {
+        if (! isset(self::$listeners[$event])) {
             return; // Không có listener nào cho sự kiện
         }
 
         foreach (self::$listeners[$event] as $listenerClass) {
             $listener = new $listenerClass();
 
-            if (!method_exists($listener, 'handle')) {
+            if (! method_exists($listener, 'handle')) {
                 throw new \Exception("Listener class '$listenerClass' must have a handle() method.");
             }
 

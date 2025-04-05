@@ -289,7 +289,7 @@ phpure/
 ├── LICENSE                    # File chứa thông tin bản quyền của dự án.
 ├── package.json               # File cấu hình npm, liệt kê các gói JavaScript phụ thuộc.
 ├── phinx.php                  # File cấu hình Phinx cho việc quản lý cơ sở dữ liệu.
-├── phpcs.xml                  # File cấu hình chuẩn mã nguồn PHP.
+├── .php-cs-fixer.dist.php     # File cấu hình PHP-CS-Fixer để đảm bảo chuẩn mã nguồn PHP.
 ├── postcss.config.js          # File cấu hình PostCSS.
 ├── README.md                  # Hướng dẫn sử dụng framework `phpure`.
 ├── tailwind.config.js         # File cấu hình Tailwind CSS.

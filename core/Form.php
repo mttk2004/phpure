@@ -1,4 +1,5 @@
 <?php
+
 namespace Core;
 
 class Form
@@ -8,6 +9,7 @@ class Form
     {
         $token = bin2hex(random_bytes(32));
         Session::set('csrf_token', $token);
+
         return $token;
     }
 
@@ -15,6 +17,7 @@ class Form
     public static function validateToken(string $token): bool
     {
         $csrfToken = Session::get('csrf_token');
+
         return $token === $csrfToken;
     }
 

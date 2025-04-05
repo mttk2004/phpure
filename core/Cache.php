@@ -1,4 +1,5 @@
 <?php
+
 namespace Core;
 
 class Cache
@@ -12,7 +13,7 @@ class Cache
         $expiration = time() + ($minutes * 60);
         $content = serialize([
             'expires' => $expiration,
-            'data' => $data
+            'data' => $data,
         ]);
 
         return file_put_contents($fileName, $content) !== false;
@@ -23,7 +24,7 @@ class Cache
     {
         $fileName = self::fileName($key);
 
-        if (!file_exists($fileName)) {
+        if (! file_exists($fileName)) {
             return $default;
         }
 
@@ -31,6 +32,7 @@ class Cache
 
         if (time() > $content['expires']) {
             self::delete($key);
+
             return $default;
         }
 
