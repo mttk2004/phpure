@@ -1,17 +1,16 @@
 {
-  "name": "phpure",
+  "name": "phpure-frontend",
   "version": "1.0.0",
-  "description": "phpure là một framework MVC đơn giản được viết bằng PHP để giúp người mới học và khám phá cách hoạt động bên trong của một ứng dụng web theo mô hình MVC.",
-  "main": "index.js",
+  "description": "Frontend build system for the phpure framework using Webpack, Tailwind CSS, and Alpine.js.",
   "scripts": {
     "dev": "webpack --mode development --watch",
     "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mttk2004/phpure.git"
+    "url": "https://github.com/mttk2004/phpure.git"
   },
-  "author": "Mai",
+  "author": "Mai Tran Tuan Kiet",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mttk2004/phpure/issues"
@@ -22,6 +21,7 @@
     "css-loader": "^7.1.2",
     "mini-css-extract-plugin": "^2.9.2",
     "postcss": "^8.4.49",
+    "postcss-loader": "^8.1.1",
     "style-loader": "^4.0.0",
     "tailwindcss": "^3.4.17",
     "webpack": "^5.97.1",
@@ -29,7 +29,6 @@
   },
   "dependencies": {
     "alpinejs": "^3.14.8",
-    "postcss-loader": "^8.1.1",
     "sweetalert2": "^11.15.10"
   }
 }
