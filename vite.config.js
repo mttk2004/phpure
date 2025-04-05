@@ -2,16 +2,14 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import legacy from '@vitejs/plugin-legacy';
 
-const projectRoot = resolve(__dirname, '..');
-
 export default defineConfig({
   build: {
-    outDir: resolve(projectRoot, 'public/assets'),
+    outDir: resolve(__dirname, 'public/assets'),
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        app: resolve(projectRoot, 'resources/js/app.js'),
-        styles: resolve(projectRoot, 'resources/css/input.css'),
+        app: resolve(__dirname, 'resources/js/app.js'),
+        styles: resolve(__dirname, 'resources/css/input.css'),
       },
       output: {
         entryFileNames: '[name].js',
@@ -27,7 +25,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': resolve(projectRoot, 'resources')
+      '@': resolve(__dirname, 'resources')
     }
   }
 });

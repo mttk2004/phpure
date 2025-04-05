@@ -3,9 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --config config/vite.config.js",
-    "build": "vite build --config config/vite.config.js",
-    "preview": "vite preview --config config/vite.config.js"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",
