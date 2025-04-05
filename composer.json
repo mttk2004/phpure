@@ -39,7 +39,12 @@
     "friendsofphp/php-cs-fixer": "^3.75"
   },
   "scripts": {
-    "format": "vendor/bin/php-cs-fixer fix",
-    "format-check": "vendor/bin/php-cs-fixer fix --dry-run --diff"
+    "format": "vendor/bin/php-cs-fixer fix --config=config/.php-cs-fixer.dist.php",
+    "format-check": "vendor/bin/php-cs-fixer fix --dry-run --diff --config=config/.php-cs-fixer.dist.php",
+    "migrate": "vendor/bin/phinx migrate",
+    "migrate:rollback": "vendor/bin/phinx rollback",
+    "migrate:status": "vendor/bin/phinx status",
+    "migrate:create": "vendor/bin/phinx create",
+    "db:seed": "vendor/bin/phinx seed:run"
   }
 }

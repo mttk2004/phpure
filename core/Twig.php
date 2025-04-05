@@ -8,46 +8,51 @@ use Twig\TwigFunction;
 
 class Twig
 {
-    private static ?Environment $instance = null;
+  private static ?Environment $instance = null;
 
-    public static function getInstance(): Environment
-    {
-        if (self::$instance === null) {
-            $loader = new FilesystemLoader(BASE_PATH . '/resources/views');
-            self::$instance = new Environment($loader, [
-                    'cache' => BASE_PATH . '/storage/cache',
-                    'auto_reload' => true,
-            ]);
+  public static function getInstance(): Environment
+  {
+    if (self::$instance === null) {
+      $loader = new FilesystemLoader(BASE_PATH . '/resources/views');
+      self::$instance = new Environment($loader, [
+        'cache' => BASE_PATH . '/storage/cache',
+        'auto_reload' => true,
+      ]);
 
-            // Thêm các hàm tiện ích
-            self::addHelpers();
-        }
-
-        return self::$instance;
+      // Thêm các hàm tiện ích
+      self::addHelpers();
     }
 
-    private static function addHelpers(): void
-    {
-        $instance = self::$instance;
+    return self::$instance;
+  }
 
-        // Thêm hàm asset
-        $instance->addFunction(new TwigFunction('asset', function ($path) {
-            return '/assets/' . ltrim($path, '/');
-        }));
+  private static function addHelpers(): void
+  {
+    $instance = self::$instance;
 
-        // Thêm hàm url
-        $instance->addFunction(new TwigFunction('url', function ($path) {
-            return '/' . ltrim($path, '/');
-        }));
+    // Thêm hàm asset
+    $instance->addFunction(new TwigFunction('asset', function ($path) {
+      return '/assets/' . ltrim($path, '/');
+    }));
 
-        // Thêm hàm session
-        $instance->addFunction(new TwigFunction('session', function ($key, $default = null) {
-            return Session::get($key, $default);
-        }));
+    // Thêm hàm url
+    $instance->addFunction(new TwigFunction('url', function ($path) {
+      return '/' . ltrim($path, '/');
+    }));
 
-        // Thêm hàm flash
-        $instance->addFunction(new TwigFunction('flash', function ($key) {
-            return Session::flash($key);
-        }));
-    }
+    // Thêm hàm session
+    $instance->addFunction(new TwigFunction('session', function ($key, $default = null) {
+      return Session::get($key, $default);
+    }));
+
+    // Thêm hàm flash
+    $instance->addFunction(new TwigFunction('flash', function ($key) {
+      return Session::flash($key);
+    }));
+
+    // Thêm hàm vite_assets
+    $instance->addFunction(new TwigFunction('vite_assets', function ($entry = 'resources/js/app.js') {
+      return vite_assets($entry);
+    }));
+  }
 }

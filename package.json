@@ -1,10 +1,11 @@
 {
-  "name": "phpure-frontend",
-  "version": "1.0.0",
-  "description": "Frontend build system for the phpure framework using Webpack, Tailwind CSS, and Alpine.js.",
+  "name": "phpure",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "webpack --mode development --watch",
-    "build": "webpack --mode production"
+    "dev": "vite --config config/vite.config.js",
+    "build": "vite build --config config/vite.config.js",
+    "preview": "vite preview --config config/vite.config.js"
   },
   "repository": {
     "type": "git",
@@ -17,18 +18,19 @@
   },
   "homepage": "https://github.com/mttk2004/phpure#readme",
   "devDependencies": {
-    "autoprefixer": "^10.4.20",
+    "@vitejs/plugin-legacy": "^5.3.0",
+    "autoprefixer": "^10.4.16",
     "css-loader": "^7.1.2",
     "mini-css-extract-plugin": "^2.9.2",
-    "postcss": "^8.4.49",
+    "postcss": "^8.4.32",
+    "postcss-import": "^16.1.0",
     "postcss-loader": "^8.1.1",
     "style-loader": "^4.0.0",
-    "tailwindcss": "^3.4.17",
-    "webpack": "^5.97.1",
-    "webpack-cli": "^6.0.1"
+    "tailwindcss": "^3.4.1",
+    "vite": "^5.0.0"
   },
   "dependencies": {
-    "alpinejs": "^3.14.8",
-    "sweetalert2": "^11.15.10"
+    "alpinejs": "^3.13.2",
+    "sweetalert2": "^11.10.5"
   }
 }

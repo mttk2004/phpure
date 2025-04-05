@@ -2,10 +2,11 @@
 
 $finder = PhpCsFixer\Finder::create()
   ->in([
-    __DIR__ . '/app',
-    __DIR__ . '/core',
-    __DIR__ . '/public',
-    __DIR__ . '/utils',
+    __DIR__ . '/../app',
+    __DIR__ . '/../core',
+    __DIR__ . '/../public',
+    __DIR__ . '/../utils',
+    __DIR__,
   ])
   ->name('*.php')
   ->notName('*.blade.php')
