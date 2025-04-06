@@ -29,11 +29,10 @@ Detailed documentation is available in the [docs](docs) directory:
 
 ```bash
 # Create new phpure project
-composer create-project mttk2004/phpure <project_name>
-cd <project_name>
+composer create-project mttk2004/phpure project_name
+cd project_name
 
 # Install dependencies
-composer install
 npm install
 
 # Configure your environment
