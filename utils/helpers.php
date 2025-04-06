@@ -126,7 +126,7 @@ function vite_assets($entry = 'resources/js/app.js'): string
   $isDev = getenv('APP_ENV') === 'local' || getenv('APP_ENV') === 'development';
   $devServerIsRunning = false;
 
-  // Kiểm tra xem Vite dev server có đang chạy không (trong môi trường phát triển)
+  // Kiểm tra xem Vite dev server có đang chạy không
   if ($isDev) {
     $handle = @fsockopen('localhost', 5173);
     $devServerIsRunning = $handle !== false;
@@ -142,10 +142,22 @@ function vite_assets($entry = 'resources/js/app.js'): string
             <script type="module" src="http://localhost:5173/$entry"></script>
         HTML;
   } else {
-    // Sử dụng các tệp đã được build
+    // Sử dụng các tệp đã được build (thêm kiểm tra xem tệp có tồn tại không)
+    $styles_path = BASE_PATH . '/public/assets/styles.css';
+    $script_path = BASE_PATH . '/public/assets/app.js';
+
+    // Kiểm tra xem các tệp đã được build chưa
+    if (!file_exists($styles_path) || !file_exists($script_path)) {
+      return '<div style="color: red; padding: 20px; font-family: sans-serif;">
+                <h2>Lỗi tài nguyên</h2>
+                <p>Các tệp tài nguyên chưa được build. Hãy chạy <code>npm run build</code> trước khi khởi động máy chủ.</p>
+                </div>';
+    }
+
+    $timestamp = time(); // Thêm timestamp để tránh cache
     return <<<HTML
-            <link rel="stylesheet" href="/assets/styles.css">
-            <script type="module" src="/assets/app.js"></script>
+            <link rel="stylesheet" href="/assets/styles.css?v=$timestamp">
+            <script type="module" src="/assets/app.js?v=$timestamp"></script>
         HTML;
   }
 }
