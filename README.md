@@ -43,6 +43,8 @@ cp .env.example .env
 npm run dev:all
 ```
 
+Open http://localhost:8000 to see the result!
+
 ## Notice
 
 This project includes Twig, a template engine licensed under the BSD-3-Clause license, not MIT. All other components of PHPure are licensed under MIT.
