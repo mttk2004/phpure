@@ -4,37 +4,49 @@ namespace Core\Http;
 
 class Request
 {
-    // Lấy dữ liệu từ input
+    /**
+     * Get data from input
+     */
     public static function input(string $key, $default = null)
     {
         return $_POST[$key] ?? $_GET[$key] ?? $default;
     }
 
-    // Lấy dữ liệu từ query string
+    /**
+     * Get data from query string
+     */
     public static function query(string $key, $default = null)
     {
         return $_GET[$key] ?? $default;
     }
 
-    // Lấy tất cả dữ liệu đã được gửi đến server
+    /**
+     * Get all data sent to the server
+     */
     public static function all(): array
     {
         return array_merge($_GET, $_POST);
     }
 
-    // Lấy phương thức yêu cầu
+    /**
+     * Get the request method
+     */
     public static function method(): string
     {
         return strtoupper($_SERVER['REQUEST_METHOD'] ?? 'GET');
     }
 
-    // Lấy URI
+    /**
+     * Get the URI
+     */
     public static function uri(): string
     {
         return $_SERVER['REQUEST_URI'] ?? '/';
     }
 
-    // Lấy dữ liệu đã được lọc
+    /**
+     * Get the sanitized data
+     */
     public static function sanitize(string $key, $default = null)
     {
         $value = self::input($key, $default);
@@ -45,14 +57,18 @@ class Request
         return $value;
     }
 
-    // Kiểm tra xem yêu cầu có phải là Ajax không
+    /**
+     * Check if the request is an Ajax request
+     */
     public static function isAjax(): bool
     {
         return isset($_SERVER['HTTP_X_REQUESTED_WITH']) &&
-               strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
+          strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
     }
 
-    // Lấy địa chỉ IP của người dùng
+    /**
+     * Get the IP address of the user
+     */
     public static function ip(): string
     {
         return $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';

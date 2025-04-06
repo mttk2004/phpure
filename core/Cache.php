@@ -4,90 +4,102 @@ namespace Core;
 
 class Cache
 {
-  private static string $cacheDir;
-  private static int $ttl;
+    private static string $cacheDir;
+    private static int $ttl;
 
-  // Khởi tạo cache
-  private static function init(): void
-  {
-    if (!isset(self::$cacheDir)) {
-      self::$cacheDir = config('cache.path', BASE_PATH . '/storage/cache/');
-      self::$ttl = config('cache.ttl', 60); // Mặc định 60 phút
-    }
-  }
-
-  // Lưu dữ liệu vào cache
-  public static function put(string $key, $data, ?int $minutes = null): bool
-  {
-    self::init();
-
-    $fileName = self::fileName($key);
-    $expiration = time() + (($minutes ?? self::$ttl) * 60);
-    $content = serialize([
-      'expires' => $expiration,
-      'data' => $data,
-    ]);
-
-    return file_put_contents($fileName, $content) !== false;
-  }
-
-  // Lấy dữ liệu từ cache
-  public static function get(string $key, $default = null)
-  {
-    self::init();
-
-    $fileName = self::fileName($key);
-
-    if (! file_exists($fileName)) {
-      return $default;
+    /**
+     * Initialize the cache configuration
+     */
+    private static function init(): void
+    {
+        if (! isset(self::$cacheDir)) {
+            self::$cacheDir = config('cache.path', BASE_PATH . '/storage/cache/');
+            self::$ttl = config('cache.ttl', 60); // Mặc định 60 phút
+        }
     }
 
-    $content = unserialize(file_get_contents($fileName));
+    /**
+     * Save data to cache
+     */
+    public static function put(string $key, $data, ?int $minutes = null): bool
+    {
+        self::init();
 
-    if (time() > $content['expires']) {
-      self::delete($key);
+        $fileName = self::fileName($key);
+        $expiration = time() + (($minutes ?? self::$ttl) * 60);
+        $content = serialize([
+          'expires' => $expiration,
+          'data' => $data,
+        ]);
 
-      return $default;
+        return file_put_contents($fileName, $content) !== false;
     }
 
-    return $content['data'];
-  }
+    /**
+     * Get data from cache
+     */
+    public static function get(string $key, $default = null)
+    {
+        self::init();
 
-  // Xóa cache
-  public static function delete(string $key): bool
-  {
-    self::init();
+        $fileName = self::fileName($key);
 
-    $fileName = self::fileName($key);
+        if (! file_exists($fileName)) {
+            return $default;
+        }
 
-    if (file_exists($fileName)) {
-      return unlink($fileName);
+        $content = unserialize(file_get_contents($fileName));
+
+        if (time() > $content['expires']) {
+            self::delete($key);
+
+            return $default;
+        }
+
+        return $content['data'];
     }
 
-    return false;
-  }
+    /**
+     * Delete cache
+     */
+    public static function delete(string $key): bool
+    {
+        self::init();
 
-  // Xóa tất cả cache
-  public static function flush(): bool
-  {
-    self::init();
+        $fileName = self::fileName($key);
 
-    $files = glob(self::$cacheDir . '*');
+        if (file_exists($fileName)) {
+            return unlink($fileName);
+        }
 
-    foreach ($files as $file) {
-      if (is_file($file)) {
-        unlink($file);
-      }
+        return false;
     }
 
-    return true;
-  }
+    /**
+     * Delete all cache
+     */
+    public static function flush(): bool
+    {
+        self::init();
 
-  // Tạo tên file cache
-  private static function fileName(string $key): string
-  {
-    self::init();
+        $files = glob(self::$cacheDir . '*');
 
-    return self::$cacheDir . md5($key);
-  }
+        foreach ($files as $file) {
+            if (is_file($file)) {
+                unlink($file);
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * Create a cache file name
+     */
+    private static function fileName(string $key): string
+    {
+        self::init();
+
+        return self::$cacheDir . md5($key);
+    }
 }

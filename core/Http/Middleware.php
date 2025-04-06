@@ -7,26 +7,30 @@ use App\Middlewares\Guest;
 
 class Middleware
 {
-    // Danh sách middleware có thể đăng ký
+    /**
+     * List of middleware classes that can be registered
+     */
     private const array MAP
         = [
-                'auth' => Auth::class,
-                'guest' => Guest::class,
-            // TODO: Add more middleware here as needed
+          'auth' => Auth::class,
+          'guest' => Guest::class,
+          // TODO: Add more middleware here as needed
         ];
 
-    // Xử lý Middleware
+    /**
+     * Process Middleware
+     */
     public static function resolve(string $key): bool
     {
-        // Kiểm tra middleware có tồn tại trong MAP không
+        // Check if the middleware exists in the MAP
         if (! isset(self::MAP[$key])) {
-            throw new \Exception("Middleware '$key' không tồn tại!");
+            throw new \Exception("Middleware '$key' does not exist!");
         }
 
-        // Sử dụng biến trung gian
-        $middlewareClass = self::MAP[$key];   // Trích xuất lớp từ MAP
-        $middleware = new $middlewareClass(); // Khởi tạo middleware
+        // Use a variable to store the middleware class
+        $middlewareClass = self::MAP[$key];   // Extract the class from the MAP
+        $middleware = new $middlewareClass(); // Initialize the middleware
 
-        return $middleware->handle();         // Thực thi middleware
+        return $middleware->handle();         // Execute the middleware
     }
 }

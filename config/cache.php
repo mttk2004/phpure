@@ -1,42 +1,42 @@
 <?php
 
 /**
- * Cấu hình hệ thống cache
+ * The configuration file for the cache system.
  *
- * File này chứa các thiết lập liên quan đến hệ thống cache
+ * This file contains the configuration for the cache system.
  */
 
 return [
   /*
     |--------------------------------------------------------------------------
-    | Thời gian mặc định
+    | Default Time
     |--------------------------------------------------------------------------
     |
-    | Thời gian mặc định (phút) mà các mục cache sẽ được lưu trữ
+    | The default time (minutes) that cache items will be stored
     |
     */
   'ttl' => 60,
 
   /*
     |--------------------------------------------------------------------------
-    | Thư mục lưu trữ
+    | Cache Directory
     |--------------------------------------------------------------------------
     |
-    | Đường dẫn thư mục lưu trữ cache của ứng dụng
+    | The path to the cache directory of the application
     |
     */
   'path' => BASE_PATH . '/storage/cache',
 
   /*
     |--------------------------------------------------------------------------
-    | Tối ưu cache
+    | Optimize Cache
     |--------------------------------------------------------------------------
     |
-    | Các thiết lập liên quan đến tối ưu hóa hệ thống cache
+    | The settings related to optimizing the cache system
     |
     */
   'optimize' => [
-    'auto_clean' => true,      // Tự động xóa cache hết hạn
-    'cleanable' => true,       // Cho phép xóa cache
+    'auto_clean' => true,      // Automatically delete expired cache
+    'cleanable' => true,       // Allow deleting cache
   ],
 ];

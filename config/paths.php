@@ -1,38 +1,38 @@
 <?php
 
 /**
- * Cấu hình các đường dẫn thư mục
+ * The configuration file for the paths.
  *
- * File này chứa các định nghĩa đường dẫn cho các thư mục chính của ứng dụng.
+ * This file contains the definitions of the paths for the main directories of the application.
  */
 
 return [
   /*
     |--------------------------------------------------------------------------
-    | Đường dẫn thư mục ứng dụng
+    | Application Directory
     |--------------------------------------------------------------------------
     |
-    | Các thư mục chính của ứng dụng.
+    | The main directories of the application.
     |
     */
   'app' => BASE_PATH . '/app',
 
   /*
     |--------------------------------------------------------------------------
-    | Thư mục public
+    | Public Directory
     |--------------------------------------------------------------------------
     |
-    | Thư mục chứa các tài nguyên tĩnh có thể truy cập công khai
+    | The directory containing static resources that can be publicly accessed
     |
     */
   'public' => BASE_PATH . '/public',
 
   /*
     |--------------------------------------------------------------------------
-    | Thư mục storage
+    | Storage Directory
     |--------------------------------------------------------------------------
     |
-    | Thư mục lưu trữ cache, logs, uploads,...
+    | The directory containing cache, logs, uploads,...
     |
     */
   'storage' => [
@@ -44,10 +44,10 @@ return [
 
   /*
     |--------------------------------------------------------------------------
-    | Thư mục resources
+    | Resources Directory
     |--------------------------------------------------------------------------
     |
-    | Thư mục chứa các tài nguyên như views, css, js,...
+    | The directory containing the resources like views, css, js,...
     |
     */
   'resources' => [
@@ -59,10 +59,10 @@ return [
 
   /*
     |--------------------------------------------------------------------------
-    | Thư mục database
+    | Database Directory
     |--------------------------------------------------------------------------
     |
-    | Thư mục chứa migrations, seeds,...
+    | The directory containing migrations, seeds,...
     |
     */
   'database' => [

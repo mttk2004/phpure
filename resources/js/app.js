@@ -1,6 +1,6 @@
 import Alpine from 'alpinejs';
 import Swal from 'sweetalert2';
-import '../css/input.css';
+import '../css/app.css';
 
 window.Alpine = Alpine;
 Alpine.start();

@@ -9,6 +9,8 @@ use Twig\Error\SyntaxError;
 class Controller
 {
     /**
+     * Render a view
+     *
      * @throws SyntaxError
      * @throws RuntimeError
      * @throws LoaderError

@@ -7,7 +7,7 @@ class Event
     private static array $listeners = [];
 
     /**
-     * Đăng ký một listener cho sự kiện.
+     * Register a listener for an event.
      */
     public static function listen(string $event, string $listenerClass): void
     {
@@ -19,12 +19,12 @@ class Event
     }
 
     /**
-     * Kích hoạt sự kiện.
+     * Dispatch an event.
      */
     public static function dispatch(string $event, ...$payload): void
     {
         if (! isset(self::$listeners[$event])) {
-            return; // Không có listener nào cho sự kiện
+            return; // No listener for the event
         }
 
         foreach (self::$listeners[$event] as $listenerClass) {
@@ -39,7 +39,7 @@ class Event
     }
 
     /**
-     * Liệt kê tất cả các sự kiện và listener đã đăng ký (debugging).
+     * List all events and listeners (debugging).
      */
     public static function list(): array
     {

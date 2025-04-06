@@ -1,41 +1,41 @@
 <?php
 
 /**
- * Cấu hình hệ thống lưu trữ (Storage)
+ * The configuration file for the storage system.
  *
- * File này chứa các thiết lập liên quan đến hệ thống lưu trữ
+ * This file contains the configuration for the storage system.
  */
 
 return [
   /*
     |--------------------------------------------------------------------------
-    | Thư mục gốc lưu trữ
+    | Root Storage Directory
     |--------------------------------------------------------------------------
     |
-    | Đường dẫn đến thư mục gốc lưu trữ các file tải lên
+    | The path to the root storage directory for uploaded files
     |
     */
   'uploads_path' => BASE_PATH . '/storage/uploads',
 
   /*
     |--------------------------------------------------------------------------
-    | Phân quyền mặc định
+    | Default Permissions
     |--------------------------------------------------------------------------
     |
-    | Phân quyền mặc định khi tạo thư mục
+    | Default permissions when creating directories
     |
     */
   'permissions' => [
-    'dir' => 0755,    // Phân quyền cho thư mục
-    'file' => 0644,   // Phân quyền cho file
+    'dir' => 0755,    // Permissions for directories
+    'file' => 0644,   // Permissions for files
   ],
 
   /*
     |--------------------------------------------------------------------------
-    | Phần mở rộng được phép
+    | Allowed Extensions
     |--------------------------------------------------------------------------
     |
-    | Danh sách các phần mở rộng file được phép tải lên
+    | List of allowed file extensions for uploads
     |
     */
   'allowed_extensions' => [
@@ -44,16 +44,16 @@ return [
     'png',
     'gif',
     'webp',
-    'svg',  // Hình ảnh
+    'svg',  // Image
     'pdf',
     'doc',
     'docx',
     'xls',
     'xlsx',
-    'txt',  // Tài liệu
+    'txt',  // Document
     'zip',
     'rar',
-    '7z',                         // Nén
+    '7z',  // Compression
     'mp3',
     'mp4',
     'wav',
@@ -64,11 +64,11 @@ return [
 
   /*
     |--------------------------------------------------------------------------
-    | Giới hạn kích thước
+    | Maximum Size
     |--------------------------------------------------------------------------
     |
-    | Giới hạn kích thước file tải lên (bytes)
-    | Mặc định: 10MB = 10 * 1024 * 1024
+    | Maximum size of uploaded files (bytes)
+    | Default: 10MB = 10 * 1024 * 1024
     |
     */
   'max_size' => 10 * 1024 * 1024,  // 10MB

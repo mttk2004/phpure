@@ -3,5 +3,5 @@
 use App\Listeners\SendWelcomeEmail;
 use Core\Event;
 
-// Đăng ký listener cho sự kiện "user.registered"
+// TODO: Define events here
 Event::listen('user.registered', SendWelcomeEmail::class);

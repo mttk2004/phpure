@@ -1,30 +1,29 @@
 <?php
 
 /**
- * Cấu hình cơ bản của ứng dụng
+ * The configuration file for the application.
  *
- * File này chứa các cấu hình cốt lõi của ứng dụng PHPure.
+ * This file contains the core configuration for the application.
  */
 
 return [
   /*
     |--------------------------------------------------------------------------
-    | Tên ứng dụng
+    | Application Name
     |--------------------------------------------------------------------------
     |
-    | Giá trị này xác định tên của ứng dụng của bạn. Tên này được sử dụng khi
-    | framework cần đặt tên cho ứng dụng trong các thông báo hoặc giao diện.
+    | This value determines the name of the application. This name is used when
+    | the framework needs to name the application in notifications or interfaces.
     |
     */
   'name' => getenv('APP_NAME') ?? 'PHPure',
 
   /*
     |--------------------------------------------------------------------------
-    | Môi trường ứng dụng
+    | Application Environment
     |--------------------------------------------------------------------------
     |
-    | Cấu hình này xác định môi trường mà ứng dụng đang chạy. Các giá trị phổ biến
-    | bao gồm "production", "development", và "testing".
+    | This configuration determines the environment in which the application is running. Common values include "production", "development", and "testing".
     |
     */
   'env' => getenv('APP_ENV') ?? 'development',
@@ -34,29 +33,28 @@ return [
     | Debug Mode
     |--------------------------------------------------------------------------
     |
-    | Khi debug mode được bật, các lỗi sẽ được hiển thị chi tiết.
-    | Trong môi trường production, nên tắt tính năng này.
+    | When debug mode is enabled, errors will be displayed in detail.
+    | In the production environment, this feature should be disabled.
     |
     */
   'debug' => filter_var(getenv('APP_DEBUG') ?? true, FILTER_VALIDATE_BOOLEAN),
 
   /*
     |--------------------------------------------------------------------------
-    | Múi giờ ứng dụng
+    | Application Timezone
     |--------------------------------------------------------------------------
     |
-    | Xác định múi giờ mặc định cho ứng dụng của bạn, được sử dụng bởi
-    | các hàm xử lý ngày tháng, giờ.
+    | Determines the default timezone for the application, used by date and time functions.
     |
     */
   'timezone' => getenv('APP_TIMEZONE') ?? 'Asia/Ho_Chi_Minh',
 
   /*
     |--------------------------------------------------------------------------
-    | Mã hóa ứng dụng
+    | Application Encoding
     |--------------------------------------------------------------------------
     |
-    | Mã hóa mặc định sử dụng bởi ứng dụng khi xử lý chuỗi, mật khẩu, v.v.
+    | The default encoding used by the application when processing strings, passwords, etc.
     |
     */
   'encoding' => 'UTF-8',

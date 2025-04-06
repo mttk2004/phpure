@@ -4,41 +4,50 @@ namespace Core;
 
 abstract class Model
 {
-    protected string $table;            // Tên bảng
-    protected array $attributes = [];   // Thuộc tính của model
-    protected bool $softDelete = false; // Mặc định không hỗ trợ Soft Deletes
+    protected string $table;            // Table name
+    protected array $attributes = [];   // Attributes of the model
+    protected bool $softDelete = false; // Default does not support Soft Deletes
 
-    // Khởi tạo với dữ liệu
+    /**
+     * Initialize with data
+     */
     public function __construct(array $attributes = [])
     {
         $this->attributes = $attributes;
     }
 
-    // Truy cập thuộc tính động
+    /**
+     * Access dynamic properties
+     */
     public function __get(string $key)
     {
         return $this->attributes[$key] ?? null;
     }
 
+    /**
+     * Set dynamic properties
+     */
     public function __set(string $key, $value)
     {
         $this->attributes[$key] = $value;
     }
 
-    // Lấy tất cả bản ghi
+    /**
+     * Get all records
+     */
     public static function all(): array
     {
         $instance = new static();
         $query = Database::table($instance->table);
 
-        // Lọc `deleted_at` nếu bảng hỗ trợ Soft Deletes
+        // Filter `deleted_at` if the table supports Soft Deletes
         if ($instance->softDelete) {
             $query->whereNull('deleted_at');
         }
 
         $records = $query->get();
 
-        // Gắn dữ liệu vào danh sách các đối tượng Model
+        // Attach data to the list of Model objects
         return array_map(function ($record) use ($instance) {
             $model = new static();
             $model->fill($record);
@@ -47,14 +56,16 @@ abstract class Model
         }, $records);
     }
 
-    // Tìm bản ghi theo ID
+    /**
+     * Find a record by ID
+     */
     public static function find(int $id): ?self
     {
         $instance = new static();
 
         $query = Database::table($instance->table)->where('id', '=', $id);
 
-        // Nếu bảng hỗ trợ Soft Deletes, thêm điều kiện lọc `deleted_at`
+        // If the table supports Soft Deletes, add the condition to filter `deleted_at`
         if ($instance->softDelete) {
             $query->whereNull('deleted_at');
         }
@@ -65,25 +76,27 @@ abstract class Model
             return null;
         }
 
-        // Gắn dữ liệu vào đối tượng Model
+        // Attach data to the Model object
         $instance->fill($record);
 
         return $instance;
     }
 
-    // Lấy bản ghi đã xóa
+    /**
+     * Get only deleted records
+     */
     public static function onlyTrashed(): array
     {
         $instance = new static();
 
-        // Nếu không hỗ trợ Soft Deletes, báo lỗi
+        // If the table does not support Soft Deletes, throw an error
         if (! $instance->softDelete) {
             throw new \Exception("Soft Deletes are not enabled for table '{$instance->table}'");
         }
 
         $records = Database::table($instance->table)->whereNotNull('deleted_at')->get();
 
-        // Gắn dữ liệu vào danh sách các đối tượng Model
+        // Attach data to the list of Model objects
         return array_map(function ($record) use ($instance) {
             $model = new static();
             $model->fill($record);
@@ -92,35 +105,43 @@ abstract class Model
         }, $records);
     }
 
-    // Thêm bản ghi mới
+    /**
+     * Create a new record
+     */
     public function create(array $data): bool
     {
         return Database::table($this->table)->insert($data);
     }
 
-    // Cập nhật bản ghi
+    /**
+     * Update a record
+     */
     public function update(array $data, $id): bool
     {
         return Database::table($this->table)->where('id', '=', $id)->update($data);
     }
 
-    // Xóa bản ghi
+    /**
+     * Delete a record
+     */
     public function delete(int $id): bool
     {
         if ($this->softDelete) {
-            // Xóa mềm nếu bảng hỗ trợ Soft Deletes
+            // Soft delete if the table supports Soft Deletes
             return Database::table($this->table)
-                           ->where('id', '=', $id)
-                           ->update(['deleted_at' => date('Y-m-d H:i:s')]);
+              ->where('id', '=', $id)
+              ->update(['deleted_at' => date('Y-m-d H:i:s')]);
         } else {
-            // Xóa cứng nếu không hỗ trợ Soft Deletes
+            // Hard delete if the table does not support Soft Deletes
             return Database::table($this->table)
-                           ->where('id', '=', $id)
-                           ->delete();
+              ->where('id', '=', $id)
+              ->delete();
         }
     }
 
-    // Khôi phục bản ghi
+    /**
+     * Restore a record
+     */
     public function restore(int $id): bool
     {
         if (! $this->softDelete) {
@@ -128,11 +149,13 @@ abstract class Model
         }
 
         return Database::table($this->table)
-                       ->where('id', '=', $id)
-                       ->update(['deleted_at' => null]);
+          ->where('id', '=', $id)
+          ->update(['deleted_at' => null]);
     }
 
-    // Quan hệ One-to-One
+    /**
+     * One-to-One relationship
+     */
     public function hasOne(
         string $relatedModel,
         string $foreignKey,
@@ -140,20 +163,22 @@ abstract class Model
     ): ?Model {
         $related = new $relatedModel();
         $record = Database::table($related->table)
-                          ->where($foreignKey, '=', $this->{$localKey})
-                          ->first();
+          ->where($foreignKey, '=', $this->{$localKey})
+          ->first();
 
         if (! $record) {
             return null;
         }
 
-        // Gắn dữ liệu vào đối tượng Model
+        // Attach data to the Model object
         $related->fill($record);
 
         return $related;
     }
 
-    // Quan hệ One-to-Many
+    /**
+     * One-to-Many relationship
+     */
     public function hasMany(
         string $relatedModel,
         string $foreignKey,
@@ -161,10 +186,10 @@ abstract class Model
     ): array {
         $related = new $relatedModel();
         $records = Database::table($related->table)
-                           ->where($foreignKey, '=', $this->{$localKey})
-                           ->get();
+          ->where($foreignKey, '=', $this->{$localKey})
+          ->get();
 
-        // Gắn dữ liệu vào danh sách các đối tượng Model
+        // Attach data to the list of Model objects
         return array_map(function ($record) use ($relatedModel) {
             $instance = new $relatedModel();
             $instance->fill($record);
@@ -173,7 +198,9 @@ abstract class Model
         }, $records);
     }
 
-    // Quan hệ Many-to-Many
+    /**
+     * Many-to-Many relationship
+     */
     public function belongsToMany(
         string $relatedModel,
         string $pivotTable,
@@ -192,7 +219,7 @@ abstract class Model
 
         $records = Database::raw($sql, [$this->{$localKey}]);
 
-        // Gắn dữ liệu vào danh sách các đối tượng Model
+        // Attach data to the list of Model objects
         return array_map(function ($record) use ($relatedModel) {
             $instance = new $relatedModel();
             $instance->fill($record);
@@ -201,7 +228,9 @@ abstract class Model
         }, $records);
     }
 
-    // Gắn dữ liệu từ cơ sở dữ liệu vào Model
+    /**
+     * Attach data from the database to the Model
+     */
     public function fill(array $data): void
     {
         foreach ($data as $key => $value) {

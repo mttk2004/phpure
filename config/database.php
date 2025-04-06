@@ -1,30 +1,30 @@
 <?php
 
 /**
- * Cấu hình kết nối cơ sở dữ liệu
+ * The configuration file for the database connection.
  *
- * File này chứa các cấu hình kết nối cơ sở dữ liệu của ứng dụng PHPure.
+ * This file contains the configuration for the database connection.
  */
 
 return [
   /*
     |--------------------------------------------------------------------------
-    | Kết nối cơ sở dữ liệu mặc định
+    | Default Database Connection
     |--------------------------------------------------------------------------
     |
-    | Đây là kết nối mặc định được sử dụng bởi ứng dụng, bạn có thể
-    | thay đổi giá trị này để sử dụng kết nối khác.
+    | This is the default connection used by the application, you can change
+    | this value to use a different connection.
     |
     */
   'default' => getenv('DB_CONNECTION') ?? 'mysql',
 
   /*
     |--------------------------------------------------------------------------
-    | Các kết nối cơ sở dữ liệu
+    | Database Connections
     |--------------------------------------------------------------------------
     |
-    | Đây là thông tin kết nối cho từng cơ sở dữ liệu trong ứng dụng.
-    | Bạn có thể thiết lập nhiều kết nối khác nhau.
+    | This is the information for each database connection in the application.
+    | You can set up multiple connections.
     |
     */
   'connections' => [

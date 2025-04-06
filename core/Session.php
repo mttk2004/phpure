@@ -4,7 +4,9 @@ namespace Core;
 
 class Session
 {
-    // Bắt đầu session nếu chưa có
+    /**
+     * Start the session if it is not already started
+     */
     public static function start(): void
     {
         if (session_status() === PHP_SESSION_NONE) {
@@ -12,40 +14,52 @@ class Session
         }
     }
 
-    // Đặt giá trị session
+    /**
+     * Set a session value
+     */
     public static function set(string $key, $value): void
     {
         $_SESSION[$key] = $value;
     }
 
-    // Lấy giá trị session
+    /**
+     * Get a session value
+     */
     public static function get(string $key)
     {
         return $_SESSION[$key] ?? null;
     }
 
-    // Kiểm tra tồn tại session
+    /**
+     * Check if a session exists
+     */
     public static function has(string $key): bool
     {
         return isset($_SESSION[$key]);
     }
 
-    // Xóa session
+    /**
+     * Remove a session value
+     */
     public static function remove(string $key): void
     {
         unset($_SESSION[$key]);
     }
 
-    // Hủy toàn bộ session
+    /**
+     * Destroy all sessions
+     */
     public static function destroy(): void
     {
         session_destroy();
     }
 
-    // Flash message
+    /**
+     * Flash a message
+     */
     public static function flash(string $key, $message = null)
     {
-        // Nếu chỉ lấy giá trị
+        // If only getting the value
         if ($message === null) {
             $value = self::get($key);
             self::remove($key);
@@ -53,7 +67,7 @@ class Session
             return $value;
         }
 
-        // Nếu thiết lập giá trị
+        // Set the value
         self::set($key, $message);
     }
 }

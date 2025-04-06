@@ -4,7 +4,9 @@ namespace Core;
 
 class Form
 {
-    // Tạo token CSRF
+    /**
+     * Create a CSRF token
+     */
     public static function token(): string
     {
         $token = bin2hex(random_bytes(32));
@@ -13,7 +15,9 @@ class Form
         return $token;
     }
 
-    // Xác thực token CSRF
+    /**
+     * Validate a CSRF token
+     */
     public static function validateToken(string $token): bool
     {
         $csrfToken = Session::get('csrf_token');
@@ -21,7 +25,9 @@ class Form
         return $token === $csrfToken;
     }
 
-    // Tạo input field
+    /**
+     * Create an input field
+     */
     public static function input(string $type, string $name, string $value = '', array $attributes = []): string
     {
         $attrs = '';

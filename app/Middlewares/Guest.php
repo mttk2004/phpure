@@ -8,10 +8,9 @@ class Guest
 {
     public function handle(): bool
     {
-        // Kiểm tra người dùng đã đăng nhập chưa
         if (Session::has('user')) {
             http_response_code(403);
-            echo "403 - Bạn đã đăng nhập!";
+            echo "403 - You are already logged in!";
 
             return false;
         }

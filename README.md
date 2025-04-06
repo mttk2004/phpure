@@ -210,7 +210,7 @@ Thư mục này chứa các tệp công khai có thể truy cập từ trình du
 
 Tập trung vào giao diện và tài nguyên giao diện của ứng dụng:
 
-- `css/input.css`: Tệp CSS tùy chỉnh, dùng để định nghĩa giao diện.
+- `css/app.css`: Tệp CSS tùy chỉnh, dùng để định nghĩa giao diện.
 - `js/app.js`: Tệp JavaScript tùy chỉnh, quản lý logic giao diện động.
 - `views/`: Chứa các file giao diện (template/view), giúp tách biệt hoàn toàn logic và giao diện.
 
@@ -272,7 +272,7 @@ phpure/
 │   ├── assets/                # Chứa các tài nguyên tĩnh như CSS, JS, và hình ảnh.
 │   ├── index.php              # File khởi tạo ứng dụng, nhận và chuyển hướng tất cả các yêu cầu tới hệ thống định tuyến.
 ├── resources/
-│   ├── css/input.css          # Chứa file CSS tùy chỉnh của dự án.
+│   ├── css/app.css          # Chứa file CSS tùy chỉnh của dự án.
 │   ├── js/app.js              # Chứa file JavaScript tùy chỉnh của dự án.
 │   ├── views/                 # Chứa các file giao diện (template/view) của ứng dụng.
 ├── storage/

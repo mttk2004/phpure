@@ -6,9 +6,11 @@ use Respect\Validation\Exceptions\NestedValidationException;
 
 class Validation
 {
-    private array $errors = []; // Lưu các lỗi validation
+    private array $errors = []; // Store validation errors
 
-    // Thực hiện validation
+    /**
+     * Perform validation
+     */
     public function validate(array $data, array $rules): bool
     {
         foreach ($rules as $field => $rule) {
@@ -22,7 +24,9 @@ class Validation
         return empty($this->errors);
     }
 
-    // Lấy danh sách lỗi
+    /**
+     * Get the list of errors
+     */
     public function errors(): array
     {
         return $this->errors;

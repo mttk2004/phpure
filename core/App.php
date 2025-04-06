@@ -7,31 +7,37 @@ use Whoops\Run;
 
 class App
 {
-  public static function bootstrap(): void
-  {
-    // 1. Load môi trường
-    loadEnv();
+    /**
+     * Bootstrap the application
+     */
+    public static function bootstrap(): void
+    {
+        // 1. Load environment variables
+        loadEnv();
 
-    // 2. Đặt múi giờ mặc định từ cấu hình
-    date_default_timezone_set(config('app.timezone', 'Asia/Ho_Chi_Minh'));
+        // 2. Set the default timezone from the configuration
+        date_default_timezone_set(config('app.timezone', 'Asia/Ho_Chi_Minh'));
 
-    // 3. Kích hoạt Whoops nếu debug mode được bật
-    if (config('app.debug', true)) {
-      self::enableWhoops();
+        // 3. Enable Whoops if debug mode is enabled
+        if (config('app.debug', true)) {
+            self::enableWhoops();
+        }
+
+        // 4. Start the session
+        Session::start();
+
+        // 5. Load the event and route configuration files
+        require_once BASE_PATH . '/app/events.php';
+        require_once BASE_PATH . '/app/routes.php';
     }
 
-    // 4. Khởi động session
-    Session::start();
-
-    // 5. Load các file cấu hình sự kiện và route
-    require_once BASE_PATH . '/app/events.php';
-    require_once BASE_PATH . '/app/routes.php';
-  }
-
-  public static function enableWhoops(): void
-  {
-    $whoops = new Run();
-    $whoops->pushHandler(new PrettyPageHandler());
-    $whoops->register();
-  }
+    /**
+     * Enable Whoops
+     */
+    public static function enableWhoops(): void
+    {
+        $whoops = new Run();
+        $whoops->pushHandler(new PrettyPageHandler());
+        $whoops->register();
+    }
 }
