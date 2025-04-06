@@ -1,6 +1,6 @@
 {
   "name": "mttk2004/phpure",
-  "description": "phpure is a simple MVC framework written in PHP to help beginners understand the inner workings of a web application built with the MVC pattern",
+  "description": "phpure is a simple MVC framework written in PHP to help beginners understand the inner workings of a web application built with the MVC pattern.",
   "type": "project",
   "license": "MIT",
   "authors": [
