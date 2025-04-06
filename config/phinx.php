@@ -12,10 +12,13 @@ $dbConfig = require_once __DIR__ . '/database.php';
 $default = $dbConfig['default'];
 $connections = $dbConfig['connections'];
 
+// Đường dẫn tuyệt đối đến thư mục gốc của dự án
+$rootPath = dirname(__DIR__);
+
 return [
   'paths' => [
-    'migrations' => '%%PHINX_CONFIG_DIR%%/../database/migrations',
-    'seeds' => '%%PHINX_CONFIG_DIR%%/../database/seeds',
+    'migrations' => $rootPath . '/database/migrations',
+    'seeds' => $rootPath . '/database/seeds',
   ],
   'environments' => [
     'default_migration_table' => 'phinxlog',

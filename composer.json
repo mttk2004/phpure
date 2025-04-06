@@ -45,6 +45,7 @@
     "migrate:rollback": "vendor/bin/phinx rollback",
     "migrate:status": "vendor/bin/phinx status",
     "migrate:create": "vendor/bin/phinx create",
-    "db:seed": "vendor/bin/phinx seed:run"
+    "seed:create": "vendor/bin/phinx seed:create",
+    "seed": "vendor/bin/phinx seed:run"
   }
 }
