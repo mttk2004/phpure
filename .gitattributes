@@ -1,0 +1,27 @@
+# Exclude files from archive when creating packages
+# Điều này sẽ loại bỏ các tệp và thư mục không cần thiết khi tạo package
+
+# Các tệp cấu hình phát triển
+/.github export-ignore
+/.idea export-ignore
+/.vscode export-ignore
+/.cursor export-ignore
+/node_modules export-ignore
+/tests export-ignore
+
+# Tệp phát triển
+/.gitattributes export-ignore
+/.gitignore export-ignore
+/.editorconfig export-ignore
+/package.json export-ignore
+/package-lock.json export-ignore
+/postcss.config.js export-ignore
+/tailwind.config.js export-ignore
+/vite.config.js export-ignore
+/.php-cs-fixer.cache export-ignore
+
+# Giữ những tệp quan trọng
+# docs/ - Nên giữ lại vì có tài liệu hướng dẫn
+# LICENSE - Cần thiết phải giữ lại
+# CODE_OF_CONDUCT.md - Nên giữ lại
+# CODING_STANDARDS.md - Nên giữ lại
