@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+body {
+  font-family: 'KoHo', sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}

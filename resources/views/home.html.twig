@@ -1,54 +1,65 @@
 {% extends 'layouts/app.html.twig' %}
 
 {% block content %}
-  <div class="container mx-auto py-8 px-4">
-    <h2 class="text-blue-600 text-4xl font-black mb-4">{{ message }}</h2>
-
-    <p class="text-gray-700 mb-6">This is the homepage using Twig and Tailwind CSS.</p>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h3 class="text-xl font-bold mb-3">Interact with Alerts</h3>
-        <div class="space-y-2">
-          <button onclick="showAlert('Good job!', 'You clicked the button!', 'success')"
-                  class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
-            Show Success Alert
-          </button>
-          <button onclick="showAlert('Oops!', 'Something went wrong!', 'error')"
-                  class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
-            Show Error Alert
-          </button>
+<div class="bg-gray-50 min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl w-full space-y-8 text-center bg-white p-10 rounded-xl shadow-lg">
+        <div>
+            {# Optional: Logo placeholder if available #}
+            {# <img class="mx-auto h-12 w-auto" src="/path/to/logo.svg" alt="PHPure Logo"> #}
+            <h1 class="my-6 text-4xl sm:text-5xl font-extrabold text-gray-900">
+                {{ message }}
+            </h1>
+            <p class="my-4 text-2xl font-medium text-gray-700">
+                A simple and elegant framework inspired by Laravel.
+            </p>
+            <p class="mt-2 text-lg text-gray-500 max-w-2xl mx-auto">
+                Designed to help you learn and explore how a web application works using the MVC model, PHPure provides a simple yet powerful structure to build PHP applications.
+            </p>
         </div>
-      </div>
 
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h3 class="text-xl font-bold mb-3">Alpine.js Modal</h3>
-        <div x-data="{ open: false }">
-          <!-- Nút mở modal -->
-          <button @click="open = true" class="px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600">
-            Open Modal
-          </button>
-
-          <!-- Modal -->
-          <div
-                  x-show="open"
-                  x-transition
-                  class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
-          >
-            <div class="bg-white p-6 rounded-lg shadow-xl max-w-md mx-auto">
-              <h2 class="text-2xl font-bold mb-4">This is a Modal</h2>
-              <p class="text-gray-600 mb-6">You can add any content here. This modal is powered by Alpine.js.</p>
-
-              <button
-                      @click="open = false"
-                      class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
-              >
-                Close
-              </button>
+        <div class="mt-10 space-y-6">
+            <h2 class="text-2xl font-bold text-gray-700">Why choose PHPure?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left md:text-center">
+                <div class="feature-card p-4">
+                    <h3 class="text-lg font-semibold text-blue-600">Simple & Easy to Learn</h3>
+                    <p class="mt-2 text-base text-gray-500">
+                        Focuses on the core concepts of MVC, ideal for beginners.
+                    </p>
+                </div>
+                <div class="feature-card p-4">
+                    <h3 class="text-lg font-semibold text-blue-600">Clear Structure</h3>
+                    <p class="mt-2 text-base text-gray-500">
+                        Organizes code following the MVC model, easy to maintain and expand.
+                    </p>
+                </div>
+                <div class="feature-card p-4">
+                    <h3 class="text-lg font-semibold text-blue-600">Inspired by Laravel</h3>
+                    <p class="mt-2 text-base text-gray-500">
+                        Brings elegance and useful patterns from a leading framework.
+                    </p>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
+
+        <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
+             {# Adjust href to your actual documentation route/URL #}
+             <a href="#"
+               class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-semibold rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out w-full sm:w-auto">
+                Get Started Now
+            </a>
+             <a href="https://github.com/mttk2004/phpure" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-semibold rounded-md text-gray-600 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out w-full sm:w-auto">
+                 <svg class="w-5 h-5 mr-2 -ml-1 text-gray-500 group-hover:text-gray-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                     <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.477 0 10c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.157-1.11-1.465-1.11-1.465-.908-.62.069-.608.069-.608 1.004.075 1.532 1.03 1.532 1.03.891 1.529 2.341 1.089 2.91.833.091-.647.349-1.086.635-1.337-2.22-.252-4.555-1.111-4.555-4.943 0-1.091.39-1.984 1.029-2.682-.103-.253-.446-1.27.098-2.645 0 0 .84-.269 2.75 1.025A9.747 9.747 0 0110 5.184c.853 0 1.708.114 2.504.337 1.91-1.294 2.748-1.025 2.748-1.025.546 1.375.201 2.392.098 2.645.64.698 1.028 1.591 1.028 2.682 0 3.841-2.337 4.687-4.565 4.935.36.308.678.918.678 1.85 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C17.138 18.163 20 14.417 20 10c0-5.523-4.477-10-10-10z" clip-rule="evenodd" />
+                 </svg>
+                View on GitHub
+            </a>
+        </div>
+
+        <div class="mt-12 border-t border-gray-200 pt-8 text-sm text-gray-500">
+            PHPure is an open-source software licensed under the <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-500 hover:underline">MIT license</a>.
+            <br> Created by <a href="https://github.com/mttk2004" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-500 hover:underline">Mai Trần Tuấn Kiệt</a>.
+        </div>
     </div>
-  </div>
+</div>
 {% endblock %}
