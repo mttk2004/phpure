@@ -28,9 +28,9 @@ Detailed documentation is available in the [docs](docs) directory:
 ## Quick Start
 
 ```bash
-# Clone the repository
-git clone https://github.com/mttk2004/phpure.git
-cd phpure
+# Create new phpure project
+composer create-project mttk2004/phpure <project_name>
+cd <project_name>
 
 # Install dependencies
 composer install
@@ -40,7 +40,7 @@ npm install
 cp .env.example .env
 
 # Run the development server
-php -S localhost:8000 -t public/
+npm run dev:all
 ```
 
 ## Notice
