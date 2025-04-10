@@ -5,7 +5,6 @@ on:
     tags:
       - "v*" # Trigger when a new tag starts with "v", e.g: v1.0.0
 
-# Thêm cấu hình permissions
 permissions:
   contents: write
   packages: write
@@ -57,7 +56,7 @@ jobs:
             ### Installation
 
             ```bash
-            composer create-project kiettran/phpure your-project-name
+            composer create-project mttk2004/phpure your-project-name
             ```
 
             Or download the ZIP file from this release.
