@@ -1,0 +1,74 @@
+name: Auto Release
+
+on:
+  push:
+    tags:
+      - "v*" # Trigger when a new tag starts with "v", e.g: v1.0.0
+
+jobs:
+  build:
+    name: Create Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+          extensions: mbstring, intl, zip
+          coverage: none
+
+      - name: Get the version
+        id: get_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+
+      - name: Generate changelog
+        id: changelog
+        uses: metcalfc/changelog-generator@v4.1.0
+        with:
+          myToken: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create ZIP package
+        run: |
+          mkdir -p ./build
+          rsync -av --exclude='.git/' --exclude='.github/' --exclude='build/' --exclude='tests/' --exclude='.gitignore' ./ ./build/phpure-${{ steps.get_version.outputs.VERSION }}/
+          cd build
+          zip -r phpure-${{ steps.get_version.outputs.VERSION }}.zip phpure-${{ steps.get_version.outputs.VERSION }}
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: PHPure ${{ steps.get_version.outputs.VERSION }}
+          body: |
+            ## PHPure ${{ steps.get_version.outputs.VERSION }}
+
+            ${{ steps.changelog.outputs.changelog }}
+
+            ### Installation
+
+            ```bash
+            composer create-project kiettran/phpure your-project-name
+            ```
+
+            Or download the ZIP file from this release.
+
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./build/phpure-${{ steps.get_version.outputs.VERSION }}.zip
+          asset_name: phpure-${{ steps.get_version.outputs.VERSION }}.zip
+          asset_content_type: application/zip
