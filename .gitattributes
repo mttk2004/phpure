@@ -6,15 +6,16 @@
 /.idea export-ignore
 /.vscode export-ignore
 /.cursor export-ignore
+/.github export-ignore
 /node_modules export-ignore
+/vendor export-ignore
 /tests export-ignore
-/vendor
 
 # Development files
-/.gitattributes export-ignore
-/.editorconfig export-ignore
 /package-lock.json export-ignore
 /composer.lock export-ignore
+/.gitattributes export-ignore
+/.editorconfig export-ignore
 /.php-cs-fixer.cache export-ignore
 
 # Unnecessary or not recommended files for users to see
