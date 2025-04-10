@@ -15,15 +15,7 @@ This framework is perfect for:
 
 ## Documentation
 
-Detailed documentation is available in the [docs](docs) directory:
-
-- [Introduction](docs/introduction.md)
-- [Getting Started](docs/getting-started.md)
-- [Directory Structure](docs/directory-structure.md)
-- [Core Concepts](docs/core-concepts.md)
-- [Features](docs/features.md)
-- [Building Applications](docs/building-applications.md)
-- [Advanced Techniques](docs/advanced-techniques.md)
+Detailed documentation is available in the [Official PHPure Documentation](https://phpure.netlify.app).
 
 ## Quick Start
 
