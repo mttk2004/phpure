@@ -5,6 +5,12 @@ on:
     tags:
       - "v*" # Trigger when a new tag starts with "v", e.g: v1.0.0
 
+# Thêm cấu hình permissions
+permissions:
+  contents: write
+  packages: write
+  actions: read
+
 jobs:
   build:
     name: Create Release
@@ -39,14 +45,10 @@ jobs:
           cd build
           zip -r phpure-${{ steps.get_version.outputs.VERSION }}.zip phpure-${{ steps.get_version.outputs.VERSION }}
 
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create Release and Upload Assets
+        uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ github.ref }}
-          release_name: PHPure ${{ steps.get_version.outputs.VERSION }}
+          name: PHPure ${{ steps.get_version.outputs.VERSION }}
           body: |
             ## PHPure ${{ steps.get_version.outputs.VERSION }}
 
@@ -59,16 +61,7 @@ jobs:
             ```
 
             Or download the ZIP file from this release.
-
+          files: |
+            ./build/phpure-${{ steps.get_version.outputs.VERSION }}.zip
           draft: false
           prerelease: false
-
-      - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./build/phpure-${{ steps.get_version.outputs.VERSION }}.zip
-          asset_name: phpure-${{ steps.get_version.outputs.VERSION }}.zip
-          asset_content_type: application/zip
