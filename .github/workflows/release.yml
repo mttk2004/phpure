@@ -47,7 +47,7 @@ jobs:
       - name: Create Release and Upload Assets
         uses: softprops/action-gh-release@v1
         with:
-          name: PHPure ${{ steps.get_version.outputs.VERSION }}
+          name: ${{ steps.get_version.outputs.VERSION }}
           body: |
             ## PHPure ${{ steps.get_version.outputs.VERSION }}
 
