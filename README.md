@@ -50,4 +50,4 @@ Created by [Mai Trần Tuấn Kiệt](https://github.com/mttk2004).
 
 ---
 
-_Last updated: April 05, 2025_
+_Last updated: April 10, 2025_
