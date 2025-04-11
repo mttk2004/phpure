@@ -56,7 +56,6 @@ Detailed documentation is available in the [Official PHPure Documentation](https
 - **Database ORM** - Elegant database interactions
 - **Template Engine** - Using Twig for powerful templating
 - **Middleware** - Request/response filtering
-- **Authentication** - Built-in authentication system
 
 ## 🔔 Notice
 
