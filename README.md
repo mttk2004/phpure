@@ -73,6 +73,14 @@ Created by [Mai Trần Tuấn Kiệt](https://github.com/mttk2004).
 
 Contributions are always welcome! See [contributing guide](CONTRIBUTING.md) for more information.
 
+## 🌟 Star History
+
+<div align="center">
+
+[![Star History Chart](https://api.star-history.com/svg?repos=mttk2004/phpure&type=Date)](https://star-history.com/#mttk2004/phpure&Date)
+
+</div>
+
 ---
 
 <p align="center"><i>Last updated: April 2025</i></p>
