@@ -77,7 +77,7 @@ Contributions are always welcome! See [contributing guide](CONTRIBUTING.md) for 
 
 <div align="center">
 
-[![Star History Chart](https://api.star-history.com/svg?repos=mttk2004/phpure&type=Date)](https://star-history.com/#mttk2004/phpure&Date)
+![Star History Chart](https://api.star-history.com/svg?repos=mttk2004/phpure&type=Date)
 
 </div>
 
